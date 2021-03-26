@@ -1,0 +1,464 @@
+
+import React, { useState, useEffect, useContext, useRef } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    StatusBar,
+    Alert,
+    TextInput,
+    Dimensions,
+    ActivityIndicator,
+    TouchableOpacity,
+    ScrollView,
+    AsyncStorage, BackHandler, SafeAreaView, KeyboardAvoidingView,
+    Button
+} from "react-native";
+import logo from '../Assets/Icons/Logo.jpg'
+import name from '../Assets/Icons/name.png'
+import address from '../Assets/Icons/address.png'
+import back_icon from '../Assets/Icons/back_icon.png'
+
+
+import user from '../Assets/Icons/user.png'
+import password from '../Assets/Icons/password.png'
+var validator = require("email-validator");
+import { domain } from "../Api/Api";
+
+import * as Animatable from 'react-native-animatable';
+const screenWidth = Dimensions.get("window").width
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+
+
+export default function signUP({ navigation }) {
+
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [address, setAddres] = useState("");
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
+
+
+
+
+
+
+
+
+
+    buSignUp = () => {
+
+        // navigation.navigate()
+    }
+
+    buForgotPassword = () => {
+
+        console.log(this.props.componentId);
+        //navigation.navigate()
+
+    }
+
+    Back = () => {
+        navigation.goBack()
+    }
+
+
+
+
+
+    const SiginSuccess = async () => {
+        if (email === "") {
+            alert("Email is required");
+            return
+        }
+        else if (validator.validate(email.trim()) === false) {
+            alert("Email format is not correct.");
+            return
+        }
+        else if (password === "") {
+            alert("Password is required!");
+            return
+        }
+        else
+            if (password.length < 5) {
+                alert("Password type more than 5 words");
+                return
+            }
+
+            else {
+                this.setState({ isAnimating: true, isDisabled: true })
+                navigation.navigate('home')
+
+                // const searchCredentials = {
+                //     "email": this.state.UserEmail,
+                //     "password": this.state.UserPassword,
+                //     "type": "1",
+                //     "device_token": fcmToken,
+                //     "device_platform": Platform.OS,
+                //     "time_zone": this.state.timeZone
+                // };
+                // console.log(searchCredentials, "login_Param")
+
+
+                // fetch(domain + '/api/auth/signin', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Accept': 'application/json',
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(searchCredentials)
+
+                // }).then((response) => response.text())
+                //     .then(async (responseText) => {
+
+                //         let responseData = JSON.parse(responseText);
+
+
+                //         if (responseData.code === 400) {
+                //             alert(responseData.message)
+                //             this.setState({ isAnimating: false, isDisabled: false })
+                //         }
+                //         console.log(responseData, "responseData of api")
+
+                //         if (responseData.code === 200) {
+
+
+
+                //             await AsyncStorage.setItem("isLogin", this.state.isLogin);
+
+                //             await AsyncStorage.setItem("userData", JSON.stringify(responseData.user));
+                //             await AsyncStorage.setItem("notificationCount", "0");
+                //             await AsyncStorage.setItem("notificationAffliation", "0");
+
+                //             // console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
+                //             // if(this.props.commingFromNotification==false || this.props.commingFromNotification==undefined){
+
+                //             StartTabs();
+
+                //             // }
+                //             // else if (this.props.commingFromNotification==true){
+                //             // let PostID = await AsyncStorage.getItem('notificationPostId')  
+
+                //             //  console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
+                //             //   Navigation.setRoot({
+                //             //     root: {
+                //             //       stack: {
+                //             //         children: [
+                //             //           {
+                //             //             component: {
+                //             //               name: 'feedDetail',
+
+                //             //               passProps: {
+                //             //                 id: PostId,
+                //             //                 commingFromNotification: true
+
+                //             //                 },
+
+                //             //               }
+
+                //             //             }
+                //             //         ],
+                //             //       }
+                //             //     }
+                //             //   });
+
+                //             // }
+
+
+
+                //             this.setState({ isAnimating: false, isDisabled: false })
+                //             analytics().logEvent('sign_in')
+
+
+                //         }
+
+                //     })
+                //     .catch((error) => {
+
+                //         console.log("error from home API", error);
+                //         //  this.setState({ isAnimating: false, isDisabled: false })
+                //         this.setState({ isAnimating: false, isDisabled: false })
+                //     });
+
+
+            }
+    }
+
+
+    loginApi = async () => {
+
+    }
+
+
+
+
+
+
+
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <View >
+                <TouchableOpacity style={styles.back} onPress={() => Back()}>
+                    <Image source={back_icon} style={styles.backIcon}></Image>
+                </TouchableOpacity>
+            </View>
+
+            <ScrollView keyboardShouldPersistTaps={'handled'}>
+
+                <KeyboardAwareScrollView
+                    resetScrollToCoords={{ x: 0, y: 0 }}
+                    scrollEnabled={true}
+                    keyboardShouldPersistTaps="handled"
+                    showsVerticalScrollIndicator={false}
+                >
+
+                    <Animatable.Image animation="fadeInUp" source={logo} style={styles.logo}></Animatable.Image>
+                    <Animatable.Text animation="fadeInUp" style={styles.subheading}>Proceed with your</Animatable.Text>
+                    <Animatable.Text animation="fadeInUp" style={styles.heading}>SIGN UP</Animatable.Text>
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>First Name</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='First Name'
+                            placeholderTextColor='#d5c9de'
+                            onChangeText={(val) => setFirstName(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={name} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Last Name</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Last Name'
+                            placeholderTextColor='#d5c9de'
+                            onChangeText={(val) => setLastName(val)}>
+                        </TextInput>
+
+                        <Image source={name} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Address'
+                            placeholderTextColor='#d5c9de'
+                            onChangeText={(val) => setAddress(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={address} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+
+
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='jhondoe@gmail.com'
+                            placeholderTextColor='#d5c9de'
+                            onChangeText={(val) => setEmail(val)}
+                            keyboardType={'email-address'}
+                            autoCapitalize={'none'}
+                            textContentType={"name"}>
+                        </TextInput>
+
+                        <Image source={user} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Password</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+                        <TextInput
+                            animation="fadeInUp"
+                            style={styles.textField}
+                            placeholder='********'
+                            placeholderTextColor='#d5c9de'
+                            autoCapitalize={'none'}
+                            textContentType={"password"}
+                            onChangeText={(val) => setPassword(val)}
+                            secureTextEntry={true}>
+                        </TextInput>
+                        <Image source={password} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>
+
+                    </Animatable.View>
+
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                    <Animatable.View animation="fadeInUp" >
+
+                        <TouchableOpacity style={styles.button} onPress={SiginSuccess}>
+                            <Text style={styles.buttonText}>Sign Up </Text>
+                        </TouchableOpacity>
+                    </Animatable.View>
+
+
+                    <Animatable.View style={styles.bottomView} animation="fadeIn" >
+                        <Text style={styles.newUser}>Already have an account? </Text>
+                        <Text style={styles.register} onPress={() => navigation.goBack()}> Sign In</Text>
+                    </Animatable.View>
+                </KeyboardAwareScrollView>
+            </ScrollView>
+
+
+            {
+                isAnimating &&
+                <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+            }
+        </SafeAreaView >
+    )
+}
+
+
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 35 : 0;
+const STATUSBAR_COLOR = Platform.OS === 'ios' ? 'white' : '#0178B9';
+const APPBAR_HEIGHT = Platform.OS === 'ios' ? 0 : 56;
+const styles = StyleSheet.create({
+    statusBar: {
+        height: STATUSBAR_HEIGHT,
+        backgroundColor: STATUSBAR_COLOR
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        alignContent: 'center',
+    },
+    background: {
+        flex: 1,
+        resizeMode: "cover",
+    },
+    back: {
+
+        height: 50,
+        width: 50,
+        marginLeft: 15,
+        justifyContent: 'center'
+    },
+    backIcon: {
+        height: 30,
+        width: 30,
+    },
+    logo: {
+        resizeMode: "contain",
+        height: 120,
+        width: 170,
+        marginTop: 20,
+        marginLeft: 20,
+    },
+    heading: {
+        marginLeft: 30,
+        marginTop: 5,
+        fontSize: 23,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    subheading: {
+        marginLeft: 30,
+        marginTop: 10,
+        fontSize: 20,
+        fontWeight: '300',
+        marginBottom: 0,
+    },
+    label: {
+        marginLeft: 30,
+        marginTop: 15,
+        fontWeight: '300',
+        fontSize: 14,
+        fontWeight: 'bold'
+    },
+    textField: {
+        marginLeft: 30,
+        marginRight: 30,
+        width: '70%',
+        marginTop: 6,
+        marginBottom: 3,
+        paddingTop: '3%',
+        paddingBottom: '3%',
+
+
+    },
+    seperater: {
+        height: 1,
+        marginLeft: 30,
+        marginRight: 30,
+        marginBottom: 10,
+        backgroundColor: '#d5c9de'
+
+    },
+    ForgotPassword: {
+        alignSelf: 'center',
+        marginTop: 15,
+        color: '#acacac',
+        fontSize: 15
+    },
+    button: {
+        marginTop: 30,
+        alignSelf: 'center',
+        height: 50,
+        width: screenWidth - 60,
+        backgroundColor: '#0178B9',
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: "#111111",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 17,
+    },
+    bottomView: {
+        marginTop: 20,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        flexDirection: 'row',
+        marginBottom: 100,
+    },
+    newUser: {
+        fontSize: 15,
+        color: '#010a0a',
+    },
+    register: {
+        color: '#0178B9',
+        fontSize: 15,
+    },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    back: {
+        height: 50,
+        width: 50,
+        marginLeft: 15,
+        justifyContent: 'center'
+    },
+    backIcon: {
+        height: 30,
+        width: 30,
+    },
+
+});
