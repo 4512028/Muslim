@@ -2,7 +2,7 @@ import React from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator } from "../Stack/stackScreen";
+import { prayerStackNavigator, ghuslStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator } from "../Stack/stackScreen";
 import DrawerContent from './DrawerItems'
 
 import { BottomTabNavigator } from "../BottomTab/BottomTab";
@@ -20,6 +20,9 @@ const DrawerNavigator = () => {
             <Drawer.Screen name="love" component={loveStackNavigator} />
             <Drawer.Screen name="donate" component={donateStackNavigator} />
             <Drawer.Screen name="nextofkin" component={nextOfKinStackNavigator} />
+            <Drawer.Screen name="ghusl" component={ghuslStackNavigator} />
+            <Drawer.Screen name="nextofkin" component={nextOfKinStackNavigator} />
+
             <Drawer.Screen name="feedback" component={feedbackStackNavigator} />
 
 

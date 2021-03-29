@@ -29,6 +29,8 @@ function donates({ navigation }) {
 
 
     ]);
+    let [manuallyAddFund, setmanuallyAddFunds] = useState(0);
+
     let [list, SetModalList] = useState([]);
     let [modalHeading, setModalHeading] = useState("");
     let [modalVisible, setmodalVisible] = useState(false);
@@ -44,6 +46,10 @@ function donates({ navigation }) {
     let [monththirdValue, setMonththirdValue] = useState(false);
 
     let [administration, setAddministration] = useState(false);
+    let [administrationSadqa, setadministrationSadqa] = useState(2);
+
+
+
     let [GiftAid, setAGiftAid] = useState(true);
 
 
@@ -71,7 +77,11 @@ function donates({ navigation }) {
 
 
     goForDoantion = () => {
-        if (donationType == "one time") navigation.navigate('donationOnTime')
+        if (donationType == "one time") navigation.navigate('donationOnTime', {
+            administration: administrationSadqa,
+            donation:
+        });
+
         else navigation.navigate('donationMonthly')
 
     }
@@ -222,8 +232,9 @@ function donates({ navigation }) {
                             style={styles.textField}
                             placeholder="Amount "
                             placeholderTextColor='#d5c9de'
-                        // value={this.state.UserInstructor}
-                        // onChangeText={this.instructorNameChangeHandler}
+                            value={manuallyAddFund}
+                            keyboardType='numeric'
+                            onChangeText={(value) => setmanuallyAddFunds(value)}
                         >
                         </TextInput>
                         <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -258,7 +269,7 @@ function donates({ navigation }) {
                             </TouchableWithoutFeedback >
 
                         </View>
-                        <Text style={{ color: '#B7B7BB', fontSize: 12, }} >Sadaqa £2</Text>
+                        <Text style={{ color: '#B7B7BB', fontSize: 12, }} >Sadaqa £{administrationSadqa}</Text>
                     </View>
 
                     <View style={[styles.inputContainer2, { marginVertical: 20 }]}>

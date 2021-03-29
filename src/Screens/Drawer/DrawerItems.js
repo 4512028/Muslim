@@ -76,6 +76,24 @@ function drawerItem({ navigation }) {
 
                     </View>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Prayer')
+                }}>
+                    <View style={styles.item}>
+
+                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Prayer </Text>
+
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('ghusl')
+                }}>
+                    <View style={styles.item}>
+
+                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Ghusl </Text>
+
+                    </View>
+                </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('feedback')
@@ -92,7 +110,7 @@ function drawerItem({ navigation }) {
                 }}>
                     <View style={styles.item}>
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}>Log out </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Log out </Text>
 
                     </View>
                 </TouchableOpacity>

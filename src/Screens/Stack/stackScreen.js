@@ -14,6 +14,11 @@ import feedBack from "../feedBack";
 import profileEdit from "../profileEdit";
 import profileVerify from "../profileVerify";
 import homePostDetail from "../homePostDetail";
+import prayer from "../prayer";
+import ghusl from "../ghusl";
+
+
+
 
 
 
@@ -89,4 +94,18 @@ const nextOfKinStackNavigator = () => {
         </Stack.Navigator>
     );
 }
-export { MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
+const prayerStackNavigator = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="nextOfKin" component={nextOfKin} />
+        </Stack.Navigator>
+    );
+}
+const ghuslStackNavigator = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="ghusl" component={ghusl} />
+        </Stack.Navigator>
+    );
+}
+export { prayerStackNavigator, ghuslStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
