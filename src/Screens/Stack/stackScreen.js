@@ -97,7 +97,7 @@ const nextOfKinStackNavigator = () => {
 const prayerStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
-            <Stack.Screen name="nextOfKin" component={nextOfKin} />
+            <Stack.Screen name="prayer" component={prayer} />
         </Stack.Navigator>
     );
 }

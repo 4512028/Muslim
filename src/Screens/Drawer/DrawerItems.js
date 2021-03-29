@@ -77,7 +77,7 @@ function drawerItem({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('Prayer')
+                    navigation.navigate('prayer')
                 }}>
                     <View style={styles.item}>
 

@@ -68,6 +68,7 @@ function oneDonation({ navigation }) {
             try {
                 setAnimating(false)
                 setisDisabled(false)
+
                 const response = await stripe.createTokenWithCard(stripeParams);
                 console.log(response, "reponse from stripe")
                 setsStripe_token(response.tokenId)
@@ -123,8 +124,7 @@ function oneDonation({ navigation }) {
                         resetScrollToCoords={{ x: 0, y: 0 }}
                         scrollEnabled={true}
                         keyboardShouldPersistTaps="handled"
-                        showsVerticalScrollIndicator={false}
-                    >
+                        showsVerticalScrollIndicator={false} >
 
                         <View style={{ width: "100%", marginTop: 15, paddingHorizontal: "5%" }}>
                             <Text style={{ fontSize: 20, color: "#0178B9", fontWeight: "bold" }}>Details</Text>
@@ -140,8 +140,6 @@ function oneDonation({ navigation }) {
                                 </View>
                             </View>
                             <View style={{ flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 10, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6" }}>
-
-
                                 <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
                                     <Image source={email} style={{ width: 20, height: 20, }} />
                                 </View>

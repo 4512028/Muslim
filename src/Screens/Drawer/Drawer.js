@@ -21,7 +21,7 @@ const DrawerNavigator = () => {
             <Drawer.Screen name="donate" component={donateStackNavigator} />
             <Drawer.Screen name="nextofkin" component={nextOfKinStackNavigator} />
             <Drawer.Screen name="ghusl" component={ghuslStackNavigator} />
-            <Drawer.Screen name="nextofkin" component={nextOfKinStackNavigator} />
+            <Drawer.Screen name="prayer" component={prayerStackNavigator} />
 
             <Drawer.Screen name="feedback" component={feedbackStackNavigator} />
 

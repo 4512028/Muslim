@@ -26,36 +26,21 @@ function donates({ navigation }) {
     let [funds, setFunds] = useState("Genral Burial Funds");
     let [fundsArry, setFundsArry] = useState([
         { value: 'Genral Burial Funds', selected: false },
-
-
     ]);
     let [manuallyAddFund, setmanuallyAddFunds] = useState(0);
-
     let [list, SetModalList] = useState([]);
     let [modalHeading, setModalHeading] = useState("");
     let [modalVisible, setmodalVisible] = useState(false);
-
     let [donationType, setDonationType] = useState("one time");
-
     let [onefirstValue, setFirstValue] = useState(false);
     let [onesecondValue, setSecondValue] = useState(false);
     let [onethirdValue, setthirdValue] = useState(false);
-
     let [monthfirstValue, setMonthFirstValue] = useState(false);
     let [monthsecondValue, setMonthSecondValue] = useState(false);
     let [monththirdValue, setMonththirdValue] = useState(false);
-
     let [administration, setAddministration] = useState(false);
     let [administrationSadqa, setadministrationSadqa] = useState(2);
-
-
-
     let [GiftAid, setAGiftAid] = useState(true);
-
-
-
-
-
 
     openManue = () => {
         navigation.openDrawer();
@@ -79,7 +64,7 @@ function donates({ navigation }) {
     goForDoantion = () => {
         if (donationType == "one time") navigation.navigate('donationOnTime', {
             administration: administrationSadqa,
-            donation:
+            donation: "jbjhb"
         });
 
         else navigation.navigate('donationMonthly')
@@ -183,8 +168,9 @@ function donates({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <View style={{ marginTop: 20, }}>
+
                         <Tabs onChangeTab={(value) => tabeIndex(value)} style={{}}>
-                            <Tab heading={<TabHeading><Text>One Of</Text></TabHeading>}>
+                            <Tab heading="One of" tabStyle={{ backgroundColor: '#F8F8F8' }} textStyle={{ color: '#878787' }} activeTabStyle={{ backgroundColor: '#F8F8F8' }} activeTextStyle={{ color: '#0178B9', fontWeight: 'bold' }}  >
                                 <View style={{ flexDirection: "row", width: "100%", paddingTop: 5, backgroundColor: "#F2F2F2" }}>
                                     <TouchableOpacity onPress={() => selectOneOfValue(1)} style={[styles.fundAmount, { backgroundColor: onefirstValue == true ? "#0178B9" : "#F2F2F2", }]}>
                                         <Text>30</Text>
@@ -203,7 +189,7 @@ function donates({ navigation }) {
                                     </TouchableOpacity>
                                 </View>
                             </Tab>
-                            <Tab heading={<TabHeading><Text>Month Donation</Text></TabHeading>}>
+                            <Tab heading="Month Donation" tabStyle={{ backgroundColor: '#F8F8F8' }} textStyle={{ color: '#878787' }} activeTabStyle={{ backgroundColor: '#F8F8F8' }} activeTextStyle={{ color: '#0178B9', fontWeight: 'bold' }}  >
                                 <View style={{ flexDirection: "row", width: "100%", paddingTop: 5, backgroundColor: "#F2F2F2" }}>
                                     <TouchableOpacity onPress={() => selectMonthOfValue(1)} style={[styles.fundAmount, { backgroundColor: monthfirstValue == true ? "#0178B9" : "#F2F2F2", }]}>
                                         <Text>4</Text>
@@ -290,7 +276,7 @@ function donates({ navigation }) {
                                         }
 
                                     </View>
-                                    <View >
+                                    <View style={{ paddingRight: 20 }}>
                                         <Text style={{ color: 'black', fontSize: 14, }}>Yes,I would like Gift Aid clamed on my donation </Text>
                                     </View>
 
