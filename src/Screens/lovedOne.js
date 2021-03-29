@@ -117,7 +117,7 @@ function loveOne({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>RelationShip to person</Animatable.Text>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Relation to person</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
 
                             <TextInput

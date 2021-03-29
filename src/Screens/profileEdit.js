@@ -68,175 +68,177 @@ function profileEdit({ navigation }) {
             </View>
 
 
+            <ScrollView keyboardShouldPersistTaps="handled"   >
 
-            <KeyboardAwareScrollView
-                resetScrollToCoords={{ x: 0, y: 0 }}
-                scrollEnabled={true}
-                keyboardShouldPersistTaps="handled"
-                showsVerticalScrollIndicator={false}
-            >
-                <View style={{ backgroundColor: "#FFF" }}>
-
-
-                    <View style={{ alignSelf: "center", paddingTop: "10%" }}>
-                        <View style={styles.ImageView}>
+                <KeyboardAwareScrollView
+                    resetScrollToCoords={{ x: 0, y: 0 }}
+                    scrollEnabled={true}
+                    keyboardShouldPersistTaps="handled"
+                    showsVerticalScrollIndicator={false}
+                >
+                    <View style={{ backgroundColor: "#FFF" }}>
 
 
-                            <Image source={Profile} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+                        <View style={{ alignSelf: "center", paddingTop: "10%" }}>
+                            <View style={styles.ImageView}>
+
+
+                                <Image source={Profile} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+
+                            </View>
+
+                            <View style={{ height: 50, width: 50, position: 'absolute', bottom: -20, right: 20, borderRadius: 25, padding: 5, backgroundColor: "#0178B9" }}>
+                                <TouchableOpacity  >
+                                    <Image source={Camera} style={{ alignSelf: 'center', width: 40, height: 40, borderRadius: 25 }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+
+                        <View style={{ padding: "5%", marginTop: "10%" }}>
+
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Title</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder='Title'
+                                    placeholderTextColor='#d5c9de'
+                                    // value={this.state.UserName}
+                                    // onChangeText={this.nameChangeHandler}
+                                    textContentType={"name"}>
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+                            </Animatable.View>
+
+
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>First Name</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder='First Name'
+                                    placeholderTextColor='#d5c9de'
+                                    // value={this.state.UserName}
+                                    // onChangeText={this.nameChangeHandler}
+                                    textContentType={"name"}>
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+                            </Animatable.View>
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder='Address'
+                                    placeholderTextColor='#d5c9de'
+                                // value={this.state.UserGym}
+                                // onChangeText={this.gymChangeHandler}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={home} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+                            </Animatable.View>
+
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder='Town'
+                                    placeholderTextColor='#d5c9de'
+                                // value={this.state.UserGym}
+                                // onChangeText={this.gymChangeHandler}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={post} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+                            </Animatable.View>
+
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Phone Number</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder="Phone Number "
+                                    placeholderTextColor='#d5c9de'
+                                // value={this.state.UserInstructor}
+                                // onChangeText={this.instructorNameChangeHandler}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={phone} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+
+
+                            </Animatable.View>
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Postal Code</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder="Postal Code "
+                                    placeholderTextColor='#d5c9de'
+                                // value={this.state.UserInstructor}
+                                // onChangeText={this.instructorNameChangeHandler}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={post} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+
+
+                            </Animatable.View>
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Nearest masjid</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder="Nearest masjid "
+                                    placeholderTextColor='#d5c9de'
+                                // value={this.state.UserInstructor}
+                                // onChangeText={this.instructorNameChangeHandler}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={home} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+
+
+                            </Animatable.View>
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                            <Animatable.View animation="fadeInUp" >
+
+                                <TouchableOpacity style={styles.button} >
+                                    <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update </Text>
+                                </TouchableOpacity>
+                            </Animatable.View>
 
                         </View>
 
-                        <View style={{ height: 50, width: 50, position: 'absolute', bottom: -20, right: 20, borderRadius: 25, padding: 5, backgroundColor: "#0178B9" }}>
-                            <TouchableOpacity  >
-                                <Image source={Camera} style={{ alignSelf: 'center', width: 40, height: 40, borderRadius: 25 }} />
-                            </TouchableOpacity>
-                        </View>
                     </View>
 
 
-                    <View style={{ padding: "5%", marginTop: "10%" }}>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Title</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='Title'
-                                placeholderTextColor='#d5c9de'
-                                // value={this.state.UserName}
-                                // onChangeText={this.nameChangeHandler}
-                                textContentType={"name"}>
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>First Name</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='First Name'
-                                placeholderTextColor='#d5c9de'
-                                // value={this.state.UserName}
-                                // onChangeText={this.nameChangeHandler}
-                                textContentType={"name"}>
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='Address'
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='Town'
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone Number</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Phone Number "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Postal Code</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Postal Code "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Nearest masjid</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Nearest masjid "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" >
-
-                            <TouchableOpacity style={styles.button} >
-                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update </Text>
-                            </TouchableOpacity>
-                        </Animatable.View>
-
-                    </View>
-
-                </View>
-
-
-            </KeyboardAwareScrollView>
+                </KeyboardAwareScrollView>
+            </ScrollView>
 
         </SafeAreaView>
     )
