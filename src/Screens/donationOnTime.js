@@ -119,7 +119,7 @@ function oneDonation({ navigation }) {
             {/* top bar */}
             <View style={{ backgroundColor: '#F2F2F5', flex: 1 }}>
 
-                <ScrollView keyboardShouldPersistTaps="handled"   >
+                <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={'handled'}>
                     <KeyboardAwareScrollView
                         resetScrollToCoords={{ x: 0, y: 0 }}
                         scrollEnabled={true}
@@ -196,11 +196,12 @@ function oneDonation({ navigation }) {
 
 
                 </ScrollView>
-                {isAnimating &&
+                {
+                    isAnimating &&
                     <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
                 }
-            </View>
-        </SafeAreaView>
+            </View >
+        </SafeAreaView >
 
     );
 };

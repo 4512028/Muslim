@@ -48,9 +48,145 @@ function groupDashBoard({ navigation }) {
                 </TouchableOpacity>
             </View>
             {/* top bar */}
-            <ScrollView keyboardShouldPersistTaps="handled"   >
+            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={'handled'}>
+                <View style={{ flex: 1, width: "100%", paddingHorizontal: 20, backgroundColor: "#F2F2F2" }}>
 
-            </ScrollView>
+                    <TouchableWithoutFeedback   >
+
+                        <View style={{
+                            width: '100%', flexDirection: 'column', marginVertical: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                            backgroundColor: '#FFF',
+                            shadowColor: "#000",
+                            shadowOffset: {
+                                width: 0,
+                                height: 1,
+                            },
+                            shadowOpacity: 0.22,
+                            shadowRadius: 2.22,
+
+                            elevation: 3,
+                        }}>
+                            <Text style={{ fontSize: 20, color: "#0178B9", fontWeight: "bold", marginBottom: 10, marginTop: 10 }}>Umer Saleem</Text>
+                            <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10 }}>£3</Text>
+                            <Text style={{ fontSize: 16, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>2 Members</Text>
+                            <Text style={{ fontSize: 16, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>2 Love one</Text>
+                        </View>
+
+                    </TouchableWithoutFeedback>
+
+                    <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
+                        <TouchableWithoutFeedback   >
+
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
+
+                                elevation: 3,
+                            }}>
+
+                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", }}>START DATE</Text>
+                                <Text style={{ fontSize: 12, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>12/12/2020</Text>
+
+                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", }}>PAYMENT MADE</Text>
+                                <Text style={{ fontSize: 12, color: "#8A8A8A", fontWeight: "bold", }}>12</Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback   >
+
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
+
+                                elevation: 3,
+                            }}>
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>Share group ID</Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
+                        <TouchableWithoutFeedback   >
+
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
+
+                                elevation: 3,
+                            }}>
+
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", textAlign: "center" }}>GROUP CHAT</Text>
+
+                            </View>
+
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback   >
+
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
+
+                                elevation: 3,
+                            }}>
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>PUBLIC FUND CLAIM</Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <TouchableWithoutFeedback   >
+
+                        <View style={{
+                            height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                            backgroundColor: '#FFF',
+                            shadowColor: "#000",
+                            shadowOffset: {
+                                width: 0,
+                                height: 1,
+                            },
+                            shadowOpacity: 0.22,
+                            shadowRadius: 2.22,
+
+                            elevation: 3,
+                        }}>
+                            <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>FUND RELEASE REQUEST</Text>
+                        </View>
+
+                    </TouchableWithoutFeedback>
+
+                </View>
+
+
+            </ScrollView >
         </SafeAreaView >
     );
 };
