@@ -141,6 +141,7 @@ export default function forgetPassword({ navigation }) {
                         placeholder='jhondoe@gmail.com'
                         placeholderTextColor='#d5c9de'
                         value={email}
+                        value={email}
                         onChangeText={(val) => setEmail(val)}
                         textContentType={"name"}>
                     </TextInput>
@@ -153,7 +154,7 @@ export default function forgetPassword({ navigation }) {
 
                 <Animatable.View animation="fadeInUp" >
 
-                    <TouchableOpacity style={styles.button} onPress={resetPassword}>
+                    <TouchableOpacity style={styles.button} >
                         <Text style={styles.buttonText}>Reset Password </Text>
                     </TouchableOpacity>
                 </Animatable.View>

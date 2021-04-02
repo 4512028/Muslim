@@ -2,8 +2,15 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../home";
+
 import Profile from "../profile";
 import groupDashBoard from "../groupDashBoard";
+import communityScreen from "../communityScreen";
+import communityGroupCreate from "../communityGroupCreate";
+import CommunityJoinGroup from "../CommunityJoinGroup";
+import communityPaynow from "../communityPaynow";
+
+
 import Donate from "../donate";
 import donationMonthly from "../donationMonthly";
 import donationOnTime from "../donationOnTime";
@@ -69,6 +76,11 @@ const groupStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="groupDashBoard" component={groupDashBoard} />
+            <Stack.Screen name="communityScreen" component={communityScreen} />
+            <Stack.Screen name="CommunityJoinGroup" component={CommunityJoinGroup} />
+            <Stack.Screen name="communityGroupCreate" component={communityGroupCreate} />
+            <Stack.Screen name="communityPaynow" component={communityPaynow} />
+
         </Stack.Navigator>
     );
 }

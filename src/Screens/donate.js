@@ -21,7 +21,8 @@ import { Card, CardItem, Body, Container, Header, Tab, Tabs, TabHeading, Icon, T
 
 
 function donates({ navigation }) {
-
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
 
     let [funds, setFunds] = useState("Genral Burial Funds");
     let [fundsArry, setFundsArry] = useState([

@@ -28,6 +28,11 @@ function groupDashBoard({ navigation }) {
 
     }
 
+    goTocomunity = () => {
+        navigation.navigate('communityScreen')
+
+    }
+
 
 
 
@@ -115,7 +120,7 @@ function groupDashBoard({ navigation }) {
 
                                 elevation: 3,
                             }}>
-                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>Share group ID</Text>
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>Share your group ID</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -161,25 +166,48 @@ function groupDashBoard({ navigation }) {
 
                         </TouchableWithoutFeedback>
                     </View>
-                    <TouchableWithoutFeedback   >
+                    <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
 
-                        <View style={{
-                            height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
-                            backgroundColor: '#FFF',
-                            shadowColor: "#000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 1,
-                            },
-                            shadowOpacity: 0.22,
-                            shadowRadius: 2.22,
+                        <TouchableWithoutFeedback   >
 
-                            elevation: 3,
-                        }}>
-                            <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>FUND RELEASE REQUEST</Text>
-                        </View>
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
 
-                    </TouchableWithoutFeedback>
+                                elevation: 3,
+                            }}>
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>FUND RELEASE REQUEST</Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={() => { goTocomunity() }} >
+
+                            <View style={{
+                                height: 120, width: '48%', flexDirection: 'column', marginVertical: 5, paddingHorizontal: 20, alignItems: 'center', borderRadius: 10, justifyContent: 'center',
+                                backgroundColor: '#FFF',
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 0.22,
+                                shadowRadius: 2.22,
+
+                                elevation: 3,
+                            }}>
+                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10, textAlign: "center" }}>Community</Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+                    </View>
 
                 </View>
 

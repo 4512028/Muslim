@@ -16,13 +16,20 @@ import {
     Button
 } from "react-native";
 import logo from '../Assets/Icons/Logo.jpg'
-import name from '../Assets/Icons/name.png'
-import address from '../Assets/Icons/address.png'
+
+import back from '../Assets/Icons/Arrr.png';
+import Profile from '../Assets/Icons/profile.png';
+import Camera from '../Assets/Icons/camera.png';
+import edit from '../Assets/Icons/edit.png'
+import email from '../Assets/Icons/email.png'
+import home from '../Assets/Icons/home.png'
+import post from '../Assets/Icons/post.png'
+import phone from '../Assets/Icons/phone.png'
+import manue from '../Assets/Icons/manue.png'
 import back_icon from '../Assets/Icons/back_icon.png'
 
+import pass from '../Assets/Icons/password.png'
 
-import user from '../Assets/Icons/user.png'
-import password from '../Assets/Icons/password.png'
 var validator = require("email-validator");
 import { domain } from "../Api/Api";
 
@@ -33,12 +40,15 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 export default function signUP({ navigation }) {
 
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [title, setTitle] = useState("");
     const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [emailAdress, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [address, setAddres] = useState("");
+    const [phoneNumber, setPhone] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+    const [town, setTown] = useState("");
+    const [mosque, setMosque] = useState("");
     const [isAnimating, setAnimating] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
 
@@ -140,11 +150,12 @@ export default function signUP({ navigation }) {
 
 
     const SiginSuccess = async () => {
+
         if (email === "") {
             alert("Email is required");
             return
         }
-        else if (validator.validate(email.trim()) === false) {
+        else if (validator.validate(emailAdress.trim()) === false) {
             alert("Email format is not correct.");
             return
         }
@@ -152,115 +163,112 @@ export default function signUP({ navigation }) {
             alert("Password is required!");
             return
         }
-        else
-            if (password.length < 5) {
-                alert("Password type more than 5 words");
-                return
-            }
+        else if (password.length < 5) {
+            alert("Password type more than 5 words");
+            return
+        }
 
-            else {
-                this.setState({ isAnimating: true, isDisabled: true })
-                navigation.navigate('home')
+        else {
+            this.setState({ isAnimating: true, isDisabled: true })
+            navigation.navigate('home')
 
-                // const searchCredentials = {
-                //     "email": this.state.UserEmail,
-                //     "password": this.state.UserPassword,
-                //     "type": "1",
-                //     "device_token": fcmToken,
-                //     "device_platform": Platform.OS,
-                //     "time_zone": this.state.timeZone
-                // };
-                // console.log(searchCredentials, "login_Param")
-
-
-                // fetch(domain + '/api/auth/signin', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Accept': 'application/json',
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(searchCredentials)
-
-                // }).then((response) => response.text())
-                //     .then(async (responseText) => {
-
-                //         let responseData = JSON.parse(responseText);
+            // const searchCredentials = {
+            //     "email": this.state.UserEmail,
+            //     "password": this.state.UserPassword,
+            //     "type": "1",
+            //     "device_token": fcmToken,
+            //     "device_platform": Platform.OS,
+            //     "time_zone": this.state.timeZone
+            // };
+            // console.log(searchCredentials, "login_Param")
 
 
-                //         if (responseData.code === 400) {
-                //             alert(responseData.message)
-                //             this.setState({ isAnimating: false, isDisabled: false })
-                //         }
-                //         console.log(responseData, "responseData of api")
+            // fetch(domain + '/api/auth/signin', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(searchCredentials)
 
-                //         if (responseData.code === 200) {
+            // }).then((response) => response.text())
+            //     .then(async (responseText) => {
+
+            //         let responseData = JSON.parse(responseText);
 
 
+            //         if (responseData.code === 400) {
+            //             alert(responseData.message)
+            //             this.setState({ isAnimating: false, isDisabled: false })
+            //         }
+            //         console.log(responseData, "responseData of api")
 
-                //             await AsyncStorage.setItem("isLogin", this.state.isLogin);
-
-                //             await AsyncStorage.setItem("userData", JSON.stringify(responseData.user));
-                //             await AsyncStorage.setItem("notificationCount", "0");
-                //             await AsyncStorage.setItem("notificationAffliation", "0");
-
-                //             // console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-                //             // if(this.props.commingFromNotification==false || this.props.commingFromNotification==undefined){
-
-                //             StartTabs();
-
-                //             // }
-                //             // else if (this.props.commingFromNotification==true){
-                //             // let PostID = await AsyncStorage.getItem('notificationPostId')  
-
-                //             //  console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-                //             //   Navigation.setRoot({
-                //             //     root: {
-                //             //       stack: {
-                //             //         children: [
-                //             //           {
-                //             //             component: {
-                //             //               name: 'feedDetail',
-
-                //             //               passProps: {
-                //             //                 id: PostId,
-                //             //                 commingFromNotification: true
-
-                //             //                 },
-
-                //             //               }
-
-                //             //             }
-                //             //         ],
-                //             //       }
-                //             //     }
-                //             //   });
-
-                //             // }
+            //         if (responseData.code === 200) {
 
 
 
-                //             this.setState({ isAnimating: false, isDisabled: false })
-                //             analytics().logEvent('sign_in')
+            //             await AsyncStorage.setItem("isLogin", this.state.isLogin);
+
+            //             await AsyncStorage.setItem("userData", JSON.stringify(responseData.user));
+            //             await AsyncStorage.setItem("notificationCount", "0");
+            //             await AsyncStorage.setItem("notificationAffliation", "0");
+
+            //             // console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
+            //             // if(this.props.commingFromNotification==false || this.props.commingFromNotification==undefined){
+
+            //             StartTabs();
+
+            //             // }
+            //             // else if (this.props.commingFromNotification==true){
+            //             // let PostID = await AsyncStorage.getItem('notificationPostId')  
+
+            //             //  console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
+            //             //   Navigation.setRoot({
+            //             //     root: {
+            //             //       stack: {
+            //             //         children: [
+            //             //           {
+            //             //             component: {
+            //             //               name: 'feedDetail',
+
+            //             //               passProps: {
+            //             //                 id: PostId,
+            //             //                 commingFromNotification: true
+
+            //             //                 },
+
+            //             //               }
+
+            //             //             }
+            //             //         ],
+            //             //       }
+            //             //     }
+            //             //   });
+
+            //             // }
 
 
-                //         }
 
-                //     })
-                //     .catch((error) => {
-
-                //         console.log("error from home API", error);
-                //         //  this.setState({ isAnimating: false, isDisabled: false })
-                //         this.setState({ isAnimating: false, isDisabled: false })
-                //     });
+            //             this.setState({ isAnimating: false, isDisabled: false })
+            //             analytics().logEvent('sign_in')
 
 
-            }
+            //         }
+
+            //     })
+            //     .catch((error) => {
+
+            //         console.log("error from home API", error);
+            //         //  this.setState({ isAnimating: false, isDisabled: false })
+            //         this.setState({ isAnimating: false, isDisabled: false })
+            //     });
+
+
+        }
     }
 
 
-    loginApi = async () => {
 
-    }
 
 
 
@@ -288,7 +296,24 @@ export default function signUP({ navigation }) {
 
                     <Animatable.Image animation="fadeInUp" source={logo} style={styles.logo}></Animatable.Image>
                     <Animatable.Text animation="fadeInUp" style={styles.subheading}>Proceed with your</Animatable.Text>
+
                     <Animatable.Text animation="fadeInUp" style={styles.heading}>SIGN UP</Animatable.Text>
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Title</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='First Name'
+                            placeholderTextColor='#d5c9de'
+                            value={title}
+                            onChangeText={(val) => setTitle(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={Profile} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                     <Animatable.Text animation="fadeInUp" style={styles.label}>First Name</Animatable.Text>
                     <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
@@ -301,20 +326,12 @@ export default function signUP({ navigation }) {
                         >
                         </TextInput>
 
-                        <Image source={name} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                        <Image source={Profile} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
-                    <Animatable.Text animation="fadeInUp" style={styles.label}>Last Name</Animatable.Text>
-                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <TextInput
-                            style={styles.textField}
-                            placeholder='Last Name'
-                            placeholderTextColor='#d5c9de'
-                            onChangeText={(val) => setLastName(val)}>
-                        </TextInput>
 
-                        <Image source={name} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
-                    </Animatable.View>
+
                     <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
                     <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
 
@@ -322,12 +339,78 @@ export default function signUP({ navigation }) {
                             style={styles.textField}
                             placeholder='Address'
                             placeholderTextColor='#d5c9de'
+                            value={address}
                             onChangeText={(val) => setAddress(val)}
                         >
                         </TextInput>
 
-                        <Image source={address} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                        <Image source={home} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Phone'
+                            placeholderTextColor='#d5c9de'
+                            value={phoneNumber}
+                            onChangeText={(val) => setPhone(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={phone} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Post Code</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Postal Code'
+                            placeholderTextColor='#d5c9de'
+                            value={postalCode}
+                            onChangeText={(val) => setPostalCode(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={email} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Phone'
+                            placeholderTextColor='#d5c9de'
+                            value={town}
+                            onChangeText={(val) => setTown(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={home} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Mosque</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Mosque'
+                            placeholderTextColor='#d5c9de'
+                            value={mosque}
+                            onChangeText={(val) => setMosque(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={home} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
 
 
@@ -338,13 +421,14 @@ export default function signUP({ navigation }) {
                             style={styles.textField}
                             placeholder='jhondoe@gmail.com'
                             placeholderTextColor='#d5c9de'
+                            value={emailAdress}
                             onChangeText={(val) => setEmail(val)}
                             keyboardType={'email-address'}
                             autoCapitalize={'none'}
                             textContentType={"name"}>
                         </TextInput>
 
-                        <Image source={user} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                        <Image source={email} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
 
                     <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
@@ -361,7 +445,24 @@ export default function signUP({ navigation }) {
                             onChangeText={(val) => setPassword(val)}
                             secureTextEntry={true}>
                         </TextInput>
-                        <Image source={password} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>
+                        <Image source={pass} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>
+
+                    </Animatable.View>
+
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Confirm Password</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+                        <TextInput
+                            animation="fadeInUp"
+                            style={styles.textField}
+                            placeholder='********'
+                            placeholderTextColor='#d5c9de'
+                            autoCapitalize={'none'}
+                            textContentType={"Confirm password"}
+                            onChangeText={(val) => setPassword(val)}
+                            secureTextEntry={true}>
+                        </TextInput>
+                        <Image source={pass} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>
 
                     </Animatable.View>
 

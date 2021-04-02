@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 import {
     View,
@@ -40,6 +40,8 @@ function loveOne({ navigation }) {
 
     //...........selection of image
 
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
 
 
 

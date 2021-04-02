@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 import {
     View,
@@ -29,16 +29,28 @@ import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
 import manue from '../Assets/Icons/manue.png'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import * as ImagePicker from "react-native-image-picker"
 
 
 
 
 function profileEdit({ navigation }) {
 
-    //...........selection of image
 
 
-
+    const [title, setTitle] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [emailAdress, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [address, setAddres] = useState("");
+    const [phoneNumber, setPhone] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+    const [town, setTown] = useState("");
+    const [mosque, setMosque] = useState("");
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
+    const [response1, setResponse1] = React.useState(null);
+    const [isSelected1, setSelected1] = useState(false);
 
 
     Back = () => {
@@ -46,6 +58,30 @@ function profileEdit({ navigation }) {
     }
 
 
+
+    //...........selection of image
+    selectImagee = (value) => {
+
+
+
+        ImagePicker.launchImageLibrary(
+            {
+                mediaType: 'photo',
+                includeBase64: false,
+                maxHeight: 200,
+                maxWidth: 200,
+            },
+            (response) => {
+
+
+                setResponse1(response)
+                setSelected1(true)
+
+
+
+            },
+        )
+    }
 
 
     return (
@@ -83,12 +119,12 @@ function profileEdit({ navigation }) {
                             <View style={styles.ImageView}>
 
 
-                                <Image source={Profile} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+                                <Image source={isSelected1 == true ? response1 : Profile} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
 
                             </View>
 
                             <View style={{ height: 50, width: 50, position: 'absolute', bottom: -20, right: 20, borderRadius: 25, padding: 5, backgroundColor: "#0178B9" }}>
-                                <TouchableOpacity  >
+                                <TouchableOpacity onPress={() => { selectImagee() }} >
                                     <Image source={Camera} style={{ alignSelf: 'center', width: 40, height: 40, borderRadius: 25 }} />
                                 </TouchableOpacity>
                             </View>
@@ -104,8 +140,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder='Title'
                                     placeholderTextColor='#d5c9de'
-                                    // value={this.state.UserName}
-                                    // onChangeText={this.nameChangeHandler}
+                                    value={title}
+                                    onChangeText={(val) => setTitle(val)}
                                     textContentType={"name"}>
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -122,8 +158,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder='First Name'
                                     placeholderTextColor='#d5c9de'
-                                    // value={this.state.UserName}
-                                    // onChangeText={this.nameChangeHandler}
+                                    placeholderTextColor='#d5c9de'
+                                    onChangeText={(val) => setFirstName(val)}
                                     textContentType={"name"}>
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -140,8 +176,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder='Address'
                                     placeholderTextColor='#d5c9de'
-                                // value={this.state.UserGym}
-                                // onChangeText={this.gymChangeHandler}
+                                    value={address}
+                                    onChangeText={(val) => setAddres(val)}
                                 >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -159,8 +195,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder='Town'
                                     placeholderTextColor='#d5c9de'
-                                // value={this.state.UserGym}
-                                // onChangeText={this.gymChangeHandler}
+                                    value={town}
+                                    onChangeText={(val) => setTown(val)}
                                 >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -177,8 +213,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder="Phone Number "
                                     placeholderTextColor='#d5c9de'
-                                // value={this.state.UserInstructor}
-                                // onChangeText={this.instructorNameChangeHandler}
+                                    value={phoneNumber}
+                                    onChangeText={(val) => setPhone(val)}
                                 >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -195,8 +231,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder="Postal Code "
                                     placeholderTextColor='#d5c9de'
-                                // value={this.state.UserInstructor}
-                                // onChangeText={this.instructorNameChangeHandler}
+                                    value={postalCode}
+                                    onChangeText={(val) => setPostalCode(val)}
                                 >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -213,8 +249,8 @@ function profileEdit({ navigation }) {
                                     style={styles.textField}
                                     placeholder="Nearest masjid "
                                     placeholderTextColor='#d5c9de'
-                                // value={this.state.UserInstructor}
-                                // onChangeText={this.instructorNameChangeHandler}
+                                    value={mosque}
+                                    onChangeText={(val) => setMosque(val)}
                                 >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>

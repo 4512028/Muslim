@@ -41,6 +41,8 @@ function profileVerification({ navigation }) {
     const [response2, setResponse2] = React.useState(null);
     const [isSelected1, setSelected1] = useState(false);
     const [isSelected2, serSelected2] = useState(false);
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
 
 
 
@@ -115,6 +117,7 @@ function profileVerification({ navigation }) {
                     <View style={{ width: "90%", marginHorizontal: "5%", flexDirection: "row" }}>
                         <View style={{ width: "50%", alignItems: "center", justifyContent: "center" }}>
                             <Text animation="fadeInUp" style={{ fontSize: 16, marginVertical: 10, }}>Upload photo ID  </Text>
+
                             <TouchableOpacity onPress={() => { selectImagee(1) }} >
                                 <View style={styles.button} >
                                     <Text style={{ color: 'black', fontSize: 17, }}>Select </Text>

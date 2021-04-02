@@ -70,13 +70,60 @@ function communityScreen({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Chate</Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Community</Text>
 
                 </View>
             </View>
             <View style={{ backgroundColor: "#FFF", flex: 1 }}>
 
                 <ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} >
+
+                    <View style={{ padding: "5%", }}>
+
+                        <Card >
+                            <CardItem>
+                                <Body>
+                                    <View style={{ width: "100%" }}>
+                                        <Text style={{ textAlign: "center", color: "#0178B9", fontSize: 18, fontWeight: "bold" }}>
+                                            MMB Group  </Text>
+
+                                        <Text style={{ textAlign: "center" }}>
+                                            My Muslim burial group is a public group you can join within your community. you will be paying a monthly fee and should anyone from the group pass away they will get thier funeral costs covered subject to term and conditiond.
+                                   </Text>
+                                    </View>
+
+
+                                    <TouchableOpacity style={styles.button} onPress={() => { gotoJoinGroup() }} >
+                                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Join MMB Group </Text>
+                                    </TouchableOpacity>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+
+                    <View style={{ padding: "5%", }}>
+
+                        <Card >
+                            <CardItem>
+                                <Body>
+                                    <View style={{ width: "100%" }}>
+                                        <Text style={{ textAlign: "center", color: "#0178B9", fontSize: 18, fontWeight: "bold" }}> Community Group </Text>
+                                        <Text style={{ textAlign: "center" }}>
+                                            The community group allows you to either create a group or join an existing group with unique id code. your group will decided to pay a fee monthly or annually and if anyone should pass away while being part of this group the money will be towards their costs. These funds will be visible to group members.
+                                   </Text>
+                                    </View>
+
+                                    <TouchableOpacity style={styles.button} onPress={() => { gotoCreateGroup() }} >
+                                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Create Community Group </Text>
+                                    </TouchableOpacity>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+
+
+
+
 
 
 

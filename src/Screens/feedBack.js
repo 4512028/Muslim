@@ -44,6 +44,8 @@ function feedBack({ navigation }) {
     const [list, SetModalList] = useState([]);
     const [modalHeading, setModalHeading] = useState("");
     const [modalVisible, setmodalVisible] = useState(false);
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
 
 
 

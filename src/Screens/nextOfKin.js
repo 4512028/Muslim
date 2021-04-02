@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 import {
     View,
@@ -36,6 +36,8 @@ import manue from '../Assets/Icons/manue.png'
 function nextToKin({ navigation }) {
 
     //...........selection of image
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
 
 
 

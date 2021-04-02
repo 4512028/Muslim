@@ -1,0 +1,231 @@
+
+import React, { useState, useEffect, useContext, useRef } from "react";
+
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    StatusBar,
+    Alert,
+    TextInput,
+    Dimensions,
+    FlatList,
+    ActivityIndicator,
+    TouchableWithoutFeedback,
+    TouchableOpacity,
+    AsyncStorage,
+    ScrollView,
+    Button, SafeAreaView
+} from "react-native";
+import * as Animatable from 'react-native-animatable';
+import back from '../Assets/Icons/Arrr.png';
+
+
+
+
+
+
+function communityGroup({ navigation }) {
+    let [isAnimating, setAnimating] = useState(false);
+    let [isDisabled, setisDisabled] = useState(false);
+    const [name, setName] = useState("");
+    const [id, setId] = useState("");
+    let [firstValue, setFirstValue] = useState(false);
+    let [secondValue, setSecondValue] = useState(false);
+    let [thirdValue, setthirdValue] = useState(false);
+
+
+    Back = () => {
+        navigation.pop()
+    }
+
+    //...........selection of image
+
+
+    selectOfValue = (value) => {
+        if (value == 1) { setFirstValue(true); setSecondValue(false); setthirdValue(false) }
+        else if (value == 2) { setFirstValue(false); setSecondValue(true); setthirdValue(false) }
+        else if (value == 3) { setFirstValue(false); setSecondValue(false); setthirdValue(true) }
+    }
+    return (
+        <SafeAreaView style={styles.container}>
+
+            <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
+
+
+            <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
+                <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
+                    <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
+                        <Image source={back} style={styles.backIcon}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
+
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}> </Text>
+
+                </View>
+            </View>
+            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+
+                <ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} >
+
+
+                    <Animatable.Text animation="fadeInUp" style={{ fontSize: 18, alignSelf: "center", textAlign: "center", marginTop: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Create community group</Animatable.Text>
+
+                    <View style={{ padding: "5%", marginTop: "5%" }}>
+
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group name </Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder='TitGroup namele'
+                                placeholderTextColor='#d5c9de'
+                                value={name}
+                                onChangeText={(val) => setName(val)}
+                                textContentType={"name"}>
+                            </TextInput>
+
+
+                        </Animatable.View>
+
+
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Select amount </Animatable.Text>
+
+
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: "row", width: "100%", marginTop: 5, marginBottom: 10, backgroundColor: "#F2F2F2" }}>
+
+                            <TouchableOpacity onPress={() => selectOfValue(1)} style={[styles.fundAmount, { backgroundColor: firstValue == true ? "#0178B9" : "#F2F2F2", }]}>
+                                <Text>Weekly</Text>
+
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => selectOfValue(2)} style={[styles.fundAmount, { backgroundColor: secondValue == true ? "#0178B9" : "#F2F2F2", }]}>
+
+                                <Text>Monthly</Text>
+
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => selectOfValue(3)} style={[styles.fundAmount, { backgroundColor: thirdValue == true ? "#0178B9" : "#F2F2F2", }]}>
+
+
+                                <Text>Annually</Text>
+
+                            </TouchableOpacity>
+                        </Animatable.View>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>or choose amount</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder='Group Id'
+                                placeholderTextColor='#d5c9de'
+                                placeholderTextColor='#d5c9de'
+                                value={id}
+                                onChangeText={(val) => setId(val)}
+                                textContentType={"name"}>
+                            </TextInput>
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                    </View>
+
+
+                    <TouchableOpacity style={styles.button} >
+                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Create Group</Text>
+                    </TouchableOpacity>
+
+
+                </ScrollView>
+                {isAnimating &&
+                    <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+                }
+            </View>
+
+        </SafeAreaView >
+    )
+}
+export default communityGroup;
+
+
+
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        backgroundColor: "#0178B9",
+
+
+
+
+    },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    label: {
+        fontWeight: 'bold',
+        marginBottom: 5
+
+    },
+
+    backIcon: {
+        height: 25,
+        width: 25,
+    },
+    back: {
+        height: 50,
+        width: 50,
+        marginLeft: 15,
+        justifyContent: 'center'
+    },
+
+    button: {
+        marginTop: 30,
+        alignSelf: 'center',
+        height: 50,
+        width: "70%",
+        backgroundColor: '#0178B9',
+        justifyContent: 'center',
+        borderRadius: 11,
+        alignItems: 'center',
+        shadowColor: "#111111",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    textField: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 5,
+        paddingTop: 5,
+
+        fontSize: 15,
+        width: "90%",
+
+
+    },
+    seperater: {
+        height: 1,
+        marginBottom: 15,
+        backgroundColor: '#d5c9de'
+    },
+    fundAmount: {
+        flexDirection: "row", width: "33%", height: 40,
+        alignItems: "center", justifyContent: "center",
+
+        borderWidth: 1, borderColor: "#0178B9"
+    },
+
+})
