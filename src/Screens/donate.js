@@ -302,6 +302,9 @@ function donates({ navigation }) {
                         <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Pay Now </Text>
                     </TouchableOpacity>
                 </ScrollView>
+                {isAnimating &&
+                    <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+                }
             </View>
 
         </SafeAreaView >

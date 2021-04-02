@@ -199,6 +199,9 @@ function feedBack({ navigation }) {
 
 
                 </KeyboardAwareScrollView>
+                {isAnimating &&
+                    <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+                }
             </View>
 
         </SafeAreaView >

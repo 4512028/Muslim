@@ -135,9 +135,7 @@ function groupDashBoard({ navigation }) {
                                 shadowRadius: 2.22,
 
                                 elevation: 3,
-                            }}>
-
-                                <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", textAlign: "center" }}>GROUP CHAT</Text>
+                            }}><Text style={{ fontSize: 18, color: "black", fontWeight: "bold", textAlign: "center" }}>GROUP CHAT</Text>
 
                             </View>
 

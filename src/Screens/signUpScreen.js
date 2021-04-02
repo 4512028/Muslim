@@ -68,6 +68,75 @@ export default function signUP({ navigation }) {
 
 
 
+    const SignUp = () => {
+
+        if (email === "") {
+            alert("Please enter email")
+            return
+        }
+
+        if (validator.validate(email.trim()) === false) {
+            alert("Email format is not correct!")
+            return
+        }
+        else {
+            navigation.goBack()
+        }
+
+        // const searchCredentials = {
+        //     "email": this.state.UserEmail,
+        //     "type": 1,
+        // }
+
+        // fetch(domain + '/api/customer/forgot_password', {
+
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+
+        //     },
+
+        //     body: JSON.stringify(searchCredentials)
+
+
+        // }).then((response) => response.text())
+        //     .then(async (responseText) => {
+
+        //         let responseData = JSON.parse(responseText);
+
+        //         console.log(responseData, "forgotPasswordApi")
+
+        //         if (responseData.code === 200) {
+        //             this.setState({ UserEmail: "" });
+        //             alert(responseData.message)
+
+        //             analytics().logEvent('passweord_reset')
+
+
+        //         }
+        //         else {
+
+        //             console.log("wrong in forgotPasswordApi api")
+
+        //             alert(responseData.message)
+
+        //             this.setState({ isAnimating: false, isDisabled: false, likeAction: false })
+
+        //         }
+
+        //     })
+        //     .catch((error) => {
+
+        //         this.setState({ isAnimating: false, isDisabled: false, })
+
+        //         console.log("error from wrong forgotPasswordApi", error);
+
+        //     });
+
+
+
+    }
 
 
     const SiginSuccess = async () => {

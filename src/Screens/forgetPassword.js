@@ -41,7 +41,7 @@ export default function forgetPassword({ navigation }) {
 
 
 
-    const resetPassword = () => {
+    const forgetPassword = () => {
 
         if (email === "") {
             alert("Please enter email")

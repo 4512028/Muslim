@@ -65,120 +65,6 @@ export default function login({ navigation }) {
             routes: [{ name: 'Home' }],
         })
 
-        // if (email === "") {
-        //     alert("Email is required");
-        //     return
-        // }
-        // else if (validator.validate(email.trim()) === false) {
-        //     alert("Email format is not correct.");
-        //     return
-        // }
-        // else if (password === "") {
-        //     alert("Password is required!");
-        //     return
-        // }
-        // else
-        //     if (password.length < 5) {
-        //         alert("Password type more than 5 words");
-        //         return
-        //     }
-
-        //     else {
-        //         setAnimating(true);
-        //         setDisabled(true)
-        // const searchCredentials = {
-        //     "email": this.state.UserEmail,
-        //     "password": this.state.UserPassword,
-        //     "type": "1",
-        //     "device_token": fcmToken,
-        //     "device_platform": Platform.OS,
-        //     "time_zone": this.state.timeZone
-        // };
-        // console.log(searchCredentials, "login_Param")
-
-
-        // fetch(domain + '/api/auth/signin', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(searchCredentials)
-
-        // }).then((response) => response.text())
-        //     .then(async (responseText) => {
-
-        //         let responseData = JSON.parse(responseText);
-
-
-        //         if (responseData.code === 400) {
-        //             alert(responseData.message)
-        //             this.setState({ isAnimating: false, isDisabled: false })
-        //         }
-        //         console.log(responseData, "responseData of api")
-
-        //         if (responseData.code === 200) {
-
-
-
-        //             await AsyncStorage.setItem("isLogin", this.state.isLogin);
-
-        //             await AsyncStorage.setItem("userData", JSON.stringify(responseData.user));
-        //             await AsyncStorage.setItem("notificationCount", "0");
-        //             await AsyncStorage.setItem("notificationAffliation", "0");
-
-        //             // console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-        //             // if(this.props.commingFromNotification==false || this.props.commingFromNotification==undefined){
-
-        //             StartTabs();
-
-        //             // }
-        //             // else if (this.props.commingFromNotification==true){
-        //             // let PostID = await AsyncStorage.getItem('notificationPostId')  
-
-        //             //  console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-        //             //   Navigation.setRoot({
-        //             //     root: {
-        //             //       stack: {
-        //             //         children: [
-        //             //           {
-        //             //             component: {
-        //             //               name: 'feedDetail',
-
-        //             //               passProps: {
-        //             //                 id: PostId,
-        //             //                 commingFromNotification: true
-
-        //             //                 },
-
-        //             //               }
-
-        //             //             }
-        //             //         ],
-        //             //       }
-        //             //     }
-        //             //   });
-
-        //             // }
-
-
-
-        //             this.setState({ isAnimating: false, isDisabled: false })
-        //             analytics().logEvent('sign_in')
-
-
-        //         }
-
-        //     })
-        //     .catch((error) => {
-
-        //         console.log("error from home API", error);
-        //         //  this.setState({ isAnimating: false, isDisabled: false })
-        //         this.setState({ isAnimating: false, isDisabled: false })
-        //     });
-
-
-
     }
 
 
@@ -187,19 +73,78 @@ export default function login({ navigation }) {
     }
 
 
-    emailChangeHandler = (value) => {
+    const signInScreen = () => {
 
-        setEmail(value)
+        if (email === "") {
+            alert("Please enter email")
+            return
+        }
+        else if (password === "") {
+            alert("Please enter email")
+            return
+        }
+
+        if (validator.validate(email.trim()) === false) {
+            alert("Email format is not correct!")
+            return
+        }
+        else {
+
+
+            // const searchCredentials = {
+            //     "email": this.state.UserEmail,
+            //     "type": 1,
+            // }
+
+            // fetch(domain + '/api/customer/forgot_password', {
+
+            //     method: 'POST',
+            //     headers: {
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json',
+
+            //     },
+
+            //     body: JSON.stringify(searchCredentials)
+
+
+            // }).then((response) => response.text())
+            //     .then(async (responseText) => {
+
+            //         let responseData = JSON.parse(responseText);
+
+            //         console.log(responseData, "forgotPasswordApi")
+
+            //         if (responseData.code === 200) {
+            //             this.setState({ UserEmail: "" });
+            //             alert(responseData.message)
+
+            //             analytics().logEvent('passweord_reset')
+
+
+            //         }
+            //         else {
+
+            //             console.log("wrong in forgotPasswordApi api")
+
+            //             alert(responseData.message)
+
+            //             this.setState({ isAnimating: false, isDisabled: false, likeAction: false })
+
+            //         }
+
+            //     })
+            //     .catch((error) => {
+
+            //         this.setState({ isAnimating: false, isDisabled: false, })
+
+            //         console.log("error from wrong forgotPasswordApi", error);
+
+            //     });
+
+        }
 
     }
-
-    passwordChangeHandler = (value) => {
-        setPassword(value)
-    }
-
-
-
-
 
 
     return (
@@ -220,7 +165,9 @@ export default function login({ navigation }) {
                         style={styles.textField}
                         placeholder='jhondoe@gmail.com'
                         placeholderTextColor='#d5c9de'
-                        onChangeText={emailChangeHandler}
+                        value={email}
+
+                        onChangeText={(value) => { setEmail(value) }}
                         keyboardType={'email-address'}
                         autoCapitalize={'none'}
                         textContentType={"name"}>
@@ -236,11 +183,12 @@ export default function login({ navigation }) {
                     <TextInput
                         animation="fadeInUp"
                         style={styles.textField}
+                        value={password}
                         placeholder='********'
                         placeholderTextColor='#d5c9de'
                         autoCapitalize={'none'}
                         textContentType={"password"}
-                        onChangeText={passwordChangeHandler}
+                        onChangeText={(value) => { setPassword(value) }}
                         secureTextEntry={true}>
                     </TextInput>
                     <Image source={passwordd} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>
