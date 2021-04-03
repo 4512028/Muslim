@@ -17,7 +17,12 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator tabBarOptions={{
+            keyboardHidesTabBar: true,
+            style: {
+                position: 'absolute',
+            },
+        }}>
 
             <Tab.Screen
                 name="Home"

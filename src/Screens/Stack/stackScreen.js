@@ -9,6 +9,8 @@ import communityScreen from "../communityScreen";
 import communityGroupCreate from "../communityGroupCreate";
 import CommunityJoinGroup from "../CommunityJoinGroup";
 import communityPaynow from "../communityPaynow";
+import chatScreen from "../chatScreen";
+
 
 
 import Donate from "../donate";
@@ -80,6 +82,8 @@ const groupStackNavigator = () => {
             <Stack.Screen name="CommunityJoinGroup" component={CommunityJoinGroup} />
             <Stack.Screen name="communityGroupCreate" component={communityGroupCreate} />
             <Stack.Screen name="communityPaynow" component={communityPaynow} />
+            <Stack.Screen name="chatScreen" component={chatScreen} />
+
 
         </Stack.Navigator>
     );
