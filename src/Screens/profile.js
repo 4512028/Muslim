@@ -284,6 +284,8 @@ function profile({ navigation }) {
 
                 </View>
 
+
+
             </ScrollView>
         </SafeAreaView >
     );

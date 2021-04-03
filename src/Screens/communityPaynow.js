@@ -26,17 +26,26 @@ import back from '../Assets/Icons/Arrr.png';
 
 
 
-function communityPaynow({ navigation }) {
+function communityPaynow({ navigation, route }) {
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
     const [name, setName] = useState("");
     const [id, setId] = useState("");
     let [firstValue, setFirstValue] = useState(false);
     let [secondValue, setSecondValue] = useState(false);
+    let [GiftAid, setAGiftAid] = useState(true);
+    let [administrationSadqa, setadministrationSadqa] = useState(2);
+    let [administration, setAddministration] = useState(false);
 
 
     Back = () => {
         navigation.pop()
+    }
+
+    Paynow = () => {
+        route.params.sethaveGRoup(true)
+        navigation.pop()
+
     }
 
     //...........selection of image
@@ -70,7 +79,6 @@ function communityPaynow({ navigation }) {
                 <ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} >
 
 
-                    <Animatable.Text animation="fadeInUp" style={{ fontSize: 18, alignSelf: "center", textAlign: "center", marginTop: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Create community group</Animatable.Text>
 
                     <View style={{ padding: "5%", marginTop: "5%" }}>
 
@@ -93,10 +101,67 @@ function communityPaynow({ navigation }) {
                         </Animatable.View>
 
                     </View>
+                    <View style={[styles.inputContainer2, {}]}>
+
+                        <View style={{}}>
+                            <TouchableWithoutFeedback onPress={() => setAddministration(!administration)}>
+                                <View style={{ flexDirection: "row", alignItems: "center" }}>
+
+                                    <View style={{ width: 27, backgroundColor: "#C8C7CC", height: 15, padding: 1, borderRadius: 10, marginRight: 10 }}>
+
+                                        {administration == false &&
+                                            <View style={{ width: 14, backgroundColor: "white", height: 13, borderRadius: 10 }}>
+                                            </View>
+                                        }
+                                        {administration == true &&
+                                            <View style={{ width: 14, backgroundColor: "#0178B9", height: 13, borderRadius: 10, alignSelf: "flex-end" }}>
+                                            </View>
+                                        }
+
+                                    </View>
+                                    <View >
+                                        <Text style={{ color: 'black', fontSize: 15, }}>Addministration </Text>
+                                    </View>
+
+                                </View>
+                            </TouchableWithoutFeedback >
+
+                        </View>
+                        <Text style={{ color: '#B7B7BB', fontSize: 12, }} >Sadaqa £{administrationSadqa} - one off</Text>
+                    </View>
+
+                    <View style={[styles.inputContainer2, { marginVertical: 20 }]}>
+
+                        <View style={{ width: '100%', justifyContent: "center" }}>
+                            <TouchableWithoutFeedback onPress={() => setAGiftAid(!GiftAid)}>
+                                <View style={{ flexDirection: "row", alignItems: "center" }}>
+
+                                    <View style={{ width: 27, backgroundColor: "#C8C7CC", height: 15, padding: 1, borderRadius: 10, marginRight: 10 }}>
+
+                                        {GiftAid == false &&
+                                            <View style={{ width: 14, backgroundColor: "white", height: 13, borderRadius: 10 }}>
+                                            </View>
+                                        }
+                                        {GiftAid == true &&
+                                            <View style={{ width: 14, backgroundColor: "#0178B9", height: 13, borderRadius: 10, alignSelf: "flex-end" }}>
+                                            </View>
+                                        }
+
+                                    </View>
+                                    <View style={{ paddingRight: 20 }}>
+                                        <Text style={{ color: 'black', fontSize: 14, }}>Yes,I would like Gift Aid clamed on my donation </Text>
+                                    </View>
+
+                                </View>
+                            </TouchableWithoutFeedback >
+                        </View>
+
+                    </View>
 
 
-                    <TouchableOpacity style={styles.button} >
-                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Create Group</Text>
+
+                    <TouchableOpacity style={styles.button} onPress={() => Paynow()}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>PAY NOW TO JOIN</Text>
                     </TouchableOpacity>
 
 
@@ -189,6 +254,26 @@ const styles = StyleSheet.create({
         alignItems: "center", justifyContent: "center",
 
         borderWidth: 1, borderColor: "#0178B9"
+    },
+    inputContainer2: {
+        //   alignItems: 'flex-start',
+        //   justifyContent: 'flex-start',
+
+        backgroundColor: '#FFF',
+        borderRadius: 25,
+        shadowColor: "#000",
+        padding: 10,
+        flexDirection: "row",
+        marginHorizontal: "5%",
+        justifyContent: "space-between",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
 
 })

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useContext, useRef } from "react";
 import down from '../Assets/Icons/down.png';
-import { View, StyleSheet, ActivityIndicator, StatusBar, TextInput, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
+import { View, StyleSheet, ActivityIndicator, StatusBar, TextInput, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform, Share } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import profilee from '../Assets/Icons/profile.png'
 import edit from '../Assets/Icons/edit.png'
@@ -232,7 +232,7 @@ function donates({ navigation }) {
                     </  View>
                     <View style={[styles.inputContainer2, { marginTop: 20 }]}>
 
-                        <View style={{ width: '80%', justifyContent: "center" }}>
+                        <View style={{}}>
                             <TouchableWithoutFeedback onPress={() => setAddministration(!administration)}>
                                 <View style={{ flexDirection: "row", alignItems: "center" }}>
 
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         padding: 10,
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-between",
         shadowOffset: {
             width: 0,
             height: 1,

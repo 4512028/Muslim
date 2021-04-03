@@ -26,7 +26,7 @@ import back from '../Assets/Icons/Arrr.png';
 
 
 
-function communityGroup({ navigation }) {
+function communityGroup({ navigation, route }) {
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
     const [name, setName] = useState("");
@@ -41,6 +41,11 @@ function communityGroup({ navigation }) {
     }
 
     //...........selection of image
+
+    createGroup = () => {
+        route.params.sethaveGRoup(true)
+        navigation.pop()
+    }
 
 
     selectOfValue = (value) => {
@@ -132,7 +137,7 @@ function communityGroup({ navigation }) {
                     </View>
 
 
-                    <TouchableOpacity style={styles.button} >
+                    <TouchableOpacity style={styles.button} onPress={() => { createGroup() }}>
                         <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Create Group</Text>
                     </TouchableOpacity>
 

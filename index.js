@@ -4,7 +4,7 @@
 import { AppRegistry } from 'react-native';
 import App from './App';
 
-// import App from './src/Screens/donationOnTime';
+// import App from './src/Screens/groupDashBoard';
 import { name as appName } from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);

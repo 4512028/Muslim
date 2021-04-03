@@ -26,7 +26,7 @@ import back from '../Assets/Icons/Arrr.png';
 
 
 
-function joinGroup({ navigation }) {
+function joinGroup({ navigation, route }) {
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
     const [name, setName] = useState("");
@@ -39,9 +39,9 @@ function joinGroup({ navigation }) {
     }
 
 
-    goToPayNow = () => {
-        navigation.navigate('communityPaynow')
-
+    joincomminityGroup = () => {
+        route.params.sethaveGRoup(true)
+        navigation.pop()
     }
 
 
@@ -106,7 +106,7 @@ function joinGroup({ navigation }) {
                     </View>
 
 
-                    <TouchableOpacity style={styles.button} onPress={() => { goToPayNow() }} >
+                    <TouchableOpacity style={styles.button} onPress={() => { joincomminityGroup() }} >
                         <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Join Group</Text>
                     </TouchableOpacity>
 
