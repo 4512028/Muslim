@@ -59,12 +59,12 @@ function chatScreen({ navigation }) {
 
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', async (e) => {
             setkeyboardHieght(e.endCoordinates.height - 30)
-            setbotmMargin(60)
+            setbotmMargin(0)
 
         })
 
         keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', async (e) => {
-            setkeyboardHieght(0)
+            setkeyboardHieght(60)
             setbotmMargin(60)
 
         })
@@ -116,86 +116,86 @@ function chatScreen({ navigation }) {
             </View>
             <View style={{ backgroundColor: "#FFF", flex: 1 }}>
 
-                <KeyboardAvoidingView behavior={'height'} style={{ flex: 1, }} keyboardVerticalOffset={-25} >
 
-                    <View style={{ height: '72%', flex: 1, transform: [{ rotate: '180deg' }] }} keyboardShouldPersistTaps={'handled'} >
-
-
-                        <ScrollView
-                            showsVerticalScrollIndicator={false}
-                            style={{ flex: 1 }}
-
-                            keyboardShouldPersistTaps={'handled'}
-                            contentContainerStyle={{ height: '100%', }}
-
-                        >
+                <View style={{ height: '72%', flex: 1, transform: [{ rotate: '180deg' }] }} keyboardShouldPersistTaps={'handled'} >
 
 
-                            <View style={{ padding: 5, marginTop: 20, padding: 1, paddingLeft: 6, paddingRight: 6, transform: [{ rotate: '180deg' }] }}>
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        style={{ flex: 1 }}
 
-                                <FlatList
-                                    data={initialMessage}
-                                    style={{ transform: [{ rotate: '180deg' }] }}
-                                    onEndReachedThreshold={0}
-                                    renderItem={({ item, index }) => {
-                                        return (
-                                            <View style={{ transform: [{ rotate: '180deg' }] }}>
-                                                {index % 2 == 0 &&
+                        keyboardShouldPersistTaps={'handled'}
+                        contentContainerStyle={{ height: '100%', }}
 
-                                                    <View style={[{ alignSelf: 'flex-start', width: '70%', padding: 1, marginBottom: 5, }]}>
-                                                        <View style={{ flexDirection: "row", alignItems: "center", borderRadius: 10, backgroundColor: "#F0F0F0", }}>
-                                                            <Image source={profile} style={{ height: 30, width: 30, }} />
+                    >
 
 
-                                                            <View style={[{ color: 'black', backgroundColor: "#F0F0F0" }]}>
+                        <View style={{ padding: 5, marginTop: 20, padding: 1, paddingLeft: 6, paddingRight: 6, transform: [{ rotate: '180deg' }] }}>
 
-                                                                <Text style={{ alignSelf: 'flex-start', paddingTop: 3, paddingLeft: 10, paddingRight: 10, fontSize: 16, fontWeight: 'bold' }}>Umer</Text>
-                                                                <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, paddingBottom: 5 }}>Message send by umer</Text>
+                            <FlatList
+                                data={initialMessage}
+                                showsVerticalScrollIndicator={false}
+                                style={{ transform: [{ rotate: '180deg' }] }}
+                                onEndReachedThreshold={0}
 
-                                                            </View>
+                                renderItem={({ item, index }) => {
+                                    return (
+                                        <View style={{ transform: [{ rotate: '180deg' }] }}>
+                                            {index % 2 == 0 &&
+
+                                                <View style={[{ alignSelf: 'flex-start', width: '70%', padding: 1, marginBottom: 5, }]}>
+                                                    <View style={{ flexDirection: "row", alignItems: "center", borderRadius: 10, backgroundColor: "#F0F0F0", }}>
+                                                        <Image source={profile} style={{ height: 30, width: 30, }} />
+
+
+                                                        <View style={[{ color: 'black', backgroundColor: "#F0F0F0" }]}>
+
+                                                            <Text style={{ alignSelf: 'flex-start', paddingTop: 3, paddingLeft: 10, paddingRight: 10, fontSize: 16, fontWeight: 'bold' }}>Umer</Text>
+                                                            <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, paddingBottom: 5 }}>Message send by umer</Text>
+
                                                         </View>
+                                                    </View>
 
+
+                                                </View>
+
+
+
+
+
+                                            }
+                                            {index % 2 != 0 &&
+                                                <View style={[{ alignSelf: 'flex-end', width: '70%', padding: 1, marginLeft: 20, borderRadius: 10, marginBottom: 5 }]}>
+                                                    <View style={[{ borderRadius: 10, borderRadius: 10, color: 'black', height: 30, textAlign: 'left', backgroundColor: '#F0F0F0', justifyContent: 'flex-end' }]}>
+
+                                                        <Text style={{ alignSelf: 'flex-end', paddingLeft: 20, paddingRight: 10, paddingBottom: 5 }}>Message send by umer</Text>
 
                                                     </View>
 
 
+                                                </View>
+                                            }
+                                        </View>
+                                    )
+                                }
+                                }
+
+                            />
 
 
-
-                                                }
-                                                {index % 2 != 0 &&
-                                                    <View style={[{ alignSelf: 'flex-end', width: '70%', padding: 1, marginLeft: 20, borderRadius: 10, marginBottom: 5 }]}>
-                                                        <View style={[{ borderRadius: 10, borderRadius: 10, color: 'black', height: 30, textAlign: 'left', backgroundColor: '#F0F0F0', justifyContent: 'flex-end' }]}>
-
-                                                            <Text style={{ alignSelf: 'flex-end', paddingLeft: 20, paddingRight: 10, paddingBottom: 5 }}>Message send by umer</Text>
-
-                                                        </View>
+                            {/* {chatMessagesss} */}
 
 
-                                                    </View>
-                                                }
-                                            </View>
-                                        )
-                                    }
-                                    }
-
-                                />
+                        </View>
 
 
-                                {/* {chatMessagesss} */}
+                    </ScrollView>
 
-
-                            </View>
-
-
-                        </ScrollView>
-
-                    </View>
+                </View>
 
 
 
 
-                </KeyboardAvoidingView >
                 <View style={{
                     marginBottom: Platform.OS === 'ios' ? keyboardHieght : botmMargin,
                     alignItems: 'flex-start',

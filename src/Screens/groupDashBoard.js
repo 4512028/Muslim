@@ -186,190 +186,184 @@ function groupDashBoard({ navigation }) {
 
             {claimModalVisible &&
                 <Modal isVisible={claimModalVisible} transparent={true}>
-                    <ScrollView style={{ width: "100%", height: "100%", marginTop: "50%" }}>
-                        <View style={styles.modalContainer}>
+                    <View style={styles.modalContainer}>
 
 
-                            <View style={{
-                                backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
-                            }}>
+                        <View style={{
+                            backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
+                        }}>
 
-                                {/* modal top bar */}
-                                <View style={{ justifyContent: "space-between", flexDirection: "row", paddingTop: 10 }}>
-                                    < Text animation="fadeInUp" style={{ fontSize: 18, color: "#0178B9", fontWeight: "bold" }}>Public fund claim</Text>
-
-
-                                    <TouchableOpacity onPress={() => { setclaimModalVisible(!claimModalVisible) }
-                                    }>
-                                        <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
-                                    </TouchableOpacity>
-                                </View>
-                                {/* modal top bar */}
-
-                                <View style={[styles.inputContainer]}>
-                                    <TextInput
-
-                                        multiline={true}
-                                        autoCapitalize="none"
-                                        placeholder="Public fund claim"
-                                        placeholderTextColor={'#9a9999'}
-                                        onChangeText={(val) => { }}
+                            {/* modal top bar */}
+                            <View style={{ justifyContent: "space-between", flexDirection: "row", paddingTop: 10 }}>
+                                < Text animation="fadeInUp" style={{ fontSize: 18, color: "#0178B9", fontWeight: "bold" }}>Public fund claim</Text>
 
 
-                                        style={styles.input2}
+                                <TouchableOpacity onPress={() => { setclaimModalVisible(!claimModalVisible) }
+                                }>
+                                    <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
+                                </TouchableOpacity>
+                            </View>
+                            {/* modal top bar */}
 
-                                        underlineColorAndroid='transparent' />
+                            <View style={[styles.inputContainer]}>
+                                <TextInput
 
-
-                                </View>
-
-
-
-
-
-
-                                <View style={{ justifyContent: 'flex-end', width: '100%', flexDirection: "row", marginBottom: 20 }}>
-
-                                    <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }} onPress={() => setclaimModalVisible(!claimModalVisible)}>
-                                        <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 42, marginTop: 15, justifyContent: 'center' }}>
-                                            <Text style={{ fontSize: 14, color: "#FFF", textAlign: 'center' }}>Submit Claim</Text>
-
-                                        </View>
-                                    </TouchableWithoutFeedback>
+                                    multiline={true}
+                                    autoCapitalize="none"
+                                    placeholder="Public fund claim"
+                                    placeholderTextColor={'#9a9999'}
+                                    onChangeText={(val) => { }}
 
 
-                                </View>
+                                    style={styles.input2}
 
+                                    underlineColorAndroid='transparent' />
 
-                                {/* modal foooter */}
-
-
-
-                                {/* modal foooter  ends*/}
 
                             </View>
 
+
+
+
+
+
+                            <View style={{ justifyContent: 'flex-end', width: '100%', flexDirection: "row", marginBottom: 20 }}>
+
+                                <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }} onPress={() => setclaimModalVisible(!claimModalVisible)}>
+                                    <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 42, marginTop: 15, justifyContent: 'center' }}>
+                                        <Text style={{ fontSize: 14, color: "#FFF", textAlign: 'center' }}>Submit Claim</Text>
+
+                                    </View>
+                                </TouchableWithoutFeedback>
+
+
+                            </View>
+
+
+                            {/* modal foooter */}
+
+
+
+                            {/* modal foooter  ends*/}
+
                         </View>
-                    </ScrollView>
+
+                    </View>
                 </Modal>
             }
             {requestModalVisible &&
                 <Modal isVisible={requestModalVisible} transparent={true}>
-                    <ScrollView style={{ width: "100%", height: "100%", marginTop: "50%" }}>
-                        <View style={styles.modalContainer}>
+                    <View style={styles.modalContainer}>
 
 
-                            <View style={{
-                                backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
-                            }}>
+                        <View style={{
+                            backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
+                        }}>
 
-                                {/* modal top bar */}
-                                <View style={{ justifyContent: "space-between", flexDirection: "row", paddingTop: 10 }}>
-                                    < Text animation="fadeInUp" style={{ fontSize: 18, color: "#0178B9", fontWeight: "bold" }}>Request for release fund</Text>
-
-
-                                    <TouchableOpacity onPress={() => { setRequestModalVisible(!requestModalVisible) }
-                                    }>
-                                        <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
-                                    </TouchableOpacity>
-                                </View>
-                                {/* modal top bar */}
-
-                                <View style={[styles.inputContainer]}>
-                                    <TextInput
-
-                                        multiline={true}
-                                        autoCapitalize="none"
-                                        placeholder="Request for release fund"
-                                        placeholderTextColor={'#9a9999'}
-                                        onChangeText={(val) => { }}
+                            {/* modal top bar */}
+                            <View style={{ justifyContent: "space-between", flexDirection: "row", paddingTop: 10 }}>
+                                < Text animation="fadeInUp" style={{ fontSize: 18, color: "#0178B9", fontWeight: "bold" }}>Request for release fund</Text>
 
 
-                                        style={styles.input2}
+                                <TouchableOpacity onPress={() => { setRequestModalVisible(!requestModalVisible) }
+                                }>
+                                    <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
+                                </TouchableOpacity>
+                            </View>
+                            {/* modal top bar */}
 
-                                        underlineColorAndroid='transparent' />
+                            <View style={[styles.inputContainer]}>
+                                <TextInput
 
-
-                                </View>
-
-
-
-
-
-
-                                <View style={{ justifyContent: 'flex-end', width: '100%', flexDirection: "row", marginBottom: 20 }}>
-
-                                    <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }} onPress={() => setRequestModalVisible(!requestModalVisible)} >
-                                        <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 42, marginTop: 15, justifyContent: 'center' }}>
-                                            <Text style={{ fontSize: 14, color: "#FFF", textAlign: 'center' }}>Submit Request</Text>
-
-                                        </View>
-                                    </TouchableWithoutFeedback>
+                                    multiline={true}
+                                    autoCapitalize="none"
+                                    placeholder="Request for release fund"
+                                    placeholderTextColor={'#9a9999'}
+                                    onChangeText={(val) => { }}
 
 
-                                </View>
+                                    style={styles.input2}
 
+                                    underlineColorAndroid='transparent' />
 
-                                {/* modal foooter */}
-
-
-
-                                {/* modal foooter  ends*/}
 
                             </View>
 
+
+
+
+
+
+                            <View style={{ justifyContent: 'flex-end', width: '100%', flexDirection: "row", marginBottom: 20 }}>
+
+                                <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }} onPress={() => setRequestModalVisible(!requestModalVisible)} >
+                                    <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 42, marginTop: 15, justifyContent: 'center' }}>
+                                        <Text style={{ fontSize: 14, color: "#FFF", textAlign: 'center' }}>Submit Request</Text>
+
+                                    </View>
+                                </TouchableWithoutFeedback>
+
+
+                            </View>
+
+
+                            {/* modal foooter */}
+
+
+
+                            {/* modal foooter  ends*/}
+
                         </View>
-                    </ScrollView>
+
+                    </View>
                 </Modal>
             }
 
             {
                 modalVisible &&
                 <Modal isVisible={modalVisible} transparent={true}>
-                    <ScrollView style={{ width: "100%", height: "100%", marginTop: "50%" }}>
-                        <View style={styles.modalContainer}>
+                    <View style={styles.modalContainer}>
 
 
-                            <View style={{
-                                backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
-                            }}>
+                        <View style={{
+                            backgroundColor: "white", width: "100%", paddingHorizontal: 18, borderRadius: 5, marginVertical: 10,
+                        }}>
 
-                                {/* modal top bar */}
-                                <View style={{ alignSelf: "flex-end", paddingTop: 10 }}>
-                                    <TouchableOpacity onPress={() => { setModalVisible(!modalVisible) }
-                                    }>
-                                        <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
-                                    </TouchableOpacity>
-                                </View>
-                                {/* modal top bar */}
-                                <View style={{ flexDirection: "column", alignSelf: "center", marginVertical: 30 }}>
-                                    <Text style={{ color: '#0178B9', fontSize: 20, fontWeight: 'bold', textAlign: "center" }}>You can create / join community group. </Text>
-
-
-                                </View>
-                                <TouchableOpacity style={styles.ModalButton} onPress={() => { gotoCreateGroup() }} >
-                                    <View style={{ flexDirection: "row", alignSelf: "center" }}>
-
-                                        <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: 'bold' }}>Create Community Group</Text>
-                                    </View>
+                            {/* modal top bar */}
+                            <View style={{ alignSelf: "flex-end", paddingTop: 10 }}>
+                                <TouchableOpacity onPress={() => { setModalVisible(!modalVisible) }
+                                }>
+                                    <Image source={Cross} style={{ resizeMode: "contain", height: 20, width: 20, marginBottom: 5 }} />
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.ModalButton} onPress={() => { gotoJoinGroup() }}>
-                                    <View style={{ flexDirection: "row", alignSelf: "center" }}>
+                            </View>
+                            {/* modal top bar */}
+                            <View style={{ flexDirection: "column", alignSelf: "center", marginVertical: 30 }}>
+                                <Text style={{ color: '#0178B9', fontSize: 20, fontWeight: 'bold', textAlign: "center" }}>You can create / join community group. </Text>
 
-                                        <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: 'bold', textAlign: "center" }}>Join Community Group</Text>
-                                    </View>
-                                </TouchableOpacity>
-
-                                {/* modal foooter */}
-
-
-
-                                {/* modal foooter  ends*/}
 
                             </View>
+                            <TouchableOpacity style={styles.ModalButton} onPress={() => { gotoCreateGroup() }} >
+                                <View style={{ flexDirection: "row", alignSelf: "center" }}>
+
+                                    <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: 'bold' }}>Create Community Group</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.ModalButton} onPress={() => { gotoJoinGroup() }}>
+                                <View style={{ flexDirection: "row", alignSelf: "center" }}>
+
+                                    <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: 'bold', textAlign: "center" }}>Join Community Group</Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            {/* modal foooter */}
+
+
+
+                            {/* modal foooter  ends*/}
 
                         </View>
-                    </ScrollView>
+
+                    </View>
                 </Modal>
             }
 

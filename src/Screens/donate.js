@@ -300,7 +300,7 @@ function donates({ navigation }) {
                         </CardItem>
                     </Card>
                     <TouchableOpacity style={styles.button} onPress={goForDoantion} >
-                        <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Pay Now </Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 17 }}>Pay Now </Text>
                     </TouchableOpacity>
                 </ScrollView>
                 {isAnimating &&
@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 30,
-        marginBottom: 150,
+        marginBottom: 250,
         alignSelf: 'center',
         height: 50,
         width: "70%",
