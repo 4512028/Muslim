@@ -66,7 +66,7 @@ function ghusl({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Love One </Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Ghusl</Text>
 
                 </View>
             </View>
@@ -80,23 +80,11 @@ function ghusl({ navigation }) {
                     showsVerticalScrollIndicator={false}
                 >
 
-                    <View style={{ padding: "5%", }}>
 
-                        <Card >
-                            <CardItem>
-                                <Body>
-                                    <Text style={{ textAlign: "center" }}>
-                                        Want to join a group on behalf of loved one,just simple fill in your loved ones detail and choose between the public group and the community group to secure your love ones feuture.
-                                   </Text>
-                                    <Text style={{ textAlign: "center" }}>
-                                        Abu Huraira narrated that the Prophet said: The best charity is that which is practiced by a wealthy person and start giving first to your dependents.
-                                    </Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </View>
 
                     <View style={{ padding: "5%", }}>
+                        <Animatable.Text animation="fadeInUp" style={{ fontSize: 18, alignSelf: "center", textAlign: "center", marginVertical: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Request For Ghusl</Animatable.Text>
+
 
                         <Animatable.Text animation="fadeInUp" style={styles.label}>Person Name</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
@@ -114,6 +102,25 @@ function ghusl({ navigation }) {
                             </View>
                         </Animatable.View>
 
+
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Email "
+                                placeholderTextColor='#d5c9de'
+                            // value={this.state.UserInstructor}
+                            // onChangeText={this.instructorNameChangeHandler}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={email} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
@@ -136,79 +143,7 @@ function ghusl({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Address "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
 
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Town "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Postal Code</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Postal Code "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Email "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={email} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                         <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
@@ -229,48 +164,11 @@ function ghusl({ navigation }) {
                         </Animatable.View>
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Name</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Group Name "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Id</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Group Id "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                         <Animatable.View animation="fadeInUp" >
 
                             <TouchableOpacity style={styles.button} >
-                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
+                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Submit </Text>
                             </TouchableOpacity>
                         </Animatable.View>
 

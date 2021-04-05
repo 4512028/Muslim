@@ -77,23 +77,15 @@ function drawerItem({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('prayer')
+                    navigation.navigate('other')
                 }}>
                     <View style={styles.item}>
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Prayer </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Others </Text>
 
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('ghusl')
-                }}>
-                    <View style={styles.item}>
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Ghusl </Text>
-
-                    </View>
-                </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('feedback')

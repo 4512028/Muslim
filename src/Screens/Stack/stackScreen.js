@@ -25,6 +25,14 @@ import profileVerify from "../profileVerify";
 import homePostDetail from "../homePostDetail";
 import prayer from "../prayer";
 import ghusl from "../ghusl";
+import others from "../others";
+import reading from "../reading";
+import dua from "../dua";
+import tasbi from "../tasbi";
+import quran from "../quran";
+
+
+
 
 
 
@@ -110,18 +118,23 @@ const nextOfKinStackNavigator = () => {
         </Stack.Navigator>
     );
 }
-const prayerStackNavigator = () => {
+
+const otherStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="others" component={others} />
             <Stack.Screen name="prayer" component={prayer} />
-        </Stack.Navigator>
-    );
-}
-const ghuslStackNavigator = () => {
-    return (
-        <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="ghusl" component={ghusl} />
+            <Stack.Screen name="reading" component={reading} />
+            <Stack.Screen name="dua" component={dua} />
+            <Stack.Screen name="tasbi" component={tasbi} />
+            <Stack.Screen name="quran" component={quran} />
+
+
+
+
         </Stack.Navigator>
     );
 }
-export { prayerStackNavigator, ghuslStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
+
+export { otherStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
