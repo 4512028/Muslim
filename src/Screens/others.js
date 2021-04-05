@@ -63,7 +63,7 @@ function others({ navigation }) {
 
 
     goToGusal = () => {
-        navigation.navigate('ghusl')
+        navigation.push('ghusl')
     }
 
     goToReading = () => {
@@ -72,19 +72,19 @@ function others({ navigation }) {
 
 
     goToDua = () => {
-        navigation.navigate('dua')
+        navigation.push('dua')
         setSelectedPrayer("")
         setmodalVisible(!modalVisible)
 
     }
     goToQuran = () => {
-        navigation.navigate('tasbi')
+        navigation.push('quran')
         setSelectedPrayer("")
         setmodalVisible(!modalVisible)
 
     }
     goToTasbi = () => {
-        navigation.navigate('quran')
+        navigation.navigate('tasbi')
         setSelectedPrayer("")
         setmodalVisible(!modalVisible)
 
@@ -100,12 +100,16 @@ function others({ navigation }) {
             else if (selectedPrayer == "Tasbi") goToTasbi()
             else if (selectedPrayer == "Quran") goToQuran()
 
-
         }
 
+        list.find((itm, i) => {
+            list[i].selected = false;
+        })
+        SetModalList(list)
     }
+    useEffect(() => {
 
-
+    }, [])
 
 
 
@@ -132,8 +136,8 @@ function others({ navigation }) {
             if (itm.value == item.value) {
                 if (itm.selected == false) {
                     list[i].selected = true;
-                    if (modalHeading == "Prayer") setSelectedPrayer((value) => value = list[i].value);
-                    else setSelectedSadaqah((value) => value = list[i].value);
+                    if (modalHeading == "Prayer") setSelectedPrayer((list[i].value));
+                    else setSelectedSadaqah(list[i].value)
                     SetModalList(list)
                 }
             } else {
