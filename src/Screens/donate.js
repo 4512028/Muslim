@@ -4,12 +4,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import down from '../Assets/Icons/down.png';
 import { View, StyleSheet, ActivityIndicator, StatusBar, TextInput, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform, Share } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
-import profilee from '../Assets/Icons/profile.png'
-import edit from '../Assets/Icons/edit.png'
-import email from '../Assets/Icons/email.png'
-import home from '../Assets/Icons/home.png'
-import post from '../Assets/Icons/post.png'
-import phone from '../Assets/Icons/phone.png'
+
 import manue from '../Assets/Icons/manue.png'
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/modalComponenet'

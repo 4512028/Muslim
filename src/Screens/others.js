@@ -84,11 +84,14 @@ function others({ navigation }) {
 
     }
     goToTasbi = () => {
-        navigation.navigate('tasbi')
+        navigation.push('tasbi')
         setSelectedPrayer("")
         setmodalVisible(!modalVisible)
 
+    }
 
+    goTODonation = () => {
+        navigation.push('tasbi')
 
     }
 
@@ -101,15 +104,16 @@ function others({ navigation }) {
             else if (selectedPrayer == "Quran") goToQuran()
 
         }
+        else if (modalHeading == "Sadaqah") {
+
+        }
 
         list.find((itm, i) => {
             list[i].selected = false;
         })
         SetModalList(list)
     }
-    useEffect(() => {
 
-    }, [])
 
 
 
@@ -120,6 +124,7 @@ function others({ navigation }) {
 
 
     displayModal = (arry, value) => {
+        console.log(arry)
         SetModalList(arry);
         if (value == "prayers") {
             setModalHeading("Prayer")

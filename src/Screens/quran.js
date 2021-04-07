@@ -45,7 +45,7 @@ function quran({ navigation }) {
 
 
     Back = () => {
-        navigation.goBack()
+        navigation.pop()
     }
 
 
