@@ -35,6 +35,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 function tasbi({ navigation }) {
 
+
     //...........selection of image
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
@@ -54,9 +55,18 @@ function tasbi({ navigation }) {
     ]);
 
 
-    Back = () => {
-        navigation.goBack()
+
+    goToGusal = () => {
+        navigation.navigate('ghusl')
+
+
     }
+
+
+    Back = () => {
+        navigation.pop()
+    }
+
     useEffect(() => {
         if (PPrivate == true) setPPvalue("Private")
         else setPPvalue("Public")
@@ -66,13 +76,14 @@ function tasbi({ navigation }) {
         setPPrivate(!PPrivate)
 
     }
-    displayModal = (arry, value) => {
+    displayModal1 = (arry, value) => {
 
         SetModalList(arry);
         setModalHeading("Tasbih")
 
         setmodalVisible(!modalVisible)
     };
+
 
     onSelectList = async (item) => {
         setmodalVisible(!modalVisible)
@@ -177,7 +188,7 @@ function tasbi({ navigation }) {
 
 
                     <  Text style={styles.label}>Tasbih Suggestions</  Text>
-                    <TouchableOpacity onPress={() => displayModal(tasbiList, "tasbi")}>
+                    <TouchableOpacity onPress={() => displayModal1(tasbiList, "tasbi")}>
 
                         <View style={styles.inputContainer2}>
 

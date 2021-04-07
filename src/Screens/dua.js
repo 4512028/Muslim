@@ -45,7 +45,6 @@ function dua({ navigation }) {
     goToGusal = () => {
         navigation.navigate('ghusl')
 
-
     }
 
 

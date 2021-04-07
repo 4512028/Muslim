@@ -270,32 +270,9 @@ const styles = StyleSheet.create({
 
 
     },
-    label: {
-        fontWeight: 'bold',
-        marginBottom: 5
-
-    },
-    textField: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 5,
-        paddingTop: 5,
-
-        fontSize: 15,
-        width: "90%",
 
 
-    },
-    loading: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
 
-    },
     backIcon: {
         height: 25,
         width: 25,
@@ -306,20 +283,8 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         justifyContent: 'center'
     },
-    seperater: {
-        height: 1,
-        marginBottom: 15,
-        backgroundColor: '#d5c9de'
-    },
-    ImageView: {
-        height: 150,
-        width: 150,
-        borderRadius: 75,
-        alignItems: "center", justifyContent: "center",
-        backgroundColor: "#F4F4F4"
 
 
-    },
     button: {
         marginTop: 30,
         marginBottom: 150,

@@ -63,7 +63,7 @@ class othersModal extends Component {
 
                     {/* modal items */}
 
-                    <View style={{ padding: '0%', height: 100, backgroundColor: "white" }}>
+                    <View style={{ padding: '0%', height: 300, backgroundColor: "white" }}>
 
                         <FlatList
                             data={this.props.list}
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
 
     modalContainer: {
 
-        height: 200,
+        height: 400,
         width: "100%",
         alignSelf: "center",
         left: 0,

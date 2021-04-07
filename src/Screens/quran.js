@@ -21,6 +21,9 @@ import {
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
+import surahh from '../Assets/Icons/surah.png';
+import qura from '../Assets/Icons/book.png';
+
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
 
@@ -37,23 +40,77 @@ function quran({ navigation }) {
     //...........selection of image
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
+    let [surah, setSurah] = useState([
+        { value: 'سُبْحَانَ ٱللَّٰهِ', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ', selected: false },
+
+    ]);
+    let [quranpara, setquranpara] = useState([
+
+        { value: 'سُبْحَانَ ٱللَّٰهِ para1', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ para2', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ para3 ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ para4', selected: false },
+
+    ]);
+    let [modalVisible, setmodalVisible] = useState(false);
+
+    let [list, SetModalList] = useState([]);
+    let [modalHeading, setModalHeading] = useState("");
+    let [selectedPrayer, setSelectedPrayer] = useState("");
 
 
-    goToGusal = () => {
-        navigation.navigate('ghusl')
-    }
 
 
     Back = () => {
         navigation.pop()
     }
+    displayModal1 = (arry, value) => {
+        SetModalList(arry);
+        if (value == "Quran") {
+            setModalHeading("Quran")
+        }
+        else if (value == "Surah") {
+            setModalHeading("Surah")
+        }
+        setmodalVisible(!modalVisible)
+    };
+
+    onSelectList1 = async (item) => {
+
+        await list.find((itm, i) => {
+            if (itm.value == item.value) {
+                if (itm.selected == false) {
+                    list[i].selected = true;
+                    SetModalList(list)
+                }
+                else if (itm.selected == true) {
+                    list[i].selected = false;
+                    SetModalList(list)
+                }
+            }
+        });
+        console.log(list)
+    }
 
 
+    togglelefunction = () => {
+        setmodalVisible(!modalVisible)
+    }
+    selectedItem = () => {
+
+    }
     return (
         <SafeAreaView style={styles.container}>
 
             <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
-
+            {modalVisible &&
+                <Modal isVisible={modalVisible} style={{ justifyContent: "center", }} transparent={true}>
+                    <ModalComponent modalHeadding={modalHeading} togglelefunction={togglelefunction} list={list} onSelectList={onSelectList1} goToNextScreen={togglelefunction} />
+                </Modal>
+            }
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
                     <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
@@ -66,8 +123,30 @@ function quran({ navigation }) {
 
                 </View>
             </View>
-            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+            <View style={{ backgroundColor: "#FFF", flex: 1, padding: 20 }}>
 
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal1(quranpara, "Quran")}>
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "20%" }}>
+                            <Image source={qura} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        </View>
+                        <View style={{ width: "80%", justifyContent: "center" }}>
+                            <Text style={{ color: 'black', fontSize: 15, }}>PARA </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal1(surah, "Surah")}>
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "20%" }}>
+                            <Image source={surahh} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        </View>
+                        <View style={{ width: "80%", justifyContent: "center" }}>
+                            <Text style={{ color: 'black', fontSize: 15, }}>SURAH </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
 
 
                 {isAnimating &&
@@ -95,6 +174,27 @@ const styles = StyleSheet.create({
 
     },
 
+
+    flatView: {
+        width: '100%',
+        marginBottom: "3%",
+        paddingTop: '4%',
+        paddingBottom: "4%",
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        borderRadius: 10,
+
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    },
     loading: {
         position: 'absolute',
         left: 0,
@@ -115,10 +215,25 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         justifyContent: 'center'
     },
-    seperater: {
-        height: 1,
-        marginBottom: 15,
-        backgroundColor: '#d5c9de'
+    button: {
+        marginTop: 30,
+        marginBottom: 150,
+        alignSelf: 'center',
+        height: 50,
+        width: "70%",
+        backgroundColor: '#0178B9',
+        justifyContent: 'center',
+        borderRadius: 11,
+        alignItems: 'center',
+        shadowColor: "#111111",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
+
 
 })
