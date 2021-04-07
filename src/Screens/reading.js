@@ -30,6 +30,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 
 
+import sadaqah from '../Assets/Icons/sadaqah.png';
+import prayer from '../Assets/Icons/prayer.png';
+import ghusl from '../Assets/Icons/shower.png';
+
+
 
 
 function reading({ navigation }) {
@@ -70,9 +75,40 @@ function reading({ navigation }) {
 
                 </View>
             </View>
-            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+            <View style={{ backgroundColor: "#FFF", flex: 1, paddingHorizontal: "6%", paddingTop: "6%" }}>
 
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => alert("DETAIL")} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "20%" }}>
+                            <Image source={prayer} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        </View>
+                        <View style={{ width: "80%", justifyContent: "center" }}>
+                            <Text style={{ color: 'black', fontSize: 15, }}>Prayer </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
 
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => alert("DETAIL")} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "20%" }}>
+                            <Image source={ghusl} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        </View>
+                        <View style={{ width: "80%", justifyContent: "center" }}>
+                            <Text style={{ color: 'black', fontSize: 15, }}>Ghusl </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => alert("DETAIL")} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "20%" }}>
+                            <Image source={sadaqah} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        </View>
+                        <View style={{ width: "80%", justifyContent: "center" }}>
+                            <Text style={{ color: 'black', fontSize: 15, }}>Sadaqah </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
 
                 {isAnimating &&
 
@@ -125,4 +161,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#d5c9de'
     },
 
+    flatView: {
+        width: '100%',
+        marginBottom: "3%",
+        paddingTop: '4%',
+        paddingBottom: "4%",
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        borderRadius: 10,
+
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    }
 })

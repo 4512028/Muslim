@@ -67,7 +67,7 @@ function quran({ navigation }) {
     Back = () => {
         navigation.pop()
     }
-    displayModal1 = (arry, value) => {
+    displayModal2 = (arry, value) => {
         SetModalList(arry);
         if (value == "Quran") {
             setModalHeading("Quran")
@@ -84,10 +84,14 @@ function quran({ navigation }) {
             if (itm.value == item.value) {
                 if (itm.selected == false) {
                     list[i].selected = true;
+                    if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
+                    else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
                     SetModalList(list)
                 }
-                else if (itm.selected == true) {
-                    list[i].selected = false;
+                if (itm.selected == false) {
+                    list[i].selected = true;
+                    if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
+                    else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
                     SetModalList(list)
                 }
             }
@@ -125,7 +129,7 @@ function quran({ navigation }) {
             </View>
             <View style={{ backgroundColor: "#FFF", flex: 1, padding: 20 }}>
 
-                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal1(quranpara, "Quran")}>
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal2(quranpara, "Quran")}>
                     <View style={{ flexDirection: 'row', width: "100%" }}>
                         <View style={{ width: "20%" }}>
                             <Image source={qura} style={{ alignSelf: 'center', width: 40, height: 40 }} />
@@ -137,7 +141,7 @@ function quran({ navigation }) {
                 </TouchableOpacity>
 
 
-                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal1(surah, "Surah")}>
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal2(surah, "Surah")}>
                     <View style={{ flexDirection: 'row', width: "100%" }}>
                         <View style={{ width: "20%" }}>
                             <Image source={surahh} style={{ alignSelf: 'center', width: 40, height: 40 }} />
@@ -147,6 +151,14 @@ function quran({ navigation }) {
                         </View>
                     </View>
                 </TouchableOpacity>
+
+
+                <TouchableOpacity style={styles.button} >
+                    <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
+                </TouchableOpacity>
+
+
+
 
 
                 {isAnimating &&

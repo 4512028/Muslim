@@ -94,6 +94,11 @@ function others({ navigation }) {
         navigation.push('tasbi')
 
     }
+    goTODonation = () => {
+        navigation.push('sadqahDonation')
+        setmodalVisible(!modalVisible)
+
+    }
 
 
     goToNextScreen = (value) => {
@@ -105,7 +110,7 @@ function others({ navigation }) {
 
         }
         else if (modalHeading == "Sadaqah") {
-
+            goTODonation()
         }
 
         list.find((itm, i) => {
