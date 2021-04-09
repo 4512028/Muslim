@@ -44,25 +44,6 @@ function others({ navigation }) {
     let [isDisabled, setisDisabled] = useState(false);
     let [modalVisible, setmodalVisible] = useState(false);
 
-    let [prayers, setPrayers] = useState([
-        { value: 'Dua', selected: false },
-        { value: 'Tasbi', selected: false },
-        { value: 'Quran', selected: false },
-    ]);
-    let [sadaqha, setSadaqha] = useState([
-        { value: 'Build a Masjid', selected: false },
-        { value: 'Clean Water ', selected: false },
-        { value: 'Food Aid', selected: false },
-        { value: 'Tree', selected: false },
-
-
-    ]);
-    let [list, SetModalList] = useState([]);
-    let [modalHeading, setModalHeading] = useState("");
-    let [selectedPrayer, setSelectedPrayer] = useState("");
-    let [selectedSadaqah, setSelectedSadaqah] = useState("");
-
-
 
     goToGusal = () => {
         navigation.push('ghusl')
@@ -72,54 +53,17 @@ function others({ navigation }) {
         navigation.navigate('reading')
     }
 
-
-    goToDua = () => {
-        navigation.push('dua')
-        setSelectedPrayer("")
-        setmodalVisible(!modalVisible)
-
-    }
-    goToQuran = () => {
-        navigation.push('quran')
-        setSelectedPrayer("")
-        setmodalVisible(!modalVisible)
-
-    }
-    goToTasbi = () => {
-        navigation.push('tasbi')
-        setSelectedPrayer("")
-        setmodalVisible(!modalVisible)
-
-    }
-
     goTODonation = () => {
         navigation.push('tasbi')
 
     }
     goTODonation = () => {
         navigation.push('sadqahDonation')
-        setmodalVisible(!modalVisible)
 
     }
 
 
-    goToNextScreen = (value) => {
 
-        if (modalHeading == "Prayer") {
-            if (selectedPrayer == "Dua") goToDua()
-            else if (selectedPrayer == "Tasbi") goToTasbi()
-            else if (selectedPrayer == "Quran") goToQuran()
-
-        }
-        else if (modalHeading == "Sadaqah") {
-            goTODonation()
-        }
-
-        list.find((itm, i) => {
-            list[i].selected = false;
-        })
-        SetModalList(list)
-    }
 
 
 
@@ -130,56 +74,16 @@ function others({ navigation }) {
     }
 
 
-    displayMOdal = (arry, value) => {
-        console.log(arry)
-        SetModalList(arry);
-        if (value == "prayers") {
-            setModalHeading("Prayer")
-        }
-        else if (value == "Sadaqah") {
-            setModalHeading("Sadaqah")
-        }
-        setmodalVisible(!modalVisible)
-    };
-
-    onSelectList = async (item) => {
-
-        await list.find((itm, i) => {
-            if (itm.value == item.value) {
-                if (itm.selected == false) {
-                    list[i].selected = true;
-                    if (modalHeading == "Prayer") setSelectedPrayer((list[i].value));
-                    else setSelectedSadaqah(list[i].value)
-                    SetModalList(list)
-                }
-            } else {
-
-                list[i].selected = false;
-                SetModalList(list)
-
-            }
-        });
-
-    }
-
-    togglelefunction = () => {
-        setmodalVisible(!modalVisible)
-    }
 
     return (
         <SafeAreaView style={styles.container}>
 
             <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
 
-            {modalVisible &&
-                <Modal isVisible={modalVisible} style={{ justifyContent: "center", }} transparent={true}>
-                    <ModalComponent modalHeadding={modalHeading} togglelefunction={togglelefunction} list={list} onSelectList={onSelectList} goToNextScreen={goToNextScreen} />
-                </Modal>
-            }
-
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
                     <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()}  >
+
                         <Image source={manue} style={{ width: 25, height: 25 }}></Image>
 
                     </TouchableOpacity>
@@ -190,12 +94,12 @@ function others({ navigation }) {
 
                 </View>
             </View>
-            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+            <View style={{ backgroundColor: "#F2F2F2", flex: 1 }}>
                 <View style={{ flexDirection: "column", justifyContent: "space-between", paddingLeft: '6%', paddingRight: '6%' }}>
 
 
                     <View style={{
-                        alignSelf: "center", paddingVertical: 10, paddingHorizontal: 10, marginVertical: "5%",
+                        alignSelf: "center", paddingVertical: 20, paddingHorizontal: 10, marginVertical: "5%",
                         width: "80%", borderRadius: 30,
                         backgroundColor: '#0178B9',
                     }}>
@@ -207,52 +111,54 @@ function others({ navigation }) {
                             <Text style={{ color: 'white', textAlign: "center", fontSize: 15, }}>"Every soul shall taste death" -(surah 3: verse 185) </Text>
                         </View>
                     </View>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+
+                        <TouchableWithoutFeedback onPress={() => navigation.push('prayer')} >
+
+                            <View style={styles.flatView}>
+                                <Image source={prayer} style={{ alignSelf: 'center', width: 80, height: 80 }} />
+                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Prayer </Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+
+
+                        <TouchableWithoutFeedback onPress={() => goToGusal()}  >
+
+                            <View style={styles.flatView}>
+                                <Image source={ghusl} style={{ alignSelf: 'center', width: 80, height: 80 }} />
+                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Ghusl </Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+
+                        <TouchableWithoutFeedback onPress={() => navigation.push('sadqah')}  >
+
+                            <View style={styles.flatView}>
+                                <Image source={sadaqah} style={{ alignSelf: 'center', width: 80, height: 80 }} />
+                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Sadaqah </Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+
+
+                        <TouchableWithoutFeedback onPress={() => navigation.push('reading')}  >
+
+                            <View style={styles.flatView}>
+                                <Image source={reading} style={{ alignSelf: 'center', width: 80, height: 80 }} />
+                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Book Mark </Text>
+                            </View>
+
+                        </TouchableWithoutFeedback>
+                    </View>
 
 
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayMOdal(prayers, "prayers")}>
-                        <View style={{ flexDirection: 'row', width: "100%" }}>
-                            <View style={{ width: "20%" }}>
-                                <Image source={prayer} style={{ alignSelf: 'center', width: 40, height: 40 }} />
-                            </View>
-                            <View style={{ width: "80%", justifyContent: "center" }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>Prayer </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => goToGusal()} >
-                        <View style={{ flexDirection: 'row', width: "100%" }}>
-                            <View style={{ width: "20%" }}>
-                                <Image source={ghusl} style={{ alignSelf: 'center', width: 40, height: 40 }} />
-                            </View>
-                            <View style={{ width: "80%", justifyContent: "center" }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>Ghusl </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayMOdal(sadaqha, "Sadaqah")}>
-                        <View style={{ flexDirection: 'row', width: "100%" }}>
-                            <View style={{ width: "20%" }}>
-                                <Image source={sadaqah} style={{ alignSelf: 'center', width: 40, height: 40 }} />
-                            </View>
-                            <View style={{ width: "80%", justifyContent: "center" }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>Sadaqah </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => goToReading()} >
-                        <View style={{ flexDirection: 'row', width: "100%" }}>
-                            <View style={{ width: "20%" }}>
-                                <Image source={reading} style={{ alignSelf: 'center', width: 40, height: 40 }} />
-                            </View>
-                            <View style={{ width: "80%", justifyContent: "center" }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>Book Mark </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
                 </View>
 
 
@@ -327,24 +233,16 @@ const styles = StyleSheet.create({
 
 
     flatView: {
-        width: '100%',
-        marginBottom: "3%",
-        paddingTop: '4%',
-        paddingBottom: "4%",
-        paddingLeft: '2%',
-        paddingRight: '2%',
-        borderRadius: 10,
-
+        height: 140, width: '42%', padding: 5, flexDirection: 'column', margin: 15, alignItems: 'center', borderRadius: 20, justifyContent: 'center',
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 1,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        elevation: 3,
     }
 
 })

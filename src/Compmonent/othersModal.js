@@ -78,7 +78,7 @@ class othersModal extends Component {
 
                                             <Image source={item.selected == true ? Checked : Unchecked} style={{ resizeMode: "contain", height: 18, width: 18 }} />
 
-                                            <Text style={{ color: "#333333", fontSize: 15, marginLeft: 12, }}>{item.value}</Text>
+                                            <Text numberOfLines={1} style={{ color: "#333333", fontSize: 15, marginLeft: 12, }}>{item.value}</Text>
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </View>

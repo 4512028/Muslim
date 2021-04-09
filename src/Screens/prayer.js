@@ -20,20 +20,11 @@ import {
 } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
-import Profile from '../Assets/Icons/profile.png';
-import Camera from '../Assets/Icons/camera.png';
-import { Card, CardItem, Body, } from 'native-base';
+import prayer from '../Assets/Icons/whitePrayer.png';
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
-
-import edit from '../Assets/Icons/edit.png'
-import email from '../Assets/Icons/email.png'
-import home from '../Assets/Icons/home.png'
-import post from '../Assets/Icons/post.png'
-import phone from '../Assets/Icons/phone.png'
-import manue from '../Assets/Icons/manue.png'
-import group from '../Assets/Icons/group1.png'
-
+import time from '../Assets/Icons/time.png';
+import book from '../Assets/Icons/book.png';
+import pray from '../Assets/Icons/prayer.png';
 
 
 function Prayer({ navigation }) {
@@ -41,6 +32,23 @@ function Prayer({ navigation }) {
     //...........selection of image
 
 
+
+
+    goToDua = () => {
+        navigation.push('dua')
+
+
+    }
+    goToQuran = () => {
+        navigation.push('quran')
+
+
+    }
+    goToTasbi = () => {
+        navigation.push('tasbi')
+
+
+    }
 
 
 
@@ -66,219 +74,56 @@ function Prayer({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Love One </Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Prayers</Text>
 
                 </View>
             </View>
 
-            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+            <View style={{ backgroundColor: "#F2F2F2", flex: 1 }}>
 
-                <KeyboardAwareScrollView
-                    resetScrollToCoords={{ x: 0, y: 0 }}
-                    scrollEnabled={true}
-                    keyboardShouldPersistTaps="handled"
-                    showsVerticalScrollIndicator={false}
-                >
 
-                    <View style={{ padding: "5%", }}>
+                <View style={styles.ImageView}>
 
-                        <Card >
-                            <CardItem>
-                                <Body>
-                                    <Text style={{ textAlign: "center" }}>
-                                        Want to join a group on behalf of loved one,just simple fill in your loved ones detail and choose between the public group and the community group to secure your love ones feuture.
-                                   </Text>
-                                    <Text style={{ textAlign: "center" }}>
-                                        Abu Huraira narrated that the Prophet said: The best charity is that which is practiced by a wealthy person and start giving first to your dependents.
-                                    </Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
+
+                    <Image source={prayer} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+
+                </View>
+                {/* < Text style={{ fontSize: 18, textAlign: "center", marginVertical: 30, color: "#0178B9", fontWeight: "bold" }}>Request For Dua</ Text> */}
+
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => goToDua()} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "50%" }}>
+                            <Image source={pray} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
+                        </View>
+                        <View style={{ width: "50%", justifyContent: "center" }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Dua</Text>
+                        </View>
                     </View>
+                </TouchableOpacity>
 
-                    <View style={{ padding: "5%", }}>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Person Name</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='Person Name'
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Relation to person</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='RelationShip to person'
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Address "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Town "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Postal Code</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Postal Code "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Email "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={email} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Phone "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Name</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Group Name "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Id</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Group Id "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" >
-
-                            <TouchableOpacity style={styles.button} >
-                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
-                            </TouchableOpacity>
-                        </Animatable.View>
-
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => goToQuran()} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "50%" }}>
+                            <Image source={book} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
+                        </View>
+                        <View style={{ width: "50%", justifyContent: "center" }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Quran </Text>
+                        </View>
                     </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.flatView,]} onPress={() => goToTasbi()} >
+                    <View style={{ flexDirection: 'row', width: "100%" }}>
+                        <View style={{ width: "50%" }}>
+                            <Image source={time} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
+                        </View>
+                        <View style={{ width: "50%", justifyContent: "center" }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Tasbih </Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
 
 
-
-                </KeyboardAwareScrollView>
             </View>
         </SafeAreaView>
     )
@@ -297,22 +142,8 @@ const styles = StyleSheet.create({
 
 
     },
-    label: {
-        fontWeight: 'bold',
-        marginBottom: 5
-
-    },
-    textField: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 5,
-        paddingTop: 5,
-
-        fontSize: 15,
-        width: "90%",
 
 
-    },
     backIcon: {
         height: 25,
         width: 25,
@@ -323,41 +154,42 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         justifyContent: 'center'
     },
-    seperater: {
-        height: 1,
-        marginBottom: 15,
-        backgroundColor: '#d5c9de'
-    },
+
     ImageView: {
-        height: 150,
-        width: 150,
-        borderRadius: 75,
-        alignItems: "center", justifyContent: "center",
-        backgroundColor: "#F4F4F4"
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        backgroundColor: "#0178B9",
+        marginVertical: "10%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
 
 
     },
-    button: {
-        marginTop: 30,
-        marginBottom: 150,
-        alignSelf: 'center',
-        height: 50,
-        width: "70%",
-        backgroundColor: '#0178B9',
-        justifyContent: 'center',
-        borderRadius: 11,
-        alignItems: 'center',
-        shadowColor: "#111111",
+
+
+    flatView: {
+        width: '70%',
+        marginBottom: "3%",
+        paddingTop: '4%',
+        paddingBottom: "4%",
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        borderRadius: 10,
+        alignSelf: "center",
+        backgroundColor: 'white',
+        shadowColor: "#000",
+
         shadowOffset: {
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.15,
+        shadowOpacity: 0.25,
         shadowRadius: 3.84,
+
         elevation: 5,
     },
-
-
     loading: {
         position: 'absolute',
         left: 0,

@@ -20,7 +20,7 @@ import {
 } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
-import Camera from '../Assets/Icons/camera.png';
+import timer from '../Assets/Icons/timer.png';
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/modalComponenet'
 
@@ -143,7 +143,13 @@ function tasbi({ navigation }) {
 
 
 
-                    <Text animation="fadeInUp" style={{ fontSize: 18, textAlign: "center", marginTop: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Request for Dua</Text>
+
+                    <View style={styles.ImageView}>
+
+
+                        <Image source={timer} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+
+                    </View>
 
 
                     <  Text style={styles.label}>Name</  Text>
@@ -237,7 +243,7 @@ function tasbi({ navigation }) {
 
 
 
-                    <View style={{ justifyContent: "space-between", alignItems: "center", width: '100%', flexDirection: "row", paddingLeft: 100, marginTop: 20 }}>
+                    <View style={{ justifyContent: "space-between", alignItems: "center", width: '100%', flexDirection: "row", paddingLeft: 100, marginTop: 20, marginBottom: 30 }}>
 
                         <TouchableWithoutFeedback onPress={() => setPublicPrivateDua()} >
                             <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -262,7 +268,7 @@ function tasbi({ navigation }) {
                         </TouchableWithoutFeedback >
 
 
-                        <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }}>
+                        <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%', }}>
                             <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 32, justifyContent: 'center' }}>
                                 <Text style={{ fontSize: 14, color: "#FFF", textAlign: 'center' }}>Submit Request</Text>
 
@@ -339,13 +345,14 @@ const styles = StyleSheet.create({
     inputContainer2: {
         //   alignItems: 'flex-start',
         //   justifyContent: 'flex-start',
-
+        height: 40,
         backgroundColor: '#FFF',
         borderRadius: 25,
         shadowColor: "#000",
-        padding: 10,
+        paddingHorizontal: 10,
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
         shadowOffset: {
             width: 0,
             height: 1,
@@ -365,6 +372,18 @@ const styles = StyleSheet.create({
 
         fontSize: 15,
         width: "90%",
+
+
+    },
+    ImageView: {
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        backgroundColor: "#0178B9",
+        marginTop: "10%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center"
 
 
     },

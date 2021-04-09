@@ -208,7 +208,7 @@ function donates({ navigation }) {
                         </Tabs>
                     </View>
                     <  Text style={styles.label}>Or enter amount</  Text>
-                    <  View style={styles.inputContainer2} >
+                    <  View style={styles.inputContainer1} >
                         <TextInput
 
                             style={styles.textField}
@@ -323,13 +323,29 @@ const styles = StyleSheet.create({
 
     },
     inputContainer2: {
-        //   alignItems: 'flex-start',
-        //   justifyContent: 'flex-start',
 
         backgroundColor: '#FFF',
         borderRadius: 25,
         shadowColor: "#000",
         padding: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+    },
+    inputContainer1: {
+
+        backgroundColor: '#FFF',
+        borderRadius: 25,
+        shadowColor: "#000",
+        paddingHorizontal: 10,
+        height: 40,
         flexDirection: "row",
         justifyContent: "space-between",
         shadowOffset: {

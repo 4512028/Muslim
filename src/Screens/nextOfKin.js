@@ -70,7 +70,7 @@ function nextToKin({ navigation }) {
                 </View>
             </View>
 
-            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+            <View style={{ backgroundColor: "#F2F2F2", flex: 1 }}>
 
                 <KeyboardAwareScrollView
                     resetScrollToCoords={{ x: 0, y: 0 }}

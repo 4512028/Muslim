@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
+import duaa from '../Assets/Icons/dua.png';
 
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
@@ -90,9 +91,14 @@ function dua({ navigation }) {
                     showsVerticalScrollIndicator={false}
                 >
 
+                    < View animation="fadeInUp" style={styles.ImageView}>
 
 
-                    <Text animation="fadeInUp" style={{ fontSize: 18, textAlign: "center", marginTop: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Request for Dua</Text>
+                        <Image source={duaa} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+
+                    </ View>
+
+                    < Text style={{ fontSize: 18, textAlign: "center", color: "#0178B9", fontWeight: "bold" }}>Request For Dua</ Text>
 
 
                     <View style={[styles.inputContainer,]}>
@@ -112,7 +118,7 @@ function dua({ navigation }) {
 
                             multiline={true}
                             autoCapitalize="none"
-                            placeholder="Your Feedback"
+                            placeholder="Your Dua"
                             placeholderTextColor={'#9a9999'}
                             onChangeText={(val) => { }}
 
@@ -129,7 +135,7 @@ function dua({ navigation }) {
 
 
 
-                    <View style={{ justifyContent: "space-between", alignItems: "center", width: '100%', flexDirection: "row", paddingLeft: 100, marginTop: 20 }}>
+                    <View style={{ justifyContent: "space-between", alignItems: "center", width: '100%', flexDirection: "row", paddingLeft: 100, marginVertical: 20 }}>
 
                         <TouchableWithoutFeedback onPress={() => setPublicPrivateDua()} >
                             <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -266,6 +272,19 @@ const styles = StyleSheet.create({
         paddingBottom: 140,
         color: '#9a9999',
         marginTop: 10,
+
+
+    },
+    ImageView: {
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        backgroundColor: "#0178B9",
+        marginTop: "10%",
+        marginBottom: "5%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
 
 
     },

@@ -26,13 +26,11 @@ import { Card, CardItem, Body, } from 'native-base';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
-import edit from '../Assets/Icons/edit.png'
+import nextTPkin from '../Assets/Icons/nextTPkin.png'
 import email from '../Assets/Icons/email.png'
-import home from '../Assets/Icons/home.png'
-import post from '../Assets/Icons/post.png'
+
 import phone from '../Assets/Icons/phone.png'
-import manue from '../Assets/Icons/manue.png'
-import group from '../Assets/Icons/group1.png'
+
 
 
 
@@ -83,6 +81,14 @@ function ghusl({ navigation }) {
 
 
                     <View style={{ padding: "5%", }}>
+
+
+                        < View animation="fadeInUp" style={styles.ImageView}>
+
+
+                            <Image source={nextTPkin} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+
+                        </ View>
                         <Animatable.Text animation="fadeInUp" style={{ fontSize: 18, alignSelf: "center", textAlign: "center", marginVertical: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Request For Ghusl</Animatable.Text>
 
 
@@ -227,14 +233,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#d5c9de'
     },
     ImageView: {
-        height: 150,
-        width: 150,
-        borderRadius: 75,
-        alignItems: "center", justifyContent: "center",
-        backgroundColor: "#F4F4F4"
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        backgroundColor: "#0178B9",
+        marginTop: "10%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center"
 
 
     },
+
     button: {
         marginTop: 30,
         marginBottom: 150,

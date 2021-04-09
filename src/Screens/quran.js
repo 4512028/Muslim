@@ -22,7 +22,9 @@ import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import surahh from '../Assets/Icons/surah.png';
-import qura from '../Assets/Icons/book.png';
+import qura from '../Assets/Icons/whiteBook.png';
+import quraa from '../Assets/Icons/book.png';
+
 
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
@@ -45,6 +47,14 @@ function quran({ navigation }) {
         { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ', selected: false },
         { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ', selected: false },
         { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ', selected: false },
+        { value: 'سُبْحَانَ ٱللَّٰهِ', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ', selected: false },
+        { value: 'سُبْحَانَ ٱللَّٰهِ', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ', selected: false },
 
     ]);
     let [quranpara, setquranpara] = useState([
@@ -53,7 +63,14 @@ function quran({ navigation }) {
         { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ para2', selected: false },
         { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ para3 ', selected: false },
         { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ para4', selected: false },
-
+        { value: 'سُبْحَانَ ٱللَّٰهِ para1', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ para2', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ para3 ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ para4', selected: false },
+        { value: 'سُبْحَانَ ٱللَّٰهِ', selected: false },
+        { value: 'سُبْحَٰنَكَ ٱللَّٰهُمَّ', selected: false },
+        { value: 'سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ وَبِحَمْدِهِ', selected: false },
+        { value: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ إِنِّي كُنْتُ مِنَ ٱلظَّٰلِمِينَ', selected: false },
     ]);
     let [modalVisible, setmodalVisible] = useState(false);
 
@@ -127,30 +144,36 @@ function quran({ navigation }) {
 
                 </View>
             </View>
-            <View style={{ backgroundColor: "#FFF", flex: 1, padding: 20 }}>
+            <View style={{ backgroundColor: "#F2F2F2", flex: 1, padding: 20 }}>
 
+                <View style={styles.ImageView}>
+
+
+                    <Image source={qura} style={{ height: 70, width: 70, alignSelf: 'center', resizeMode: "contain" }} />
+
+                </View>
                 <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal2(quranpara, "Quran")}>
                     <View style={{ flexDirection: 'row', width: "100%" }}>
-                        <View style={{ width: "20%" }}>
-                            <Image source={qura} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        <View style={{ width: "50%" }}>
+                            <Image source={quraa} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                         </View>
-                        <View style={{ width: "80%", justifyContent: "center" }}>
-                            <Text style={{ color: 'black', fontSize: 15, }}>PARA </Text>
+                        <View style={{ width: "50%", justifyContent: "center" }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>PARA</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
-
-
                 <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal2(surah, "Surah")}>
                     <View style={{ flexDirection: 'row', width: "100%" }}>
-                        <View style={{ width: "20%" }}>
-                            <Image source={surahh} style={{ alignSelf: 'center', width: 40, height: 40 }} />
+                        <View style={{ width: "50%" }}>
+                            <Image source={surahh} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                         </View>
-                        <View style={{ width: "80%", justifyContent: "center" }}>
-                            <Text style={{ color: 'black', fontSize: 15, }}>SURAH </Text>
+                        <View style={{ width: "50%", justifyContent: "center" }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>SURAH</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
+
+
 
 
                 <TouchableOpacity style={styles.button} >
@@ -186,18 +209,30 @@ const styles = StyleSheet.create({
 
     },
 
+    ImageView: {
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        backgroundColor: "#0178B9",
+        marginVertical: "10%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
 
+
+    },
     flatView: {
-        width: '100%',
+        width: '70%',
         marginBottom: "3%",
         paddingTop: '4%',
         paddingBottom: "4%",
         paddingLeft: '2%',
         paddingRight: '2%',
         borderRadius: 10,
-
+        alignSelf: "center",
         backgroundColor: 'white',
         shadowColor: "#000",
+
         shadowOffset: {
             width: 0,
             height: 2,
