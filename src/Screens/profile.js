@@ -10,6 +10,7 @@ import home from '../Assets/Icons/home.png'
 import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
 import manue from '../Assets/Icons/manue.png'
+import back from '../Assets/Icons/Arrr.png';
 
 
 
@@ -41,17 +42,17 @@ function profile({ navigation }) {
     }
 
 
-
-
+    Back = () => {
+        navigation.goBack()
+    }
     return (
         <SafeAreaView style={[styles.container]}>
             <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
 
             {/* top bar */}
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: '#0178B9' }}>
-                <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()}  >
-                    <Image source={manue} style={{ width: 25, height: 25 }}></Image>
-
+                <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
+                    <Image source={back} style={styles.backIcon}></Image>
                 </TouchableOpacity>
                 <View style={{ width: "70%", justifyContent: "center", alignItems: "center" }}>
                     <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Profile</Text>
@@ -61,7 +62,7 @@ function profile({ navigation }) {
                 </TouchableOpacity>
             </View>
             {/* top bar */}
-            <ScrollView keyboardShouldPersistTaps="handled"   >
+            <ScrollView keyboardShouldPersistTaps="handled">
 
                 <View style={{ flex: 1, width: "100%", backgroundColor: "#F2F2F2" }}>
                     <TouchableOpacity onPress={() => gotoVerifyProofile()}>
@@ -306,6 +307,18 @@ const styles = StyleSheet.create({
 
 
     },
+
+    backIcon: {
+        height: 25,
+        width: 25,
+    },
+    back: {
+        height: 50,
+        width: 50,
+        marginLeft: 15,
+        justifyContent: 'center'
+    },
+
 });
 
 export default profile;

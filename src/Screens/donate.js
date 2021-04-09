@@ -69,7 +69,7 @@ function donates({ navigation }) {
 
 
 
-    displayModal = (arry, value) => {
+    displayModal4 = (arry, value) => {
 
         SetModalList(arry);
         if (value == "funds") {
@@ -138,7 +138,7 @@ function donates({ navigation }) {
                 <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}   >
 
                     <Text style={{ fontSize: 18, color: "#0178B9", fontWeight: "bold", marginTop: 20, marginBottom: 10 }}>Funds</Text>
-                    <TouchableOpacity onPress={() => displayModal(fundsArry, "funds")}>
+                    <TouchableOpacity onPress={() => displayModal4(fundsArry, "funds")}>
 
                         <View style={styles.inputContainer2}>
 

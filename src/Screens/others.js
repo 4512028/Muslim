@@ -22,6 +22,8 @@ import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import Modal from "react-native-modal";
+import manue from '../Assets/Icons/manue.png'
+
 import ModalComponent from '../Compmonent/othersModal'
 
 
@@ -128,7 +130,7 @@ function others({ navigation }) {
     }
 
 
-    displayModal = (arry, value) => {
+    displayMOdal = (arry, value) => {
         console.log(arry)
         SetModalList(arry);
         if (value == "prayers") {
@@ -177,8 +179,9 @@ function others({ navigation }) {
 
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
-                    <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
-                        <Image source={back} style={styles.backIcon}></Image>
+                    <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()}  >
+                        <Image source={manue} style={{ width: 25, height: 25 }}></Image>
+
                     </TouchableOpacity>
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
@@ -207,7 +210,7 @@ function others({ navigation }) {
 
 
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal(prayers, "prayers")}>
+                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayMOdal(prayers, "prayers")}>
                         <View style={{ flexDirection: 'row', width: "100%" }}>
                             <View style={{ width: "20%" }}>
                                 <Image source={prayer} style={{ alignSelf: 'center', width: 40, height: 40 }} />
@@ -229,7 +232,7 @@ function others({ navigation }) {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayModal(sadaqha, "Sadaqah")}>
+                    <TouchableOpacity style={[styles.flatView,]} onPress={() => displayMOdal(sadaqha, "Sadaqah")}>
                         <View style={{ flexDirection: 'row', width: "100%" }}>
                             <View style={{ width: "20%" }}>
                                 <Image source={sadaqah} style={{ alignSelf: 'center', width: 40, height: 40 }} />

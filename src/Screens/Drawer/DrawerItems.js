@@ -3,6 +3,14 @@
 import React from "react";
 import { View, StyleSheet, Button, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
 import Logo from '../../Assets/Icons/profile.png'
+import whiteHome from '../../Assets/Icons/whiteHome.png'
+import whiteProfile from '../../Assets/Icons/whiteProfile.png'
+import whiteDOnat from '../../Assets/Icons/whiteDOnate.png'
+import nextTPkin from '../../Assets/Icons/nextTPkin.png'
+import whiteLove from '../../Assets/Icons/whiteLove.png'
+import feedBack from '../../Assets/Icons/whiteProfile.png'
+import logOut from '../../Assets/Icons/whiteLogout.png'
+
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
@@ -10,6 +18,9 @@ import {
     DrawerItem,
 } from '@react-navigation/drawer';
 function drawerItem({ navigation }) {
+
+
+
 
 
     return (
@@ -24,7 +35,7 @@ function drawerItem({ navigation }) {
                             <Image source={Logo} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
 
                         </View>
-                        <Text style={{ textAlign: "center", fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, color: "white" }}> umer Saleem</Text>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, marginHorizontal: "5%", color: "white" }}> umer Saleem</Text>
 
                     </TouchableOpacity>
 
@@ -33,8 +44,8 @@ function drawerItem({ navigation }) {
                     navigation.navigate('Home')
                 }}>
                     <View style={styles.item}>
-
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}>Home </Text>
+                        <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
+                        <Text style={{ fontSize: 16, color: "white" }}>Home </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -42,8 +53,9 @@ function drawerItem({ navigation }) {
                     navigation.navigate('profile')
                 }}>
                     <View style={styles.item}>
+                        <Image source={whiteProfile} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Profile </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Profile </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -51,8 +63,9 @@ function drawerItem({ navigation }) {
                     navigation.navigate('nextofkin')
                 }}>
                     <View style={styles.item}>
+                        <Image source={nextTPkin} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Next of Kin </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Next of Kin </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -61,8 +74,9 @@ function drawerItem({ navigation }) {
                     navigation.navigate('love')
                 }}>
                     <View style={styles.item}>
+                        <Image source={whiteLove} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Love One </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Love One </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -71,12 +85,13 @@ function drawerItem({ navigation }) {
                     navigation.navigate('donate')
                 }}>
                     <View style={styles.item}>
+                        <Image source={whiteDOnat} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Donate </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Donate </Text>
 
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
+                {/* <TouchableOpacity onPress={() => {
                     navigation.navigate('other')
                 }}>
                     <View style={styles.item}>
@@ -84,15 +99,16 @@ function drawerItem({ navigation }) {
                         <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Others </Text>
 
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
 
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('feedback')
                 }}>
                     <View style={styles.item}>
+                        <Image source={feedBack} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Feedback </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Feedback </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -101,8 +117,9 @@ function drawerItem({ navigation }) {
                     navigation.navigate('feedback')
                 }}>
                     <View style={styles.item}>
+                        <Image source={logOut} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Log out </Text>
+                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Log out </Text>
 
                     </View>
                 </TouchableOpacity>
@@ -126,14 +143,16 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100,
         borderRadius: 50,
-        backgroundColor: "white",
-        alignSelf: "center"
+        backgroundColor: "white", marginHorizontal: "5%"
 
 
     },
     item: {
         height: 40,
         width: "100%",
+        alignItems: "center",
+        flexDirection: "row",
+        paddingHorizontal: "5%"
 
     }
 });

@@ -9,9 +9,11 @@ import home from '../../Assets/Icons/home.png'
 import star from '../../Assets/Icons/star.png'
 import group from '../../Assets/Icons/group.png'
 import profile from '../../Assets/Icons/profile.png'
+import menu from '../../Assets/Icons/manu.png'
 
 
-import { MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator } from "../Stack/stackScreen";
+
+import { MainStackNavigator, otherStackNavigator, donateStackNavigator, groupStackNavigator } from "../Stack/stackScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -96,7 +98,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
                 name="profile"
-                component={profileStackNavigator}
+                component={otherStackNavigator}
                 forceRenderTabPanel={true}
                 options={{
                     tabBarBadgeStyle: {
@@ -105,11 +107,11 @@ const BottomTabNavigator = () => {
                         borderWidth: 0.2,
                         borderColor: '#000',
                     },
-                    tabBarLabel: 'profile',
+                    tabBarLabel: 'Menu',
                     tabBarIcon: ({ color, size }) => (
                         <Image
                             resizeMode="stretch"
-                            source={profile}
+                            source={menu}
                             style={{ width: 25, height: 25 }}
                         />
                     ),

@@ -194,24 +194,7 @@ function nextToKin({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Phone "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
-                            </View>
 
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                         <Animatable.View animation="fadeInUp" >
 

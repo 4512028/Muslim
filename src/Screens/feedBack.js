@@ -55,7 +55,7 @@ function feedBack({ navigation }) {
 
 
 
-    displayModal = (arry, value) => {
+    displayModal3 = (arry, value) => {
 
         SetModalList(arry);
         if (value == "reason") {
@@ -129,7 +129,7 @@ function feedBack({ navigation }) {
                 >
 
 
-                    <TouchableOpacity onPress={() => displayModal(reasonArry, "reason")}>
+                    <TouchableOpacity onPress={() => displayModal3(reasonArry, "reason")}>
 
                         <View style={styles.inputContainer2}>
 
