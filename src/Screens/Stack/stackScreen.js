@@ -32,6 +32,12 @@ import tasbi from "../tasbi";
 import quran from "../quran";
 import sadqahDonation from "../sadqahDonation"
 import sadqah from "../sadqah"
+import nextOfKinDetail from "../nextOfKinDetail"
+import loveOneDetail from "../loveOneDetail"
+import loveOneUpdate from "../loveOneUpdate"
+
+
+
 
 
 
@@ -104,7 +110,11 @@ const groupStackNavigator = () => {
 const loveStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="loveOneDetail" component={loveOneDetail} />
             <Stack.Screen name="LovedOne" component={LovedOne} />
+            <Stack.Screen name="loveOneUpdate" component={loveOneUpdate} />
+
+
         </Stack.Navigator>
     );
 }
@@ -118,7 +128,9 @@ const feedbackStackNavigator = () => {
 const nextOfKinStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="nextOfKinDetail" component={nextOfKinDetail} />
             <Stack.Screen name="nextOfKin" component={nextOfKin} />
+
         </Stack.Navigator>
     );
 }

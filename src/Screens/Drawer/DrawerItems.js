@@ -25,73 +25,75 @@ function drawerItem({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <View style={{ width: "100%", paddingTop: "10%", }}>
+            <View style={{ flex: 1, }}>
+                <ScrollView>
+
+                    <View style={{ width: "100%", paddingTop: "10%", alignItems: "center" }}>
+                        <TouchableOpacity onPress={() => {
+                            navigation.navigate('profile')
+                        }}>
+                            <View style={styles.ImageView}>
+
+                                <Image source={Logo} style={{ height: 80, width: 80, alignSelf: 'center', resizeMode: "contain" }} />
+
+                            </View>
+                            <Text style={{ fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, color: "white" }}> umer Saleem</Text>
+
+                        </TouchableOpacity>
+
+                    </View>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Home')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
+                            <Text style={{ fontSize: 16, color: "white" }}>Home </Text>
+
+                        </View>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('profile')
                     }}>
-                        <View style={styles.ImageView}>
+                        <View style={styles.item}>
+                            <Image source={whiteProfile} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                            <Image source={Logo} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Profile </Text>
 
                         </View>
-                        <Text style={{ fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, marginHorizontal: "5%", color: "white" }}> umer Saleem</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('nextOfKinDetail')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={nextTPkin} style={{ height: 30, width: 30, marginRight: 10 }} />
 
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Next of Kin </Text>
+
+                        </View>
                     </TouchableOpacity>
 
-                </View>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('Home')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
-                        <Text style={{ fontSize: 16, color: "white" }}>Home </Text>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('loveOneDetail')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={whiteLove} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('profile')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={whiteProfile} style={{ height: 30, width: 30, marginRight: 10 }} />
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Love One </Text>
 
-                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Profile </Text>
+                        </View>
+                    </TouchableOpacity>
 
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('nextofkin')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={nextTPkin} style={{ height: 30, width: 30, marginRight: 10 }} />
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('donate')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={whiteDOnat} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Next of Kin </Text>
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Donate </Text>
 
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('love')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={whiteLove} style={{ height: 30, width: 30, marginRight: 10 }} />
-
-                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Love One </Text>
-
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('donate')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={whiteDOnat} style={{ height: 30, width: 30, marginRight: 10 }} />
-
-                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Donate </Text>
-
-                    </View>
-                </TouchableOpacity>
-                {/* <TouchableOpacity onPress={() => {
+                        </View>
+                    </TouchableOpacity>
+                    {/* <TouchableOpacity onPress={() => {
                     navigation.navigate('other')
                 }}>
                     <View style={styles.item}>
@@ -102,17 +104,22 @@ function drawerItem({ navigation }) {
                 </TouchableOpacity> */}
 
 
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('feedback')
-                }}>
-                    <View style={styles.item}>
-                        <Image source={feedBack} style={{ height: 30, width: 30, marginRight: 10 }} />
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('feedback')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={feedBack} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Feedback </Text>
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Feedback </Text>
 
-                    </View>
-                </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
 
+
+
+
+
+                </ScrollView>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('feedback')
                 }}>
@@ -123,10 +130,8 @@ function drawerItem({ navigation }) {
 
                     </View>
                 </TouchableOpacity>
+            </View>
 
-
-
-            </ScrollView>
 
         </SafeAreaView >
     );
@@ -143,6 +148,8 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100,
         borderRadius: 50,
+        alignItems: "center",
+        justifyContent: "center",
         backgroundColor: "white", marginHorizontal: "5%"
 
 
@@ -151,6 +158,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: "100%",
         alignItems: "center",
+
         flexDirection: "row",
         paddingHorizontal: "5%"
 

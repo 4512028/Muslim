@@ -11,6 +11,8 @@ import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
 import manue from '../Assets/Icons/manue.png'
 import back from '../Assets/Icons/Arrr.png';
+import userP from '../Assets/Icons/userP.png';
+
 
 
 
@@ -71,12 +73,12 @@ function profile({ navigation }) {
 
                         </View>
                     </TouchableOpacity>
-                    <View style={{ alignSelf: "center", paddingTop: "10%", }}>
+                    <View style={{ alignSelf: "center", paddingTop: "5%", }}>
 
                         <View style={styles.ImageView}>
 
 
-                            <Image source={profilee} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+                            <Image source={userP} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
 
                         </View>
 
@@ -86,7 +88,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>NAME :</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
                             <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
@@ -119,7 +121,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>EMAIL :</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 10, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 10, marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
                             <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
@@ -152,7 +154,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>ADDRESS :</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 10, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 10, marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
 
@@ -185,7 +187,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>PHONE</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
                             <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
@@ -218,7 +220,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>POSTAL CODE</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
                             <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
@@ -252,7 +254,7 @@ function profile({ navigation }) {
                         <Text style={{ fontSize: 18, color: "black", }}>NEAREST MASJID</Text>
 
                         <View style={{
-                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "#B7D9E6"
+                            flexDirection: 'row', height: 50, alignItems: 'center', marginBottom: 20, marginTop: 5, borderRadius: 5, backgroundColor: "white"
                         }}>
 
                             <View style={{ width: '10%', alignItems: "center", justifyContent: "center" }}>
@@ -301,7 +303,7 @@ const styles = StyleSheet.create({
         height: 120,
         width: 120,
         borderRadius: 60,
-        backgroundColor: "#FFF",
+        backgroundColor: "#0178B9",
         alignItems: "center",
         justifyContent: "center"
 

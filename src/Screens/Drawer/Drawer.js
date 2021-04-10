@@ -18,8 +18,8 @@ const DrawerNavigator = () => {
             <Drawer.Screen name="Home" component={BottomTabNavigator} />
             <Drawer.Screen name="profile" component={profileStackNavigator} />
             <Drawer.Screen name="donate" component={donateStackNavigator} />
-            <Drawer.Screen name="love" component={loveStackNavigator} />
-            <Drawer.Screen name="nextofkin" component={nextOfKinStackNavigator} />
+            <Drawer.Screen name="loveOneDetail" component={loveStackNavigator} />
+            <Drawer.Screen name="nextOfKinDetail" component={nextOfKinStackNavigator} />
             <Drawer.Screen name="other" component={otherStackNavigator} />
 
             {/* <Drawer.Screen name="ghusl" component={ghuslStackNavigator} />

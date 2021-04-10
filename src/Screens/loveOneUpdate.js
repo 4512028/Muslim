@@ -20,25 +20,28 @@ import {
 } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
+import Profile from '../Assets/Icons/profile.png';
 import Camera from '../Assets/Icons/camera.png';
+import { Card, CardItem, Body, } from 'native-base';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
-import Profile from '../Assets/Icons/profile.png';
 import edit from '../Assets/Icons/edit.png'
 import email from '../Assets/Icons/email.png'
 import home from '../Assets/Icons/home.png'
 import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
-import userP from '../Assets/Icons/userP.png'
+import manue from '../Assets/Icons/manue.png'
+import group from '../Assets/Icons/group1.png'
 
 
-function nextToKin({ navigation }) {
+
+function loveOneUpdate({ navigation }) {
 
     //...........selection of image
+
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
-
 
 
 
@@ -65,12 +68,12 @@ function nextToKin({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Next to kin </Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>UPdate</Text>
 
                 </View>
             </View>
 
-            <View style={{ backgroundColor: "#F2F2F2", flex: 1 }}>
+            <View style={{ backgroundColor: "#FFF", flex: 1 }}>
 
                 <KeyboardAwareScrollView
                     resetScrollToCoords={{ x: 0, y: 0 }}
@@ -79,26 +82,30 @@ function nextToKin({ navigation }) {
                     showsVerticalScrollIndicator={false}
                 >
 
-                    <View style={{ alignSelf: "center", paddingTop: "5%", }}>
+                    <View style={{ padding: "5%", }}>
 
-                        <View style={styles.ImageView}>
-
-
-                            <Image source={userP} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
-
-                        </View>
-
+                        <Card >
+                            <CardItem>
+                                <Body>
+                                    <Text style={{ textAlign: "center" }}>
+                                        Want to join a group on behalf of loved one,just simple fill in your loved ones detail and choose between the public group and the community group to secure your love ones feuture.
+                                   </Text>
+                                    <Text style={{ textAlign: "center" }}>
+                                        Abu Huraira narrated that the Prophet said: The best charity is that which is practiced by a wealthy person and start giving first to your dependents.
+                                    </Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
                     </View>
 
+                    <View style={{ padding: "5%", }}>
 
-                    <View style={{ paddingHorizontal: "5%", marginTop: "10%" }}>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Name</Animatable.Text>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Person Name</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
                             <TextInput
                                 animation="fadeInUp"
                                 style={styles.textField}
-                                placeholder='Name'
+                                placeholder='Person Name'
                                 placeholderTextColor='#d5c9de'
                             // value={this.state.UserName}
                             // onChangeText={this.nameChangeHandler}
@@ -108,58 +115,60 @@ function nextToKin({ navigation }) {
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
                             </View>
                         </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder='Address'
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
-                            </View>
-                        </Animatable.View>
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Relation to person</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
 
                             <TextInput
                                 animation="fadeInUp"
                                 style={styles.textField}
-                                placeholder='Town'
+                                placeholder='RelationShip to person'
                                 placeholderTextColor='#d5c9de'
                             // value={this.state.UserGym}
                             // onChangeText={this.gymChangeHandler}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
+                                <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
                             </View>
                         </Animatable.View>
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone Number</Animatable.Text>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
                             <TextInput
                                 animation="fadeInUp"
                                 style={styles.textField}
-                                placeholder="Phone Number "
+                                placeholder="Address "
                                 placeholderTextColor='#d5c9de'
                             // value={this.state.UserInstructor}
                             // onChangeText={this.instructorNameChangeHandler}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
+                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Town "
+                                placeholderTextColor='#d5c9de'
+                            // value={this.state.UserInstructor}
+                            // onChangeText={this.instructorNameChangeHandler}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={home} style={{ height: 15, width: 15 }}></Image>
                             </View>
 
 
@@ -203,12 +212,67 @@ function nextToKin({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Phone "
+                                placeholderTextColor='#d5c9de'
+                            // value={this.state.UserInstructor}
+                            // onChangeText={this.instructorNameChangeHandler}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
+                            </View>
 
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Name</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Group Name "
+                                placeholderTextColor='#d5c9de'
+                            // value={this.state.UserInstructor}
+                            // onChangeText={this.instructorNameChangeHandler}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Id</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Group Id "
+                                placeholderTextColor='#d5c9de'
+                            // value={this.state.UserInstructor}
+                            // onChangeText={this.instructorNameChangeHandler}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={group} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                         <Animatable.View animation="fadeInUp" >
 
                             <TouchableOpacity style={styles.button} >
-                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
+                                <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update </Text>
                             </TouchableOpacity>
                         </Animatable.View>
 
@@ -224,7 +288,7 @@ function nextToKin({ navigation }) {
         </SafeAreaView>
     )
 }
-export default nextToKin;
+export default loveOneUpdate;
 
 
 
@@ -236,6 +300,16 @@ const styles = StyleSheet.create({
 
 
 
+
+    },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
 
     },
     label: {
@@ -254,16 +328,6 @@ const styles = StyleSheet.create({
 
 
     },
-    loading: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-
-    },
     backIcon: {
         height: 25,
         width: 25,
@@ -280,16 +344,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#d5c9de'
     },
     ImageView: {
-        height: 120,
-        width: 120,
-        borderRadius: 60,
-        backgroundColor: "#0178B9",
-        alignItems: "center",
-        justifyContent: "center"
+        height: 150,
+        width: 150,
+        borderRadius: 75,
+        alignItems: "center", justifyContent: "center",
+        backgroundColor: "#F4F4F4"
 
 
     },
-
     button: {
         marginTop: 30,
         marginBottom: 150,

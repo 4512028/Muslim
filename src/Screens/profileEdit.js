@@ -27,7 +27,7 @@ import email from '../Assets/Icons/email.png'
 import home from '../Assets/Icons/home.png'
 import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
-import manue from '../Assets/Icons/manue.png'
+import userP from '../Assets/Icons/userP.png'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import * as ImagePicker from "react-native-image-picker"
 
@@ -54,7 +54,7 @@ function profileEdit({ navigation }) {
 
 
     Back = () => {
-        navigation.pop()
+        navigation.goBack()
     }
 
 
@@ -119,7 +119,7 @@ function profileEdit({ navigation }) {
                             <View style={styles.ImageView}>
 
 
-                                <Image source={isSelected1 == true ? response1 : Profile} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+                                <Image source={isSelected1 == true ? response1 : userP} style={isSelected1 == true ? { height: 150, width: 150, borderRadius: 75, alignSelf: 'center', } : { height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
 
                             </View>
 
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 75,
         alignItems: "center", justifyContent: "center",
-        backgroundColor: "#F4F4F4"
+        backgroundColor: "#0178B9"
 
 
     },

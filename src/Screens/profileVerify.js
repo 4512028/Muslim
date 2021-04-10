@@ -47,7 +47,7 @@ function profileVerification({ navigation }) {
 
 
     Back = () => {
-        navigation.pop()
+        navigation.goBack()
     }
 
     //...........selection of image
