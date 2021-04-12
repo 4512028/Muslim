@@ -34,18 +34,17 @@ import userP from '../Assets/Icons/userP.png'
 import profile from "./profile";
 
 
-function nextToKinDetail({ navigation }) {
+function ghusalDetail({ navigation }) {
 
     //...........selection of image
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
-    let [nextToKin, setnextToKin] = useState([
+    let [ghusl, setghusl] = useState([
         {
             Name: "umer",
             detail: [
-                { name: "Address", value: "Faisliabad" },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
+                { name: "Name", value: "Faisliabad" },
+                { name: "Relation", value: "brother" },
                 { name: "Phone", value: "2392039203239" },
                 { name: "Email", value: "mumersaleem79@gmail.com" },
 
@@ -54,9 +53,9 @@ function nextToKinDetail({ navigation }) {
         {
             Name: "umer",
             detail: [
-                { name: "Address", value: "Faisliabad" },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
+
+                { name: "Name", value: "Faisliabad" },
+                { name: "Relation", value: "brother" },
                 { name: "Phone", value: "2392039203239" },
                 { name: "Email", value: "mumersaleem79@gmail.com" },
             ]
@@ -65,14 +64,14 @@ function nextToKinDetail({ navigation }) {
 
 
 
-    goToNKUpdate = () => {
+    goToGhusalUpdate = () => {
 
-        navigation.navigate('nextOfKinUpdate')
+        navigation.navigate('ghusalUpdate')
 
     }
-    goToNK = () => {
+    goToghusl = () => {
 
-        navigation.navigate('nextOfKin')
+        navigation.navigate('ghusl')
 
     }
 
@@ -145,7 +144,7 @@ function nextToKinDetail({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Next to kin</Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Ghusl</Text>
 
                 </View>
             </View>
@@ -156,7 +155,7 @@ function nextToKinDetail({ navigation }) {
                 <FlatList
                     horizontal={false}
                     showsVerticalScrollIndicator={false}
-                    data={nextToKin}
+                    data={ghusl}
 
                     style={{
                         paddingLeft: "3%", paddingRight: "3%", paddingBottom: 30, paddingTop: 10
@@ -171,7 +170,7 @@ function nextToKinDetail({ navigation }) {
                                     <View style={{ with: "100%", flexDirection: "row", justifyContent: "space-between", paddingVertical: 5 }}>
 
                                         <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>Umer saleem </Text>
-                                        <TouchableOpacity onPress={() => goToNKUpdate()}>
+                                        <TouchableOpacity onPress={() => goToGhusalUpdate()}>
                                             <Image source={edit} style={styles.backIcon}></Image>
                                         </TouchableOpacity>
 
@@ -203,7 +202,7 @@ function nextToKinDetail({ navigation }) {
                     <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
                 }
             </View>
-            <TouchableOpacity activeOpacity={1} style={styles.addNotes} onPress={() => { goToNK() }}>
+            <TouchableOpacity activeOpacity={1} style={styles.addNotes} onPress={() => { goToghusl() }}>
 
                 <Image source={add} resizeMode='cover' style={{ height: 25, width: 25, borderRadius: 50, position: "absolute", }} />
 
@@ -212,7 +211,7 @@ function nextToKinDetail({ navigation }) {
         </SafeAreaView>
     )
 }
-export default nextToKinDetail;
+export default ghusalDetail;
 
 
 

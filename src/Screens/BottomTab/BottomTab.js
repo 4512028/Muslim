@@ -97,7 +97,7 @@ const BottomTabNavigator = () => {
 
             />
             <Tab.Screen
-                name="profile"
+                name="Reading"
                 component={otherStackNavigator}
                 forceRenderTabPanel={true}
                 options={{
@@ -107,7 +107,7 @@ const BottomTabNavigator = () => {
                         borderWidth: 0.2,
                         borderColor: '#000',
                     },
-                    tabBarLabel: 'Menu',
+                    tabBarLabel: 'Reading',
                     tabBarIcon: ({ color, size }) => (
                         <Image
                             resizeMode="stretch"

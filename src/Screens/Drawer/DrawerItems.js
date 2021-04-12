@@ -10,6 +10,8 @@ import nextTPkin from '../../Assets/Icons/nextTPkin.png'
 import whiteLove from '../../Assets/Icons/whiteLove.png'
 import feedBack from '../../Assets/Icons/whiteProfile.png'
 import logOut from '../../Assets/Icons/whiteLogout.png'
+import ghusl from '../../Assets/Icons/whiteS.png';
+
 
 import {
     createDrawerNavigator,
@@ -93,16 +95,16 @@ function drawerItem({ navigation }) {
 
                         </View>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity onPress={() => {
-                    navigation.navigate('other')
-                }}>
-                    <View style={styles.item}>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('ghusalDetail')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={ghusl} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                        <Text style={{ textAlign: "center", fontSize: 16, marginTop: 10, color: "white" }}> Others </Text>
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Ghusl </Text>
 
-                    </View>
-                </TouchableOpacity> */}
-
+                        </View>
+                    </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('feedback')

@@ -17,14 +17,16 @@ import Donate from "../donate";
 import donationMonthly from "../donationMonthly";
 import donationOnTime from "../donationOnTime";
 
-import LovedOne from "../lovedOne";
-import nextOfKin from "../nextOfKin";
 import feedBack from "../feedBack";
 import profileEdit from "../profileEdit";
 import profileVerify from "../profileVerify";
 import homePostDetail from "../homePostDetail";
 import prayer from "../prayer";
 import ghusl from "../ghusl";
+import ghusalDetail from "../ghusalDetail";
+import ghusalUpdate from "../ghusalUpdate";
+
+
 import others from "../others";
 import reading from "../reading";
 import dua from "../dua";
@@ -33,8 +35,13 @@ import quran from "../quran";
 import sadqahDonation from "../sadqahDonation"
 import sadqah from "../sadqah"
 import nextOfKinDetail from "../nextOfKinDetail"
+import nextOfKinUpdate from "../nextOfKinUpdate"
+import nextOfKin from "../nextOfKin";
+
+import LovedOne from "../lovedOne";
 import loveOneDetail from "../loveOneDetail"
 import loveOneUpdate from "../loveOneUpdate"
+
 
 
 
@@ -130,6 +137,19 @@ const nextOfKinStackNavigator = () => {
         <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="nextOfKinDetail" component={nextOfKinDetail} />
             <Stack.Screen name="nextOfKin" component={nextOfKin} />
+            <Stack.Screen name="nextOfKinUpdate" component={nextOfKinUpdate} />
+
+
+        </Stack.Navigator>
+    );
+}
+const ghuslStackNavigator = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="ghusalDetail" component={ghusalDetail} />
+            <Stack.Screen name="ghusl" component={ghusl} />
+            <Stack.Screen name="ghusalUpdate" component={ghusalUpdate} />
+
 
         </Stack.Navigator>
     );
@@ -140,7 +160,6 @@ const otherStackNavigator = () => {
         <Stack.Navigator screenOptions={screenOptionStyle}>
             <Stack.Screen name="others" component={others} />
             <Stack.Screen name="prayer" component={prayer} />
-            <Stack.Screen name="ghusl" component={ghusl} />
             <Stack.Screen name="reading" component={reading} />
             <Stack.Screen name="dua" component={dua} />
             <Stack.Screen name="tasbi" component={tasbi} />
@@ -157,4 +176,4 @@ const otherStackNavigator = () => {
     );
 }
 
-export { otherStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
+export { ghuslStackNavigator, otherStackNavigator, MainStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator };
