@@ -111,48 +111,50 @@ function others({ navigation }) {
                             <Text style={{ color: 'white', textAlign: "center", fontSize: 15, }}>"Every soul shall taste death" -(surah 3: verse 185) </Text>
                         </View>
                     </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
 
-                        <TouchableWithoutFeedback onPress={() => navigation.push('prayer')} >
 
-                            <View style={styles.flatView}>
-                                <Image source={prayer} style={{ alignSelf: 'center', width: 80, height: 80 }} />
-                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Prayer </Text>
+
+                    <TouchableOpacity style={[styles.flatView,]} onPress={() => navigation.push('prayer')} >
+                        <View style={{ flexDirection: 'row', width: "100%" }}>
+                            <View style={{ width: "30%", justifyContent: "center" }}>
+                                <Image source={prayer} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                             </View>
+                            <View style={{ width: "70%", }}>
+                                <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Prayer</Text>
+                                <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greate</Text>
 
-                        </TouchableWithoutFeedback>
-
-
-                        <TouchableWithoutFeedback onPress={() => goToGusal()}  >
-
-                            <View style={styles.flatView}>
-                                <Image source={ghusl} style={{ alignSelf: 'center', width: 80, height: 80 }} />
-                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Ghusl </Text>
                             </View>
-
-                        </TouchableWithoutFeedback>
-                    </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-
-                        <TouchableWithoutFeedback onPress={() => navigation.push('sadqah')}  >
-
-                            <View style={styles.flatView}>
-                                <Image source={sadaqah} style={{ alignSelf: 'center', width: 80, height: 80 }} />
-                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Sadaqah </Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.flatView,]} onPress={() => navigation.push('sadqah')} >
+                        <View style={{ flexDirection: 'row', width: "100%" }}>
+                            <View style={{ width: "30%", justifyContent: "center" }}>
+                                <Image source={sadaqah} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                             </View>
+                            <View style={{ width: "70%", }}>
+                                <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Sadaqah</Text>
+                                <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>You will not attain to piety until you spend of that which you love” (Surah Al’Imran, 92)</Text>
 
-                        </TouchableWithoutFeedback>
-
-
-                        <TouchableWithoutFeedback onPress={() => navigation.push('reading')}  >
-
-                            <View style={styles.flatView}>
-                                <Image source={reading} style={{ alignSelf: 'center', width: 80, height: 80 }} />
-                                <Text style={{ color: '#0178B9', fontSize: 15, marginTop: 10, fontWeight: "bold" }}>Book Mark </Text>
                             </View>
+                        </View>
+                    </TouchableOpacity>
 
-                        </TouchableWithoutFeedback>
-                    </View>
+
+
+                    {/* <TouchableOpacity style={[styles.flatView,]} onPress={() => navigation.push('reading')} >
+                        <View style={{ flexDirection: 'row', width: "100%" }}>
+                            <View style={{ width: "30%", justifyContent: "center" }}>
+                                <Image source={reading} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
+                            </View>
+                            <View style={{ width: "70%", }}>
+                                <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Reading </Text>
+                                <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>And put thy trust in Allah. And enough is Allah as a Disposer of affairs. – Al-Ahzab:3</Text>
+
+                            </View>
+                        </View>
+                    </TouchableOpacity> */}
+
+
 
 
 
@@ -231,18 +233,26 @@ const styles = StyleSheet.create({
 
     },
 
-
     flatView: {
-        height: 140, width: '42%', padding: 5, flexDirection: 'column', margin: 15, alignItems: 'center', borderRadius: 20, justifyContent: 'center',
+        width: '90%',
+        marginBottom: "3%",
+        paddingTop: '4%',
+        paddingBottom: "4%",
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        borderRadius: 10,
+        alignSelf: "center",
         backgroundColor: 'white',
         shadowColor: "#000",
+
         shadowOffset: {
             width: 0,
-            height: 1,
+            height: 2,
         },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
-    }
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    },
 
 })

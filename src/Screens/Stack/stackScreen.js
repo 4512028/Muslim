@@ -16,6 +16,8 @@ import chatScreen from "../chatScreen";
 import Donate from "../donate";
 import donationMonthly from "../donationMonthly";
 import donationOnTime from "../donationOnTime";
+import donationDetail from "../donationDetail";
+
 
 import feedBack from "../feedBack";
 import profileEdit from "../profileEdit";
@@ -95,6 +97,8 @@ const donateStackNavigator = () => {
             <Stack.Screen name="donate" component={Donate} />
             <Stack.Screen name="donationMonthly" component={donationMonthly} />
             <Stack.Screen name="donationOnTime" component={donationOnTime} />
+            <Stack.Screen name="donationDetail" component={donationDetail} />
+
 
         </Stack.Navigator>
     );
@@ -166,6 +170,7 @@ const otherStackNavigator = () => {
             <Stack.Screen name="quran" component={quran} />
             <Stack.Screen name="sadqahDonation" component={sadqahDonation} />
             <Stack.Screen name="sadqah" component={sadqah} />
+            <Stack.Screen name="donationDetail" component={donationDetail} />
 
 
 

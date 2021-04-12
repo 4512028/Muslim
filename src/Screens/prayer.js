@@ -92,33 +92,39 @@ function Prayer({ navigation }) {
 
                 <TouchableOpacity style={[styles.flatView,]} onPress={() => goToDua()} >
                     <View style={{ flexDirection: 'row', width: "100%" }}>
-                        <View style={{ width: "50%" }}>
+                        <View style={{ width: "30%", justifyContent: "center" }}>
                             <Image source={pray} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                         </View>
-                        <View style={{ width: "50%", justifyContent: "center" }}>
-                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Dua</Text>
+                        <View style={{ width: "70%", }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Dua</Text>
+                            <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>Have faith that your dua will be accepted and Allah will respond one way or another.</Text>
+
                         </View>
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.flatView,]} onPress={() => goToQuran()} >
                     <View style={{ flexDirection: 'row', width: "100%" }}>
-                        <View style={{ width: "50%" }}>
+                        <View style={{ width: "30%", justifyContent: "center" }}>
                             <Image source={book} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                         </View>
-                        <View style={{ width: "50%", justifyContent: "center" }}>
-                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Quran </Text>
+                        <View style={{ width: "70%", }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Quran</Text>
+                            <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>And put thy trust in Allah. And enough is Allah as a Disposer of affairs. – Al-Ahzab:3</Text>
+
                         </View>
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.flatView,]} onPress={() => goToTasbi()} >
                     <View style={{ flexDirection: 'row', width: "100%" }}>
-                        <View style={{ width: "50%" }}>
+                        <View style={{ width: "30%", justifyContent: "center" }}>
                             <Image source={time} style={{ alignSelf: 'center', width: 60, height: 60, resizeMode: "contain" }} />
                         </View>
-                        <View style={{ width: "50%", justifyContent: "center" }}>
-                            <Text style={{ color: '#0178B9', fontSize: 17, marginTop: 10, fontWeight: "bold", textAlign: "center" }}>Tasbih </Text>
+                        <View style={{ width: "70%", }}>
+                            <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Tasbih</Text>
+                            <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>Blessed is the One in Whose Hands rests all authority. And He is Most Capable of everything.</Text>
+
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -170,7 +176,7 @@ const styles = StyleSheet.create({
 
 
     flatView: {
-        width: '70%',
+        width: '90%',
         marginBottom: "3%",
         paddingTop: '4%',
         paddingBottom: "4%",

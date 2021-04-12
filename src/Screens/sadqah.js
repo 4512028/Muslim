@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 
 import whiteDonation from '../Assets/Icons/whiteDonation.png'
 
+import add_2 from '../Assets/Icons/add_2.png'
 
 import sadaqah from '../Assets/Icons/sadaqah.png';
 import tree from '../Assets/Icons/tree.png';
@@ -78,6 +79,11 @@ function sadqah({ navigation }) {
 
                     <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Sadaqah</Text>
 
+                </View>
+                <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
+                    <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { navigation.push('donationDetail') }}>
+                        <Image source={add_2} style={styles.backIcon}></Image>
+                    </TouchableOpacity>
                 </View>
             </View>
 

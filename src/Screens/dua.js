@@ -25,6 +25,7 @@ import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
 import duaa from '../Assets/Icons/dua.png';
 
+import { Radio } from 'native-base';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
@@ -39,7 +40,8 @@ function dua({ navigation }) {
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setisDisabled] = useState(false);
     let [PPrivate, setPPrivate] = useState(false);
-    let [PPvalue, setPPvalue] = useState("Public");
+    let [PPublic, setPPublic] = useState(false);
+
 
 
 
@@ -53,13 +55,28 @@ function dua({ navigation }) {
         navigation.pop()
     }
 
-    useEffect(() => {
-        if (PPrivate == true) setPPvalue("Private")
-        else setPPvalue("Public")
-    }, [PPrivate])
 
-    setPublicPrivateDua = () => {
-        setPPrivate(!PPrivate)
+
+    setPrivateDua = () => {
+        if (PPrivate == true) {
+            setPPrivate(false)
+            setPPublic(false)
+        }
+        else if (PPrivate == false) {
+            setPPrivate(true)
+            setPPublic(false)
+        }
+
+    }
+    setPublicDua = () => {
+        if (PPublic == true) {
+            setPPrivate(false)
+            setPPublic(false)
+        }
+        else if (PPublic == false) {
+            setPPrivate(false)
+            setPPublic(true)
+        }
 
     }
 
@@ -135,30 +152,59 @@ function dua({ navigation }) {
 
 
 
-                    <View style={{ justifyContent: "space-between", alignItems: "center", width: '100%', flexDirection: "row", paddingLeft: 100, marginVertical: 20 }}>
+                    <View style={{ justifyContent: "space-around", alignItems: "center", width: '100%', flexDirection: "row", marginVertical: 20 }}>
 
-                        <TouchableWithoutFeedback onPress={() => setPublicPrivateDua()} >
+                        <TouchableWithoutFeedback onPress={() => setPrivateDua()} >
                             <View style={{ flexDirection: "row", alignItems: "center" }}>
 
-                                <View style={{ width: 27, backgroundColor: "#C8C7CC", height: 15, padding: 1, borderRadius: 10, marginRight: 10 }}>
+                                <View style={{ padding: 3, backgroundColor: "#919191", flexDirection: "row", borderRadius: 10, marginRight: 10, }}>
 
                                     {PPrivate == false &&
-                                        <View style={{ width: 14, backgroundColor: "white", height: 13, borderRadius: 10 }}>
+                                        <View style={{ width: 16, backgroundColor: "white", height: 16, borderRadius: 15 }}>
                                         </View>
                                     }
                                     {PPrivate == true &&
-                                        <View style={{ width: 14, backgroundColor: "#0178B9", height: 13, borderRadius: 10, alignSelf: "flex-end" }}>
+                                        <View style={{ width: 16, backgroundColor: "#0178B9", height: 16, borderRadius: 15 }}>
                                         </View>
                                     }
 
                                 </View>
                                 <View >
-                                    <Text style={{ color: 'black', fontSize: 15, }}>{PPvalue} </Text>
+                                    <Text style={{ color: 'black', fontSize: 15, }}>Group</Text>
                                 </View>
 
                             </View>
                         </TouchableWithoutFeedback >
 
+                        <TouchableWithoutFeedback onPress={() => setPublicDua()} >
+                            <View style={{ flexDirection: "row", alignItems: "center" }}>
+
+                                <View style={{ padding: 3, backgroundColor: "#919191", flexDirection: "row", borderRadius: 10, marginRight: 10, }}>
+
+                                    {PPublic == false &&
+                                        <View style={{ width: 16, backgroundColor: "white", height: 16, borderRadius: 15 }}>
+                                        </View>
+                                    }
+                                    {PPublic == true &&
+                                        <View style={{ width: 16, backgroundColor: "#0178B9", height: 16, borderRadius: 8, }}>
+                                        </View>
+                                    }
+
+                                </View>
+                                <View >
+                                    <Text style={{ color: 'black', fontSize: 15, }}>Public</Text>
+                                </View>
+
+                            </View>
+                        </TouchableWithoutFeedback >
+
+
+
+
+
+                    </View>
+
+                    <View style={{ justifyContent: "flex-end", width: '100%', flexDirection: "row", paddingLeft: 100, marginVertical: 10 }}>
 
                         <TouchableWithoutFeedback onPress={() => { }} style={{ width: '50%' }}>
                             <View style={{ paddingStart: 20, paddingEnd: 20, backgroundColor: "#0178B9", borderRadius: 20, height: 32, justifyContent: 'center' }}>
@@ -166,13 +212,7 @@ function dua({ navigation }) {
 
                             </View>
                         </TouchableWithoutFeedback>
-
-
                     </View>
-
-
-
-
 
 
 
@@ -240,7 +280,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingBottom: 5,
         paddingTop: 5,
-
+        height: 40,
         color: '#9a9999',
         alignItems: 'flex-start',
 

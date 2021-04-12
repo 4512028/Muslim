@@ -10,6 +10,7 @@ import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/modalComponenet'
 import { Card, CardItem, Body, Container, Header, Tab, Tabs, TabHeading, Icon, Text, Fab } from 'native-base';
 
+import add_2 from '../Assets/Icons/add_2.png'
 
 
 
@@ -130,7 +131,9 @@ function donates({ navigation }) {
                 <View style={{ width: "70%", justifyContent: "center", alignItems: "center" }}>
                     <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Donates</Text>
                 </View>
-                <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => { gotoEditProofile() }} >
+                <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => { navigation.push('donationDetail') }} >
+                    <Image source={add_2} style={{ width: 25, height: 25 }}></Image>
+
                 </TouchableOpacity>
             </View>
             {/* top bar */}
