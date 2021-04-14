@@ -11,6 +11,8 @@ import whiteLove from '../../Assets/Icons/whiteLove.png'
 import feedBack from '../../Assets/Icons/whiteProfile.png'
 import logOut from '../../Assets/Icons/whiteLogout.png'
 import ghusl from '../../Assets/Icons/whiteS.png';
+import whiteManue from '../../Assets/Icons/whiteManue.png';
+
 
 
 import {
@@ -60,6 +62,16 @@ function drawerItem({ navigation }) {
                             <Image source={whiteProfile} style={{ height: 30, width: 30, marginRight: 10 }} />
 
                             <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Profile </Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('others')
+                    }}>
+                        <View style={styles.item}>
+                            <Image source={whiteManue} style={{ height: 30, width: 30, marginRight: 10 }} />
+
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Reading </Text>
 
                         </View>
                     </TouchableOpacity>

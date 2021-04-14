@@ -2,7 +2,7 @@ import React from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { otherStackNavigator, ghuslStackNavigator, profileStackNavigator, donateStackNavigator, groupStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator } from "../Stack/stackScreen";
+import { otherStackNavigator, ghuslStackNavigator, profileStackNavigator, donateStackNavigator, nextOfKinStackNavigator, feedbackStackNavigator, loveStackNavigator } from "../Stack/stackScreen";
 import DrawerContent from './DrawerItems'
 
 import { BottomTabNavigator } from "../BottomTab/BottomTab";

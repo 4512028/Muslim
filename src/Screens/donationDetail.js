@@ -13,6 +13,9 @@ function donationsDetails({ navigation }) {
         { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "Food aid", donationAmount: 13.34 },
         { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "Bural Funds", donationAmount: 12.43 },
         { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "donation", donationAmount: 12.34 },
+        { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "Food aid", donationAmount: 13.34 },
+        { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "Bural Funds", donationAmount: 12.43 },
+        { donation_date: "Apr 12 2020", donation_description: "App A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles.", donation_title: "donation", donationAmount: 12.34 },
 
     ]);
     const [isAnimating, setAnimating] = useState(false);
@@ -52,13 +55,13 @@ function donationsDetails({ navigation }) {
                 </View>
             </View>
 
-            <View style={{ backgroundColor: '#F2F2F5', flex: 1 }}>
+            <View style={{ backgroundColor: '#F2F2F5', flex: 1, }}>
 
                 {/* <View style={{flexDirection:"row",width:"100%",justifyContent:"center"}}> 
             <Text style={{marginTop:20,fontSize:16,color:"#601124",marginBottom:0,paddingLeft:20,paddingRight:20, fontWeight:"bold"}}>Mangle Shop Now</Text>
             </View> */}
                 <FlatList
-                    style={{ width: "100%", marginTop: 20 }}
+                    style={{ width: "100%", paddingTop: 10, marginBottom: 50 }}
                     data={donations}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
