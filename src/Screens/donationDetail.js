@@ -58,7 +58,7 @@ function donationsDetails({ navigation }) {
             <Text style={{marginTop:20,fontSize:16,color:"#601124",marginBottom:0,paddingLeft:20,paddingRight:20, fontWeight:"bold"}}>Mangle Shop Now</Text>
             </View> */}
                 <FlatList
-                    style={{ width: "100%", marginBottom: 50, marginTop: 20 }}
+                    style={{ width: "100%", marginTop: 20 }}
                     data={donations}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}

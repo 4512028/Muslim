@@ -132,6 +132,7 @@ function drawerItem({ navigation }) {
 
                     </View>
                 </TouchableOpacity>
+                <View style={{ height: 50 }}></View>
             </View>
 
 
@@ -153,7 +154,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white", marginHorizontal: "5%"
-
 
     },
     item: {
