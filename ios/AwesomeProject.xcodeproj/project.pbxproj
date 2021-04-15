@@ -22,6 +22,7 @@
 		33D98D011A2044C08D2D96F2 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96F07C31ED91450A9E3BD82D /* Entypo.ttf */; };
 		3D083DC1ED77483297C45D4C /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CE7B66F10549F3AAF4A450 /* FontAwesome5_Solid.ttf */; };
 		3E5675E326102DEB00A766F5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5675E226102DEB00A766F5 /* File.swift */; };
+		3ECEBD9C2627F2C100CFB14B /* GoogleService-Info.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3ECEBD9B2627F2C000CFB14B /* GoogleService-Info.xml */; };
 		468ED4A040984B8C93EB2AAD /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F854E1A63DC44275A8100BE1 /* Zocial.ttf */; };
 		4ABD933C28B84EC88E5FBDBB /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAEEF832880A4D5FB346218C /* Ionicons.ttf */; };
 		4C07EA5E720A648856EF50BB /* libPods-AwesomeProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C02898CCC038DBE806165086 /* libPods-AwesomeProject.a */; };
@@ -81,6 +82,7 @@
 		2E19AE86F4604B36BBF0BD83 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		3E5675E126102DEB00A766F5 /* AwesomeProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		3E5675E226102DEB00A766F5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		3ECEBD9B2627F2C000CFB14B /* GoogleService-Info.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "GoogleService-Info.xml"; path = "../../../../../Downloads/GoogleService-Info.xml"; sourceTree = "<group>"; };
 		42694C124A648F12D6B3C811 /* Pods-AwesomeProject-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-tvOS/Pods-AwesomeProject-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		5E6C658B1D1E32F49D9042B5 /* Pods-AwesomeProject-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-tvOSTests/Pods-AwesomeProject-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		65FEACE06FF34F26B2C35F75 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		13B07FAE1A68108700A75B9A /* AwesomeProject */ = {
 			isa = PBXGroup;
 			children = (
+				3ECEBD9B2627F2C000CFB14B /* GoogleService-Info.xml */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -411,6 +414,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3ECEBD9C2627F2C100CFB14B /* GoogleService-Info.xml in Resources */,
 				D34EB1B9014F460EBC17137C /* AntDesign.ttf in Resources */,
 				33D98D011A2044C08D2D96F2 /* Entypo.ttf in Resources */,
 				E624250302344C25A14AFA72 /* EvilIcons.ttf in Resources */,
@@ -764,7 +768,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmb.com;
 				PRODUCT_NAME = AwesomeProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -788,7 +792,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmb.com;
 				PRODUCT_NAME = AwesomeProject;
 				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeProject-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

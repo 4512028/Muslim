@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package app.mmb.com;
 
 import com.facebook.react.ReactActivity;
 

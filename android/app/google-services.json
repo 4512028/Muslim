@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "985635090711",
+    "project_id": "mmb-umar",
+    "storage_bucket": "mmb-umar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985635090711:android:e1cdd1dfbe084be8c5c752",
+        "android_client_info": {
+          "package_name": "app.mmb.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985635090711-fusq993i8osrovs1l4bs2col1k6b2cup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnlMbjlo_Tbh-aubJ2QZH0j-6VFzT0cNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985635090711-fusq993i8osrovs1l4bs2col1k6b2cup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
