@@ -134,7 +134,6 @@ function others({ navigation }) {
                             <View style={{ width: "70%", }}>
                                 <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", }}>Sadaqah</Text>
                                 <Text style={{ color: 'black', fontSize: 14, marginTop: 5, }}>You will not attain to piety until you spend of that which you love” (Surah Al’Imran, 92)</Text>
-
                             </View>
                         </View>
                     </TouchableOpacity>

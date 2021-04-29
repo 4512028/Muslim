@@ -15,6 +15,7 @@ import {
     AsyncStorage, BackHandler, SafeAreaView,
     Button
 } from "react-native";
+import analytics from '@react-native-firebase/analytics';
 
 import logo from '../Assets/Icons/Logo.jpg'
 import user from '../Assets/Icons/user.png'
@@ -26,6 +27,7 @@ import { domain } from "../Api/Api";
 import * as Animatable from 'react-native-animatable';
 const screenWidth = Dimensions.get("window").width
 import { withNavigation } from 'react-navigation';
+import { asin } from "react-native-reanimated";
 
 
 export default function login({ navigation }) {
@@ -72,6 +74,18 @@ export default function login({ navigation }) {
 
     }
 
+    useEffect(() => {
+
+
+        analytics().logEvent('basket', {
+            id: 3745092,
+            item: 'mens grey t-shirt',
+            description: ['round neck', 'long sleeved'],
+            size: 'L',
+        })
+
+
+    }, []);
 
     const signInScreen = () => {
 
