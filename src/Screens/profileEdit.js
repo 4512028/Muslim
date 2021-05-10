@@ -30,6 +30,7 @@ import phone from '../Assets/Icons/phone.png'
 import userP from '../Assets/Icons/userP.png'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import * as ImagePicker from "react-native-image-picker"
+import { Domain } from '../Api/Api';
 
 
 

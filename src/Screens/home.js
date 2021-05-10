@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, StyleSheet, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
 import Logo from '../Assets/Icons/Logo.jpg'
 import manue from '../Assets/Icons/manue.png'
+import { Domain } from '../Api/Api';
 
 function Home({ navigation }) {
 

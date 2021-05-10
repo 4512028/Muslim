@@ -16,6 +16,7 @@ import {
     Button
 } from "react-native";
 import analytics from '@react-native-firebase/analytics';
+import { Domain } from '../Api/Api';
 
 import logo from '../Assets/Icons/Logo.jpg'
 import user from '../Assets/Icons/user.png'

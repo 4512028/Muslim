@@ -32,6 +32,7 @@ import post from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
 import userP from '../Assets/Icons/userP.png'
 
+import { Domain } from '../Api/Api';
 
 function nextToKin({ navigation }) {
 

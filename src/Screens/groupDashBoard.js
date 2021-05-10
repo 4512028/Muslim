@@ -11,6 +11,7 @@ import post from '../Assets/Icons/post.png'
 import Cross from '../Assets/Icons/close.png'
 import manue from '../Assets/Icons/manue.png'
 import Modal from "react-native-modal";
+import { Domain } from '../Api/Api';
 
 
 import { Card, CardItem, Body, } from 'native-base';

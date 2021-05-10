@@ -22,6 +22,7 @@ import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import Logo from '../Assets/Icons/Logo.jpg'
+import { Domain } from '../Api/Api';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 

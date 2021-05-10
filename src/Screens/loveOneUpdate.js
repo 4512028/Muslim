@@ -25,6 +25,7 @@ import Camera from '../Assets/Icons/camera.png';
 import { Card, CardItem, Body, } from 'native-base';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import { Domain } from '../Api/Api';
 
 import edit from '../Assets/Icons/edit.png'
 import email from '../Assets/Icons/email.png'

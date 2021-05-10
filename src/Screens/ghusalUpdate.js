@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import Profile from '../Assets/Icons/profile.png';
 import Camera from '../Assets/Icons/camera.png';
 import { Card, CardItem, Body, } from 'native-base';
+import { Domain } from '../Api/Api';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 

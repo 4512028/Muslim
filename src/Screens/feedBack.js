@@ -27,6 +27,7 @@ import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/modalComponenet'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import { Domain } from '../Api/Api';
 
 
 function feedBack({ navigation }) {

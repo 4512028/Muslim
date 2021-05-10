@@ -24,6 +24,7 @@ import Camera from '../Assets/Icons/camera.png';
 import surahh from '../Assets/Icons/surah.png';
 import qura from '../Assets/Icons/whiteBook.png';
 import quraa from '../Assets/Icons/book.png';
+import { Domain } from '../Api/Api';
 
 import { Card, CardItem, Body, Container, Header, Tab, Tabs, TabHeading, Icon, Fab } from 'native-base';
 

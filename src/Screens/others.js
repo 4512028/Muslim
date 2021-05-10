@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import Modal from "react-native-modal";
 import manue from '../Assets/Icons/manue.png'
+import { Domain } from '../Api/Api';
 
 import ModalComponent from '../Compmonent/othersModal'
 

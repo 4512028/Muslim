@@ -25,6 +25,7 @@ import prayer from '../Assets/Icons/whitePrayer.png';
 import time from '../Assets/Icons/time.png';
 import book from '../Assets/Icons/book.png';
 import pray from '../Assets/Icons/prayer.png';
+import { Domain } from '../Api/Api';
 
 
 function Prayer({ navigation }) {

@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
 import stripe from 'tipsi-stripe'
 import { Card, CardItem, Body, Container, Header, Tab, Tabs, TabHeading, Icon, Fab } from 'native-base';
+import { Domain } from '../Api/Api';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 

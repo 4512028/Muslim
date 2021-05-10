@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import timer from '../Assets/Icons/timer.png';
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/modalComponenet'
+import { Domain } from '../Api/Api';
 
 import down from '../Assets/Icons/down.png';
 
@@ -308,10 +309,6 @@ function tasbi({ navigation }) {
 
                             </View>
                         </TouchableWithoutFeedback >
-
-
-
-
 
                     </View>
 

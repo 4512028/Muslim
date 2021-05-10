@@ -24,7 +24,7 @@ import Profile from '../Assets/Icons/profile.png';
 import Camera from '../Assets/Icons/camera.png';
 import placeholder from '../Assets/Icons/placeholder.png';
 import selectImage from '../Assets/Icons/selectImage.png';
-
+import { Domain } from '../Api/Api';
 
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'

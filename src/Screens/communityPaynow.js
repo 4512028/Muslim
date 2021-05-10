@@ -21,6 +21,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 
+import { Domain } from '../Api/Api';
 
 
 

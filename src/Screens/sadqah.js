@@ -30,6 +30,7 @@ import tree from '../Assets/Icons/tree.png';
 import water from '../Assets/Icons/water.png';
 import masjid from '../Assets/Icons/musjid.png';
 import food from '../Assets/Icons/food.png';
+import { Domain } from '../Api/Api';
 
 
 

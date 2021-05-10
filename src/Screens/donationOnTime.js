@@ -12,6 +12,7 @@ import profilee from '../Assets/Icons/profile.png'
 import email from '../Assets/Icons/email.png'
 import home from '../Assets/Icons/home.png'
 import { Card, CardItem, Body, Container, Header, Tab, Tabs, TabHeading, Icon, Fab } from 'native-base';
+import { Domain } from '../Api/Api';
 
 stripe.setOptions({
     publishableKey: 'pk_test_51IYUWtEblGCs6sabHogOUttoDK52WzMNcd0AOhc4jJrT09F6PoyHpt8WrTmFh7qbnmX6YDIpPBpV3qdDoIuM2qaa008vVO1HvL',

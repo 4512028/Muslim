@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import down from '../Assets/Icons/down.png';
 import { View, StyleSheet, ActivityIndicator, StatusBar, TextInput, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform, Share } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import { Domain } from '../Api/Api';
 
 import manue from '../Assets/Icons/manue.png'
 import Modal from "react-native-modal";

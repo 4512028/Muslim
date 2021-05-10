@@ -19,13 +19,13 @@ import logo from '../Assets/Icons/Logo.jpg'
 
 import back from '../Assets/Icons/Arrr.png';
 import Profile from '../Assets/Icons/profile.png';
-import Camera from '../Assets/Icons/camera.png';
-import edit from '../Assets/Icons/edit.png'
+import Cameraicon from '../Assets/Icons/camera.png';
+import editicon from '../Assets/Icons/edit.png'
 import email from '../Assets/Icons/email.png'
 import home from '../Assets/Icons/home.png'
-import post from '../Assets/Icons/post.png'
+import posticon from '../Assets/Icons/post.png'
 import phone from '../Assets/Icons/phone.png'
-import manue from '../Assets/Icons/manue.png'
+import manueicon from '../Assets/Icons/manue.png'
 import back_icon from '../Assets/Icons/back_icon.png'
 
 import pass from '../Assets/Icons/password.png'
@@ -151,7 +151,20 @@ export default function signUP({ navigation }) {
 
     const SiginSuccess = async () => {
 
-        if (email === "") {
+        if (title.trim() === "") {
+            alert("Password is required!");
+            return
+        } else if (firstName.trim() === "") {
+            alert("Password is required!");
+            return
+        } else if (address.trim() === "") {
+            alert("Password is required!");
+            return
+        } else if (phoneNumber.trim() === "") {
+            alert("Password is required!");
+            return
+        }
+        else if (emailAdress.trim() === "") {
             alert("Email is required");
             return
         }
@@ -159,7 +172,7 @@ export default function signUP({ navigation }) {
             alert("Email format is not correct.");
             return
         }
-        else if (password === "") {
+        else if (password.trim() === "") {
             alert("Password is required!");
             return
         }

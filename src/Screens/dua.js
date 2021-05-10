@@ -24,6 +24,7 @@ import Camera from '../Assets/Icons/camera.png';
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
 import duaa from '../Assets/Icons/dua.png';
+import { Domain } from '../Api/Api';
 
 import { Radio } from 'native-base';
 

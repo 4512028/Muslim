@@ -23,6 +23,7 @@ import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
 import Modal from "react-native-modal";
 import ModalComponent from '../Compmonent/othersModal'
+import { Domain } from '../Api/Api';
 
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
