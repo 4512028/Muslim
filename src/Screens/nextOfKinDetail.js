@@ -21,25 +21,22 @@ import {
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import add from '../Assets/Icons/add.png';
+import manue from '../Assets/Icons/manue.png'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 import Profile from '../Assets/Icons/profile.png';
 import edit from '../Assets/Icons/update.png'
-import email from '../Assets/Icons/email.png'
-import home from '../Assets/Icons/home.png'
-import post from '../Assets/Icons/post.png'
-import phone from '../Assets/Icons/phone.png'
-import userP from '../Assets/Icons/userP.png'
-import profile from "./profile";
+
 import { Domain } from '../Api/Api';
+import { CommonActions } from '@react-navigation/native';
 
 
 function nextToKinDetail({ navigation }) {
 
     //...........selection of image
     let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
+    let [isDisabled, setDisabled] = useState(false);
     let [nextToKin, setnextToKin] = useState([
         {
             Name: "umer",
@@ -55,7 +52,7 @@ function nextToKinDetail({ navigation }) {
         {
             Name: "umer",
             detail: [
-                { name: "Address", value: "Faisliabad" },
+                { names: "Address", value: "Faisliabad", },
                 { name: "Town", value: "Faislabad" },
                 { name: "Postal Code", value: "23B34" },
                 { name: "Phone", value: "2392039203239" },
@@ -64,6 +61,64 @@ function nextToKinDetail({ navigation }) {
         }
     ]);
 
+
+
+
+    useEffect(() => {
+
+
+        getNextTOKin()
+
+
+    }, []);
+
+    getNextTOKin = () => {
+        setAnimating(true)
+        var data = new FormData();
+        data.append("userid", "1")
+        data.append("action", "get")
+        data.append("screen", "kin")
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+
+                if (responseData.status === true) {
+                    console.log(responseData)
+
+                    setDisabled(false)
+                    setAnimating(false)
+                    setnextToKin(responseData.data, "SAAS")
+
+                }
+                else {
+
+                    alert(responseData.msg)
+
+                    setDisabled(false)
+                    setAnimating(false)
+                }
+
+            })
+            .catch((error) => {
+
+                console.log("error from home API", error);
+
+                setDisabled(false)
+                setAnimating(false)
+            });
+
+
+    }
 
 
     goToNKUpdate = () => {
@@ -83,15 +138,15 @@ function nextToKinDetail({ navigation }) {
 
 
 
-    Back = () => {
-        navigation.goBack()
+    openManue = () => {
+        navigation.openDrawer();
+
     }
 
 
 
     detail = (item) => {
 
-        console.log(item, "item")
 
         return (
             <FlatList
@@ -140,8 +195,9 @@ function nextToKinDetail({ navigation }) {
 
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
-                    <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
-                        <Image source={back} style={styles.backIcon}></Image>
+                    <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()} >
+                        <Image source={manue} style={{ width: 25, height: 25 }}></Image>
+
                     </TouchableOpacity>
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>

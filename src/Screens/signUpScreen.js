@@ -31,7 +31,7 @@ import back_icon from '../Assets/Icons/back_icon.png'
 import pass from '../Assets/Icons/password.png'
 
 var validator = require("email-validator");
-import { domain } from "../Api/Api";
+import { Domain } from "../Api/Api";
 
 import * as Animatable from 'react-native-animatable';
 const screenWidth = Dimensions.get("window").width
@@ -42,8 +42,10 @@ export default function signUP({ navigation }) {
 
     const [title, setTitle] = useState("");
     const [firstName, setFirstName] = useState("");
+    const [LastName, setLastame] = useState("");
     const [emailAdress, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [address, setAddres] = useState("");
     const [phoneNumber, setPhone] = useState("");
     const [postalCode, setPostalCode] = useState("");
@@ -78,90 +80,38 @@ export default function signUP({ navigation }) {
 
 
 
-    const SignUp = () => {
-
-        if (email === "") {
-            alert("Please enter email")
-            return
-        }
-
-        if (validator.validate(email.trim()) === false) {
-            alert("Email format is not correct!")
-            return
-        }
-        else {
-            navigation.goBack()
-        }
-
-        // const searchCredentials = {
-        //     "email": this.state.UserEmail,
-        //     "type": 1,
-        // }
-
-        // fetch(domain + '/api/customer/forgot_password', {
-
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-
-        //     },
-
-        //     body: JSON.stringify(searchCredentials)
-
-
-        // }).then((response) => response.text())
-        //     .then(async (responseText) => {
-
-        //         let responseData = JSON.parse(responseText);
-
-        //         console.log(responseData, "forgotPasswordApi")
-
-        //         if (responseData.code === 200) {
-        //             this.setState({ UserEmail: "" });
-        //             alert(responseData.message)
-
-        //             analytics().logEvent('passweord_reset')
-
-
-        //         }
-        //         else {
-
-        //             console.log("wrong in forgotPasswordApi api")
-
-        //             alert(responseData.message)
-
-        //             this.setState({ isAnimating: false, isDisabled: false, likeAction: false })
-
-        //         }
-
-        //     })
-        //     .catch((error) => {
-
-        //         this.setState({ isAnimating: false, isDisabled: false, })
-
-        //         console.log("error from wrong forgotPasswordApi", error);
-
-        //     });
-
-
-
-    }
 
 
     const SiginSuccess = async () => {
 
         if (title.trim() === "") {
-            alert("Password is required!");
+            alert("Title is required!");
             return
         } else if (firstName.trim() === "") {
-            alert("Password is required!");
+            alert("First Name is required!");
             return
-        } else if (address.trim() === "") {
-            alert("Password is required!");
+        }
+        else if (LastName.trim() === "") {
+            alert("Last Name is required!");
+            return
+        }
+        else if (address.trim() === "") {
+            alert("Address is required!");
             return
         } else if (phoneNumber.trim() === "") {
-            alert("Password is required!");
+            alert("phone Number is required!");
+            return
+        }
+        else if (postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+        else if (town.trim() === "") {
+            alert("Town is required!");
+            return
+        }
+        else if (mosque.trim() === "") {
+            alert("Mosque is required!");
             return
         }
         else if (emailAdress.trim() === "") {
@@ -180,101 +130,65 @@ export default function signUP({ navigation }) {
             alert("Password type more than 5 words");
             return
         }
+        else if (password !== confirmPassword) {
+            alert("Password not match! Try again");
+            return
+        }
 
         else {
-            this.setState({ isAnimating: true, isDisabled: true })
-            navigation.navigate('home')
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
 
-            // const searchCredentials = {
-            //     "email": this.state.UserEmail,
-            //     "password": this.state.UserPassword,
-            //     "type": "1",
-            //     "device_token": fcmToken,
-            //     "device_platform": Platform.OS,
-            //     "time_zone": this.state.timeZone
-            // };
-            // console.log(searchCredentials, "login_Param")
+            data.append("action", "register")
+            data.append("first_name", firstName)
+            data.append("last_name", LastName)
+            data.append("mosque", mosque)
+            data.append("address", address)
+            data.append("town", town)
+            data.append("phone", phoneNumber)
+            data.append("post_code", postalCode)
+            data.append("email", emailAdress)
+            data.append("password", password)
 
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
 
-            // fetch(domain + '/api/auth/signin', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(searchCredentials)
+            }).then((response) => response.text())
+                .then(async (responseText) => {
 
-            // }).then((response) => response.text())
-            //     .then(async (responseText) => {
+                    let responseData = JSON.parse(responseText);
+                    console.log(responseData, "jnkkn")
 
-            //         let responseData = JSON.parse(responseText);
+                    console.log(responseData, "responseData of api")
 
-
-            //         if (responseData.code === 400) {
-            //             alert(responseData.message)
-            //             this.setState({ isAnimating: false, isDisabled: false })
-            //         }
-            //         console.log(responseData, "responseData of api")
-
-            //         if (responseData.code === 200) {
-
-
-
-            //             await AsyncStorage.setItem("isLogin", this.state.isLogin);
-
-            //             await AsyncStorage.setItem("userData", JSON.stringify(responseData.user));
-            //             await AsyncStorage.setItem("notificationCount", "0");
-            //             await AsyncStorage.setItem("notificationAffliation", "0");
-
-            //             // console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-            //             // if(this.props.commingFromNotification==false || this.props.commingFromNotification==undefined){
-
-            //             StartTabs();
-
-            //             // }
-            //             // else if (this.props.commingFromNotification==true){
-            //             // let PostID = await AsyncStorage.getItem('notificationPostId')  
-
-            //             //  console.log(this.props.commingFromNotification,"this.props.commingFromNotification")
-            //             //   Navigation.setRoot({
-            //             //     root: {
-            //             //       stack: {
-            //             //         children: [
-            //             //           {
-            //             //             component: {
-            //             //               name: 'feedDetail',
-
-            //             //               passProps: {
-            //             //                 id: PostId,
-            //             //                 commingFromNotification: true
-
-            //             //                 },
-
-            //             //               }
-
-            //             //             }
-            //             //         ],
-            //             //       }
-            //             //     }
-            //             //   });
-
-            //             // }
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        navigation.goBack()
 
 
+                    }
+                    else {
 
-            //             this.setState({ isAnimating: false, isDisabled: false })
-            //             analytics().logEvent('sign_in')
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
 
+                })
+                .catch((error) => {
 
-            //         }
+                    console.log("error from home API", error);
 
-            //     })
-            //     .catch((error) => {
-
-            //         console.log("error from home API", error);
-            //         //  this.setState({ isAnimating: false, isDisabled: false })
-            //         this.setState({ isAnimating: false, isDisabled: false })
-            //     });
+                    setDisabled(false)
+                    setAnimating(false)
+                });
 
 
         }
@@ -317,7 +231,7 @@ export default function signUP({ navigation }) {
 
                         <TextInput
                             style={styles.textField}
-                            placeholder='First Name'
+                            placeholder='Title'
                             placeholderTextColor='#d5c9de'
                             value={title}
                             onChangeText={(val) => setTitle(val)}
@@ -343,6 +257,20 @@ export default function signUP({ navigation }) {
                     </Animatable.View>
                     <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Last Name</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Last Name'
+                            placeholderTextColor='#d5c9de'
+                            onChangeText={(val) => setLastame(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={Profile} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
 
                     <Animatable.Text animation="fadeInUp" style={styles.label}>Address</Animatable.Text>
@@ -353,7 +281,7 @@ export default function signUP({ navigation }) {
                             placeholder='Address'
                             placeholderTextColor='#d5c9de'
                             value={address}
-                            onChangeText={(val) => setAddress(val)}
+                            onChangeText={(val) => setAddres(val)}
                         >
                         </TextInput>
 
@@ -472,7 +400,8 @@ export default function signUP({ navigation }) {
                             placeholderTextColor='#d5c9de'
                             autoCapitalize={'none'}
                             textContentType={"Confirm password"}
-                            onChangeText={(val) => setPassword(val)}
+                            value={confirmPassword}
+                            onChangeText={(val) => setConfirmPassword(val)}
                             secureTextEntry={true}>
                         </TextInput>
                         <Image source={pass} style={{ height: 18, width: '5%', marginTop: 17, marginRight: 35 }}></Image>

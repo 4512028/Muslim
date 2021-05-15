@@ -21,6 +21,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
+var validator = require("email-validator");
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
@@ -36,14 +37,102 @@ import { Domain } from '../Api/Api';
 
 function nextToKin({ navigation }) {
 
-    //...........selection of image
-    let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
+
+    const [firstName, setFirstName] = useState("");
+    const [emailAdress, setEmail] = useState("");
+    const [address, setAddres] = useState("");
+    const [phoneNumber, setPhone] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+    const [town, setTown] = useState("");
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
 
 
 
+    const addKin = async () => {
+        if (firstName.trim() === "") {
+            alert("First Name is required!");
+            return
+        }
+
+        else if (address.trim() === "") {
+            alert("Address is required!");
+            return
+        } else if (phoneNumber.trim() === "") {
+            alert("phone Number is required!");
+            return
+        }
+        else if (postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+        else if (town.trim() === "") {
+            alert("Town is required!");
+            return
+        }
+
+        else if (emailAdress.trim() === "") {
+            alert("Email is required");
+            return
+        }
+        else if (validator.validate(emailAdress.trim()) === false) {
+            alert("Email format is not correct.");
+            return
+        }
+
+        else {
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
+            data.append("userid", 1)
+            data.append("action", "insert")
+            data.append("screen", "kin")
+            data.append("name", firstName)
+            data.append("address", address)
+            data.append("town", town)
+            data.append("phone", phoneNumber)
+            data.append("post_code", postalCode)
+            data.append("email", emailAdress)
+            console.log(data)
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+
+            }).then((response) => response.text())
+                .then(async (responseText) => {
+
+                    let responseData = JSON.parse(responseText);
+                    console.log(responseData, "responseData of api")
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        navigation.goBack()
 
 
+                    }
+                    else {
+
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
+
+                })
+                .catch((error) => {
+
+                    console.log("error from home API", error);
+
+                    setDisabled(false)
+                    setAnimating(false)
+                });
+
+
+        }
+    }
 
 
     Back = () => {
@@ -101,9 +190,8 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Name'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
-                            >
+                                value={firstName}
+                                onChangeText={(val) => setFirstName(val)}                            >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -118,8 +206,8 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Address'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
+                                value={address}
+                                onChangeText={(val) => setAddres(val)}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -137,8 +225,9 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Town'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
+                                value={town}
+                                onChangeText={(val) => setTown(val)}
+
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -155,8 +244,8 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Phone Number "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={phoneNumber}
+                                onChangeText={(val) => setPhone(val)}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -173,8 +262,8 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Postal Code "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={postalCode}
+                                onChangeText={(val) => setPostalCode(val)}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -191,9 +280,8 @@ function nextToKin({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Email "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
+                                value={emailAdress}
+                                onChangeText={(val) => setEmail(val)}  >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={email} style={{ height: 15, width: 15 }}></Image>
@@ -208,7 +296,7 @@ function nextToKin({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" >
 
-                            <TouchableOpacity style={styles.button} >
+                            <TouchableOpacity style={styles.button} onPress={addKin}>
                                 <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
                             </TouchableOpacity>
                         </Animatable.View>

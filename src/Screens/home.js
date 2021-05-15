@@ -28,6 +28,13 @@ function Home({ navigation }) {
     }
 
 
+    useEffect(() => {
+
+
+        console.log("hgchg")
+
+    }, []);
+
 
     return (
         <SafeAreaView style={[styles.container]}>

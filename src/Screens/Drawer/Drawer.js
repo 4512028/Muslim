@@ -15,13 +15,17 @@ const DrawerNavigator = () => {
             drawerContent={props => <DrawerContent {...props} />}
             drawerStyle={{ width: '60%', backgroundColor: "#FFF", }}>
 
-            <Drawer.Screen name="Home" component={BottomTabNavigator} />
+            <Drawer.Screen name="Home" component={BottomTabNavigator}
+                initialParams={{ initialRoute: "Home" }} />
             <Drawer.Screen name="profile" component={profileStackNavigator} />
-            <Drawer.Screen name="donate" component={donateStackNavigator} />
+            <Drawer.Screen name="donate" component={BottomTabNavigator}
+                initialParams={{ initialRoute: "donate" }} />
             <Drawer.Screen name="loveOneDetail" component={loveStackNavigator} />
             <Drawer.Screen name="nextOfKinDetail" component={nextOfKinStackNavigator} />
             <Drawer.Screen name="ghusalDetail" component={ghuslStackNavigator} />
-            <Drawer.Screen name="other" component={otherStackNavigator} />
+            <Drawer.Screen name="other" component={BottomTabNavigator}
+                initialParams={{ initialRoute: "Reading" }} />
+
 
 
 

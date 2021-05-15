@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
-
+    AsyncStorage,
     Image,
 
 } from "react-native";
@@ -13,18 +13,27 @@ import menu from '../../Assets/Icons/manu.png'
 
 
 
+
+
 import { MainStackNavigator, otherStackNavigator, donateStackNavigator, groupStackNavigator } from "../Stack/stackScreen";
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = ({ route, navigation }) => {
+
+    const { initialRoute } = route.params;
+
+
     return (
-        <Tab.Navigator tabBarOptions={{
-            keyboardHidesTabBar: true,
-            style: {
-                position: 'absolute',
-            },
-        }}>
+        <Tab.Navigator
+            initialRouteName={initialRoute}
+
+            tabBarOptions={{
+                keyboardHidesTabBar: true,
+                style: {
+                    position: 'absolute',
+                },
+            }}>
 
             <Tab.Screen
                 name="Home"

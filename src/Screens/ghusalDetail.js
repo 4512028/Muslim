@@ -22,6 +22,7 @@ import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import add from '../Assets/Icons/add.png';
 import { Domain } from '../Api/Api';
+import manue from '../Assets/Icons/manue.png'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
@@ -82,8 +83,10 @@ function ghusalDetail({ navigation }) {
 
 
 
-    Back = () => {
-        navigation.goBack()
+
+    openManue = () => {
+        navigation.openDrawer();
+
     }
 
 
@@ -139,8 +142,9 @@ function ghusalDetail({ navigation }) {
 
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
-                    <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
-                        <Image source={back} style={styles.backIcon}></Image>
+                    <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()} >
+                        <Image source={manue} style={{ width: 25, height: 25 }}></Image>
+
                     </TouchableOpacity>
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>

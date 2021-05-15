@@ -45,17 +45,24 @@ function profile({ navigation }) {
     }
 
 
-    Back = () => {
-        navigation.goBack()
+
+
+    openManue = () => {
+        navigation.openDrawer();
+
     }
+
+
+
     return (
         <SafeAreaView style={[styles.container]}>
             <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
 
             {/* top bar */}
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: '#0178B9' }}>
-                <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
-                    <Image source={back} style={styles.backIcon}></Image>
+                <TouchableOpacity style={{ width: '15%', justifyContent: "center", alignItems: "center" }} onPress={() => openManue()} >
+                    <Image source={manue} style={{ width: 25, height: 25 }}></Image>
+
                 </TouchableOpacity>
                 <View style={{ width: "70%", justifyContent: "center", alignItems: "center" }}>
                     <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Profile</Text>

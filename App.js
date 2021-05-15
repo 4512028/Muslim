@@ -7,17 +7,22 @@ import signUpScreen from "./src/Screens/signUpScreen";
 import forgetPassword from "./src/Screens/forgetPassword";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {
+  AsyncStorage,
 
+} from "react-native";
 
 const Stack = createStackNavigator();
 
 
 const App = () => {
 
-  let isLogin = false;
+  AsyncStorage.setItem("initialRoute", "groupDashBoard");
+
+  let isLogin = true;
   let initialRoute;
   if (isLogin) {
-    initialRoute = "home"
+    initialRoute = "Home"
   }
   else {
     initialRoute = "signIn"

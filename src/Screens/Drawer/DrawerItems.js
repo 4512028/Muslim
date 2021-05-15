@@ -13,6 +13,7 @@ import logOut from '../../Assets/Icons/whiteLogout.png'
 import ghusl from '../../Assets/Icons/whiteS.png';
 import whiteManue from '../../Assets/Icons/whiteManue.png';
 
+import { CommonActions } from '@react-navigation/native';
 
 
 import {
@@ -22,6 +23,21 @@ import {
     DrawerItem,
 } from '@react-navigation/drawer';
 function drawerItem({ navigation }) {
+
+
+
+    GoToNextScreen = (initialRoute) => {
+
+
+        navigation.dispatch({
+            ...CommonActions.reset({
+                index: 0,
+                routes: [{ name: initialRoute }],
+            }),
+        })
+
+    }
+
 
 
 
@@ -47,7 +63,7 @@ function drawerItem({ navigation }) {
 
                     </View>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('Home')
+                        goToBottomTab("Home")
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -56,7 +72,7 @@ function drawerItem({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('profile')
+                        GoToNextScreen("profile")
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteProfile} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -66,7 +82,8 @@ function drawerItem({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('others')
+                        goToBottomTab("other")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteManue} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -76,7 +93,8 @@ function drawerItem({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('nextOfKinDetail')
+                        GoToNextScreen("nextOfKinDetail")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={nextTPkin} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -87,7 +105,8 @@ function drawerItem({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('loveOneDetail')
+                        GoToNextScreen("loveOneDetail")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteLove} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -98,7 +117,8 @@ function drawerItem({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('donate')
+                        goToBottomTab("donate")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteDOnat} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -108,7 +128,8 @@ function drawerItem({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('ghusalDetail')
+                        GoToNextScreen("ghusalDetail")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={ghusl} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -119,7 +140,8 @@ function drawerItem({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate('feedback')
+                        GoToNextScreen("feedback")
+
                     }}>
                         <View style={styles.item}>
                             <Image source={feedBack} style={{ height: 30, width: 30, marginRight: 10 }} />

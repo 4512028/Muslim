@@ -63,10 +63,7 @@ export default function login({ navigation }) {
 
 
     SiginSuccess = async () => {
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'Home' }],
-        })
+
 
     }
 
@@ -78,12 +75,7 @@ export default function login({ navigation }) {
     useEffect(() => {
 
 
-        analytics().logEvent('basket', {
-            id: 3745092,
-            item: 'mens grey t-shirt',
-            description: ['round neck', 'long sleeved'],
-            size: 'L',
-        })
+
 
 
     }, []);
@@ -106,56 +98,55 @@ export default function login({ navigation }) {
         else {
 
 
-            // const searchCredentials = {
-            //     "email": this.state.UserEmail,
-            //     "type": 1,
-            // }
+            setAnimating(true)
+            var data = new FormData();
+            data.append("action", "login")
+            data.append("email", email)
+            data.append("password", password)
 
-            // fetch(domain + '/api/customer/forgot_password', {
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
 
-            //     method: 'POST',
-            //     headers: {
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json',
+            }).then((response) => response.text())
+                .then(async (responseText) => {
 
-            //     },
-
-            //     body: JSON.stringify(searchCredentials)
-
-
-            // }).then((response) => response.text())
-            //     .then(async (responseText) => {
-
-            //         let responseData = JSON.parse(responseText);
-
-            //         console.log(responseData, "forgotPasswordApi")
-
-            //         if (responseData.code === 200) {
-            //             this.setState({ UserEmail: "" });
-            //             alert(responseData.message)
-
-            //             analytics().logEvent('passweord_reset')
+                    let responseData = JSON.parse(responseText);
 
 
-            //         }
-            //         else {
+                    if (responseData.status === true) {
+                        console.log(responseData)
 
-            //             console.log("wrong in forgotPasswordApi api")
+                        setDisabled(false)
+                        setAnimating(false)
 
-            //             alert(responseData.message)
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'Home' }],
+                        })
 
-            //             this.setState({ isAnimating: false, isDisabled: false, likeAction: false })
+                    }
+                    else {
 
-            //         }
+                        alert(responseData.msg)
 
-            //     })
-            //     .catch((error) => {
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
 
-            //         this.setState({ isAnimating: false, isDisabled: false, })
+                })
+                .catch((error) => {
 
-            //         console.log("error from wrong forgotPasswordApi", error);
+                    console.log("error from home API", error);
 
-            //     });
+                    setDisabled(false)
+                    setAnimating(false)
+                });
+
 
         }
 
@@ -214,7 +205,7 @@ export default function login({ navigation }) {
 
                 <Animatable.View animation="fadeInUp" >
 
-                    <TouchableOpacity style={styles.button} onPress={() => SiginSuccess()}>
+                    <TouchableOpacity style={styles.button} onPress={() => signInScreen()}>
                         <Text style={styles.buttonText}>Sign In </Text>
                     </TouchableOpacity>
                 </Animatable.View>
