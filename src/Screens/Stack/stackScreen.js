@@ -32,6 +32,8 @@ import ghusalUpdate from "../ghusalUpdate";
 import others from "../others";
 import reading from "../reading";
 import dua from "../dua";
+import duaDetail from "../duaDetail";
+
 import tasbi from "../tasbi";
 import quran from "../quran";
 import sadqahDonation from "../sadqahDonation"
@@ -171,6 +173,8 @@ const otherStackNavigator = () => {
             <Stack.Screen name="sadqahDonation" component={sadqahDonation} />
             <Stack.Screen name="sadqah" component={sadqah} />
             <Stack.Screen name="donationDetail" component={donationDetail} />
+            <Stack.Screen name="duaDetail" component={duaDetail} />
+
 
 
 

@@ -21,6 +21,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import back from '../Assets/Icons/Arrr.png';
 import Camera from '../Assets/Icons/camera.png';
+var validator = require("email-validator");
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
@@ -34,25 +35,122 @@ import userP from '../Assets/Icons/userP.png'
 import { Domain } from '../Api/Api';
 
 
-function nextOfKinUpdate({ navigation }) {
+function nextOfKinUpdate({ route, navigation }) {
+    const { name, address, town, postal_code, phone, email } = route.params;
 
     //...........selection of image
     let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
+    let [isDisabled, setDisabled] = useState(false);
 
-    const [firstName, setFirstName] = useState("umer");
-    const [emailAdress, setEmail] = useState("mumersaleem79@gmail.com");
-    const [address, setAddres] = useState("faisliabd");
-    const [phoneNumber, setPhone] = useState("03044512028");
-    const [postalCode, setPostalCode] = useState("43434");
-    const [town, setTown] = useState("faisd");
+    const [state, setState] = useState({
+        firstName: "",
+        emailAdress: "",
+        address: "",
+        phoneNumber: "",
+        postalCode: "",
+        town: "",
+
+    })
+
+    useEffect(() => {
+        const { item } = route.params;
+        setState({
+            firstName: item.name,
+            emailAdress: item.email,
+            address: item.address,
+            phoneNumber: item.phone,
+            postalCode: item.postal_code,
+            town: item.town,
+        })
+
+
+    }, []);
 
 
 
+    const updateKin = async () => {
+        if (state.firstName.trim() === "") {
+            alert("First Name is required!");
+            return
+        }
+
+        else if (state.address.trim() === "") {
+            alert("Address is required!");
+            return
+        } else if (state.phoneNumber.trim() === "") {
+            alert("phone Number is required!");
+            return
+        }
+        else if (state.postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+        else if (state.town.trim() === "") {
+            alert("Town is required!");
+            return
+        }
+
+        else if (state.emailAdress.trim() === "") {
+            alert("Email is required");
+            return
+        }
+        else if (validator.validate(state.emailAdress.trim()) === false) {
+            alert("Email format is not correct.");
+            return
+        }
+
+        else {
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
+            data.append("userid", "1")
+            data.append("action", "update")
+            data.append("screen", "kin")
+            data.append("name", state.firstName)
+            data.append("address", state.address)
+            data.append("town", state.town)
+            data.append("phone", state.phoneNumber)
+            data.append("post_code", state.postalCode)
+            data.append("email", state.emailAdress)
+            console.log(data)
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+
+            }).then((response) => response.text())
+                .then(async (responseText) => {
+
+                    let responseData = JSON.parse(responseText);
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        navigation.goBack()
 
 
+                    }
+                    else {
+
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
+
+                })
+                .catch((error) => {
+
+                    console.log("error from addKin  API", error);
+
+                    setDisabled(false)
+                    setAnimating(false)
+                });
 
 
+        }
+    }
 
 
     Back = () => {
@@ -110,8 +208,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Name'
                                 placeholderTextColor='#d5c9de'
-                                value={firstName}
-                                onChangeText={(val) => setFirstName(val)}
+                                value={state.firstName}
+                                onChangeText={(val) => setState({ ...state, firstName: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -127,8 +225,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Address'
                                 placeholderTextColor='#d5c9de'
-                                value={address}
-                                onChangeText={(val) => setAddres(val)}
+                                value={state.address}
+                                onChangeText={(val) => setState({ ...state, address: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -146,8 +244,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Town'
                                 placeholderTextColor='#d5c9de'
-                                value={town}
-                                onChangeText={(val) => setTown(val)}
+                                value={state.town}
+                                onChangeText={(val) => setState({ ...state, town: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -164,8 +262,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Phone Number "
                                 placeholderTextColor='#d5c9de'
-                                value={phoneNumber}
-                                onChangeText={(val) => setPhone(val)}
+                                value={state.phoneNumber}
+                                onChangeText={(val) => setState({ ...state, phoneNumber: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -182,8 +280,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Postal Code "
                                 placeholderTextColor='#d5c9de'
-                                value={postalCode}
-                                onChangeText={(val) => setPostalCode(val)}
+                                value={state.postalCode}
+                                onChangeText={(val) => setState({ ...state, postalCode: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -200,8 +298,8 @@ function nextOfKinUpdate({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Email "
                                 placeholderTextColor='#d5c9de'
-                                value={emailAdress}
-                                onChangeText={(val) => setEmail(val)}
+                                value={state.emailAdress}
+                                onChangeText={(val) => setState({ ...state, emailAdress: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -217,7 +315,7 @@ function nextOfKinUpdate({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" >
 
-                            <TouchableOpacity style={styles.button} >
+                            <TouchableOpacity style={styles.button} onPress={updateKin} >
                                 <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update</Text>
                             </TouchableOpacity>
                         </Animatable.View>

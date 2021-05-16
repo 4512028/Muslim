@@ -63,7 +63,7 @@ function drawerItem({ navigation }) {
 
                     </View>
                     <TouchableOpacity onPress={() => {
-                        goToBottomTab("Home")
+                        GoToNextScreen("Home")
                     }}>
                         <View style={styles.item}>
                             <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
@@ -82,7 +82,7 @@ function drawerItem({ navigation }) {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        goToBottomTab("other")
+                        GoToNextScreen("other")
 
                     }}>
                         <View style={styles.item}>
@@ -117,7 +117,7 @@ function drawerItem({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        goToBottomTab("donate")
+                        GoToNextScreen("donate")
 
                     }}>
                         <View style={styles.item}>

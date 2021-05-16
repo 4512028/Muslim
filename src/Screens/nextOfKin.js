@@ -49,6 +49,16 @@ function nextToKin({ navigation }) {
 
 
 
+
+    useEffect(() => {
+
+
+        getNextTOKin()
+
+
+    }, []);
+
+
     const addKin = async () => {
         if (firstName.trim() === "") {
             alert("First Name is required!");
@@ -84,7 +94,7 @@ function nextToKin({ navigation }) {
             setDisabled(true)
             setAnimating(true)
             var data = new FormData();
-            data.append("userid", 1)
+            data.append("userid", "1")
             data.append("action", "insert")
             data.append("screen", "kin")
             data.append("name", firstName)
@@ -106,7 +116,6 @@ function nextToKin({ navigation }) {
                 .then(async (responseText) => {
 
                     let responseData = JSON.parse(responseText);
-                    console.log(responseData, "responseData of api")
                     if (responseData.status === true) {
                         setDisabled(false)
                         setAnimating(false)
@@ -124,7 +133,7 @@ function nextToKin({ navigation }) {
                 })
                 .catch((error) => {
 
-                    console.log("error from home API", error);
+                    console.log("error from addKin  API", error);
 
                     setDisabled(false)
                     setAnimating(false)

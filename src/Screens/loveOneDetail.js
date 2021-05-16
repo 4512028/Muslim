@@ -34,41 +34,18 @@ import { Domain } from '../Api/Api';
 function loveOneDetail({ navigation }) {
 
     //...........selection of image
-    let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
+
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
     let [loveOne, setloveOne] = useState([
-        {
-            Name: "umer",
-            detail: [
-                { name: "Relation", value: "Brother" },
-                { name: "Address", value: "Faisliabad" },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
-                { name: "Email", value: "mumersaleem79@gmail.com" },
-                { name: "Phone", value: "2392039203239" },
-                { name: "Group Name", value: "babaGroup" },
-                { name: "Group ID", value: "ew@#s32" },
-            ]
-        },
-        {
-            Name: "umer",
-            detail: [
-                { name: "Relation", value: "Brother" },
-                { name: "Address", value: "Faisliabad" },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
-                { name: "Email", value: "mumersaleem79@gmail.com" },
-                { name: "Phone", value: "2392039203239" },
-                { name: "Group Name", value: "babaGroup" },
-                { name: "Group ID", value: "ew@#s32" },
-            ]
-        }
     ]);
 
 
-    goToLOUpdate = () => {
+    goToLOUpdate = (item) => {
 
-        navigation.navigate('loveOneUpdate')
+        navigation.navigate('loveOneUpdate', {
+            item: item,
+        });
 
     }
     goToLO = () => {
@@ -78,6 +55,60 @@ function loveOneDetail({ navigation }) {
     }
 
 
+    useEffect(() => {
+
+
+        getLove()
+
+
+    }, []);
+
+    getLove = () => {
+        setAnimating(true)
+        var data = new FormData();
+        data.append("userid", "1")
+        data.append("action", "get")
+        data.append("screen", "love_one")
+        console.log(data)
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: data
+
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+
+                if (responseData.status === true) {
+                    console.log(responseData)
+                    setDisabled(false)
+                    setAnimating(false)
+                    setloveOne(responseData.data)
+
+                }
+                else {
+                    alert(responseData.msg)
+
+                    setDisabled(false)
+                    setAnimating(false)
+                }
+
+            })
+            .catch((error) => {
+
+                console.log("error from home API", error);
+
+                setDisabled(false)
+                setAnimating(false)
+            });
+
+
+    }
 
 
 
@@ -91,46 +122,6 @@ function loveOneDetail({ navigation }) {
 
 
 
-    detail = (item) => {
-
-        console.log(item, "item")
-
-        return (
-            <FlatList
-                style={{ marginLeft: 10, marginRight: 10, marginTop: 10, with: "100%", flexDirection: "column" }}
-
-
-                data={item}
-
-                renderItem={({ item, index }) => (
-
-                    <View>
-                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>{item.name} :</Text>
-
-                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.value} </Text>
-
-                            </View>
-                        </View>
-
-
-
-
-                    </View>
-
-
-
-
-                )}
-
-
-            />
-
-        )
-    }
 
 
 
@@ -174,8 +165,8 @@ function loveOneDetail({ navigation }) {
 
                                     <View style={{ with: "100%", flexDirection: "row", justifyContent: "space-between", paddingVertical: 5 }}>
 
-                                        <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>Umer saleem </Text>
-                                        <TouchableOpacity onPress={() => goToLOUpdate()}>
+                                        <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>{item.name} </Text>
+                                        <TouchableOpacity onPress={() => goToLOUpdate(item)}>
                                             <Image source={edit} style={styles.backIcon}></Image>
                                         </TouchableOpacity>
 
@@ -183,13 +174,84 @@ function loveOneDetail({ navigation }) {
                                     </View>
 
 
-                                    {detail(item.detail)}
+                                    <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, with: "100%", flexDirection: "column" }}>
+
+
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Relation :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.relation} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Address :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.address} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Town :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.town} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Postal Code :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.postal_code} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Phone Number :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.phone} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Email :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.email} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Group ID:</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.groupid} </Text>
+
+                                            </View>
+                                        </View>
 
 
 
 
-
-
+                                    </View>
 
                                 </View>
                             </View>

@@ -38,27 +38,7 @@ function nextToKinDetail({ navigation }) {
     let [isAnimating, setAnimating] = useState(false);
     let [isDisabled, setDisabled] = useState(false);
     let [nextToKin, setnextToKin] = useState([
-        {
-            Name: "umer",
-            detail: [
-                { name: "Address", value: "Faisliabad" },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
-                { name: "Phone", value: "2392039203239" },
-                { name: "Email", value: "mumersaleem79@gmail.com" },
 
-            ]
-        },
-        {
-            Name: "umer",
-            detail: [
-                { names: "Address", value: "Faisliabad", },
-                { name: "Town", value: "Faislabad" },
-                { name: "Postal Code", value: "23B34" },
-                { name: "Phone", value: "2392039203239" },
-                { name: "Email", value: "mumersaleem79@gmail.com" },
-            ]
-        }
     ]);
 
 
@@ -78,6 +58,7 @@ function nextToKinDetail({ navigation }) {
         data.append("userid", "1")
         data.append("action", "get")
         data.append("screen", "kin")
+        console.log(data)
 
         fetch(Domain + '/apis/core.php', {
             method: 'POST',
@@ -121,9 +102,11 @@ function nextToKinDetail({ navigation }) {
     }
 
 
-    goToNKUpdate = () => {
+    goToNKUpdate = (item) => {
 
-        navigation.navigate('nextOfKinUpdate')
+        navigation.navigate('nextOfKinUpdate', {
+            item: item,
+        });
 
     }
     goToNK = () => {
@@ -227,8 +210,8 @@ function nextToKinDetail({ navigation }) {
 
                                     <View style={{ with: "100%", flexDirection: "row", justifyContent: "space-between", paddingVertical: 5 }}>
 
-                                        <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>Umer saleem </Text>
-                                        <TouchableOpacity onPress={() => goToNKUpdate()}>
+                                        <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>{item.name}</Text>
+                                        <TouchableOpacity onPress={() => goToNKUpdate(item)}>
                                             <Image source={edit} style={styles.backIcon}></Image>
                                         </TouchableOpacity>
 
@@ -236,9 +219,66 @@ function nextToKinDetail({ navigation }) {
                                     </View>
 
 
-                                    {detail(item.detail)}
+                                    <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, with: "100%", flexDirection: "column" }}>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Address :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.value} </Text>
+
+                                            </View>
+                                        </View>
+
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Town :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.town} </Text>
+
+                                            </View>
+                                        </View>
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Postal Code :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.postal_code} </Text>
+
+                                            </View>
+                                        </View>
+
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Phone :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.phone} </Text>
+
+                                            </View>
+                                        </View>
+
+                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Email :</Text>
+
+                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.email} </Text>
+
+                                            </View>
+                                        </View>
 
 
+
+
+                                    </View>
+                                    {/* {detail(item.detail)} */}
 
 
 

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 import {
     View,
@@ -23,12 +23,14 @@ import back from '../Assets/Icons/Arrr.png';
 import Profile from '../Assets/Icons/profile.png';
 import Camera from '../Assets/Icons/camera.png';
 import { Card, CardItem, Body, } from 'native-base';
+var validator = require("email-validator");
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import { Domain } from '../Api/Api';
 
 import nextTPkin from '../Assets/Icons/nextTPkin.png'
 import email from '../Assets/Icons/email.png'
+import post from '../Assets/Icons/post.png'
 
 import phone from '../Assets/Icons/phone.png'
 
@@ -38,6 +40,103 @@ import phone from '../Assets/Icons/phone.png'
 function ghusl({ navigation }) {
 
     //...........selection of image
+    const [state, setState] = useState({
+        name: "",
+        relation: "",
+        emailAdress: "",
+        phoneNumber: "",
+        postalCode: "",
+
+
+    })
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
+
+
+    const addghusal = async () => {
+        if (state.name.trim() === "") {
+            alert("First Name is required!");
+            return
+        }
+        if (state.relation.trim() === "") {
+            alert("Relation Name is required!");
+            return
+        }
+        else if (state.phoneNumber.trim() === "") {
+            alert("phone Number is required!");
+            return
+        }
+
+        else if (state.postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+
+
+        else if (state.emailAdress.trim() === "") {
+            alert("Email is required");
+            return
+        }
+        else if (validator.validate(state.emailAdress.trim()) === false) {
+            alert("Email format is not correct.");
+            return
+        }
+        // else if (state.groupName.trim() === "") {
+        //     alert("postal Code is required!");
+        //     return
+        // }
+
+        else {
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
+            data.append("userid", "1")
+            data.append("action", "insert")
+            data.append("screen", "ghusal")
+            data.append("name", state.name)
+            data.append("phone", state.phoneNumber)
+            data.append("email", state.emailAdress)
+            data.append("relation", state.relation)
+            data.append("post_code", state.postalCode)
+
+            console.log(data)
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+
+            }).then((response) => response.text())
+                .then(async (responseText) => {
+
+                    let responseData = JSON.parse(responseText);
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        navigation.goBack()
+                    }
+                    else {
+
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
+
+                })
+                .catch((error) => {
+
+                    console.log("error from addKin  API", error);
+
+                    setDisabled(false)
+                    setAnimating(false)
+                });
+
+
+        }
+    }
+
 
 
 
@@ -100,9 +199,10 @@ function ghusl({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Person Name'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
-                            >
+                                value={state.name}
+                                onChangeText={(val) => setState({ ...state, name: val })}                            >
+
+
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -111,25 +211,7 @@ function ghusl({ navigation }) {
 
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Email "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={email} style={{ height: 15, width: 15 }}></Image>
-                            </View>
 
-
-                        </Animatable.View>
-
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
                         <Animatable.Text animation="fadeInUp" style={styles.label}>Relation to person</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
@@ -139,9 +221,9 @@ function ghusl({ navigation }) {
                                 style={styles.textField}
                                 placeholder='RelationShip to person'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
-                            >
+                                value={state.relation}
+                                onChangeText={(val) => setState({ ...state, relation: val })}                            >
+
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -159,8 +241,8 @@ function ghusl({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Phone "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.phoneNumber}
+                                onChangeText={(val) => setState({ ...state, phoneNumber: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -170,11 +252,49 @@ function ghusl({ navigation }) {
 
                         </Animatable.View>
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Postal Code</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Postal Code "
+                                placeholderTextColor='#d5c9de'
+                                value={state.postalCode}
+                                onChangeText={(val) => setState({ ...state, postalCode: val })}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={post} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Email "
+                                placeholderTextColor='#d5c9de'
+                                value={state.emailAdress}
+                                onChangeText={(val) => setState({ ...state, emailAdress: val })}
+                            >
+
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={email} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
 
                         <Animatable.View animation="fadeInUp" >
 
-                            <TouchableOpacity style={styles.button} >
+                            <TouchableOpacity style={styles.button} onPress={addghusal}>
                                 <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Submit </Text>
                             </TouchableOpacity>
                         </Animatable.View>
@@ -184,6 +304,9 @@ function ghusl({ navigation }) {
 
 
                 </KeyboardAwareScrollView>
+                {isAnimating &&
+                    <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+                }
             </View>
         </SafeAreaView>
     )

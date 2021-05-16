@@ -36,7 +36,7 @@ function Prayer({ navigation }) {
 
 
     goToDua = () => {
-        navigation.push('dua')
+        navigation.push('duaDetail')
 
 
     }

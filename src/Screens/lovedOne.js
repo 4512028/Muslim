@@ -25,6 +25,7 @@ import Camera from '../Assets/Icons/camera.png';
 import { Card, CardItem, Body, } from 'native-base';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+var validator = require("email-validator");
 
 import edit from '../Assets/Icons/edit.png'
 import email from '../Assets/Icons/email.png'
@@ -41,11 +42,21 @@ function loveOne({ navigation }) {
 
     //...........selection of image
 
-    let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
 
 
+    const [state, setState] = useState({
+        name: "",
+        relation: "",
+        emailAdress: "",
+        address: "",
+        phoneNumber: "",
+        postalCode: "",
+        town: "",
+        groupID: ""
 
+    })
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
 
 
 
@@ -53,6 +64,103 @@ function loveOne({ navigation }) {
         navigation.goBack()
     }
 
+    const addNext = async () => {
+        if (state.name.trim() === "") {
+            alert("First Name is required!");
+            return
+        }
+        if (state.relation.trim() === "") {
+            alert("Relation Name is required!");
+            return
+        }
+
+        else if (state.address.trim() === "") {
+            alert("Address is required!");
+            return
+        }
+        else if (state.town.trim() === "") {
+            alert("Town is required!");
+            return
+        }
+        else if (state.phoneNumber.trim() === "") {
+            alert("phone Number is required!");
+            return
+        }
+        else if (state.postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+
+
+        else if (state.emailAdress.trim() === "") {
+            alert("Email is required");
+            return
+        }
+        else if (validator.validate(state.emailAdress.trim()) === false) {
+            alert("Email format is not correct.");
+            return
+        }
+        // else if (state.groupName.trim() === "") {
+        //     alert("postal Code is required!");
+        //     return
+        // }
+        else if (state.groupID.trim() === "") {
+            alert("GroupID Code is required!");
+            return
+        }
+        else {
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
+            data.append("userid", "1")
+            data.append("action", "insert")
+            data.append("screen", "love_one")
+            data.append("name", state.name)
+            data.append("address", state.address)
+            data.append("town", state.town)
+            data.append("relation", state.relation)
+            data.append("phone", state.phoneNumber)
+            data.append("post_code", state.postalCode)
+            data.append("email", state.emailAdress)
+            data.append("groupid", state.groupID)
+
+            console.log(data)
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: data
+
+            }).then((response) => response.text())
+                .then(async (responseText) => {
+
+                    let responseData = JSON.parse(responseText);
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        navigation.goBack()
+                    }
+                    else {
+
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
+
+                })
+                .catch((error) => {
+
+                    console.log("error from addKin  API", error);
+
+                    setDisabled(false)
+                    setAnimating(false)
+                });
+
+
+        }
+    }
 
 
     return (
@@ -108,9 +216,9 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder='Person Name'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserName}
-                            // onChangeText={this.nameChangeHandler}
-                            >
+                                value={state.name}
+                                onChangeText={(val) => setState({ ...state, name: val })}                            >
+
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -128,9 +236,9 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder='RelationShip to person'
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserGym}
-                            // onChangeText={this.gymChangeHandler}
-                            >
+                                value={state.relation}
+                                onChangeText={(val) => setState({ ...state, relation: val })}                            >
+
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                 <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -146,8 +254,8 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Address "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.address}
+                                onChangeText={(val) => setState({ ...state, address: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -164,8 +272,8 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Town "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.town}
+                                onChangeText={(val) => setState({ ...state, town: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -182,8 +290,8 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Postal Code "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.postalCode}
+                                onChangeText={(val) => setState({ ...state, postalCode: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -193,6 +301,26 @@ function loveOne({ navigation }) {
 
                         </Animatable.View>
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
+                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
+                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
+                            <TextInput
+                                animation="fadeInUp"
+                                style={styles.textField}
+                                placeholder="Phone "
+                                placeholderTextColor='#d5c9de'
+                                value={state.phoneNumber}
+                                onChangeText={(val) => setState({ ...state, phoneNumber: val })}
+                            >
+                            </TextInput>
+                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
+                            </View>
+
+
+                        </Animatable.View>
+                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+
                         <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
                             <TextInput
@@ -200,8 +328,8 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Email "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.emailAdress}
+                                onChangeText={(val) => setState({ ...state, emailAdress: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -213,34 +341,17 @@ function loveOne({ navigation }) {
 
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
-                        <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
-                            <TextInput
-                                animation="fadeInUp"
-                                style={styles.textField}
-                                placeholder="Phone "
-                                placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
-                            >
-                            </TextInput>
-                            <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
-                                <Image source={phone} style={{ height: 15, width: 15 }}></Image>
-                            </View>
+                        {/* <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View> */}
 
-
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-                        <Animatable.Text animation="fadeInUp" style={styles.label}>Group Name</Animatable.Text>
+                        {/* <Animatable.Text animation="fadeInUp" style={styles.label}>Group Name</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
                             <TextInput
                                 animation="fadeInUp"
                                 style={styles.textField}
                                 placeholder="Group Name "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.groupName}
+                                onChangeText={(val) => setState({ ...state, groupName: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -248,8 +359,7 @@ function loveOne({ navigation }) {
                             </View>
 
 
-                        </Animatable.View>
-                        <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                        </Animatable.View> */}
 
                         <Animatable.Text animation="fadeInUp" style={styles.label}>Group Id</Animatable.Text>
                         <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row' }} >
@@ -258,8 +368,8 @@ function loveOne({ navigation }) {
                                 style={styles.textField}
                                 placeholder="Group Id "
                                 placeholderTextColor='#d5c9de'
-                            // value={this.state.UserInstructor}
-                            // onChangeText={this.instructorNameChangeHandler}
+                                value={state.groupID}
+                                onChangeText={(val) => setState({ ...state, groupID: val })}
                             >
                             </TextInput>
                             <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
@@ -270,9 +380,9 @@ function loveOne({ navigation }) {
                         </Animatable.View>
                         <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 
-                        <Animatable.View animation="fadeInUp" >
+                        <Animatable.View animation="fadeInUp"  >
 
-                            <TouchableOpacity style={styles.button} >
+                            <TouchableOpacity style={styles.button} onPress={addNext} >
                                 <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Save </Text>
                             </TouchableOpacity>
                         </Animatable.View>
