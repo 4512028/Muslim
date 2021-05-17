@@ -31,7 +31,7 @@ import manue from '../Assets/Icons/manue.png'
 import { Domain } from '../Api/Api';
 
 
-function duaDetail({ navigation }) {
+function tasbiDetail({ navigation }) {
 
     //...........selection of image
 
@@ -111,7 +111,7 @@ function duaDetail({ navigation }) {
 
 
     goToNext = () => {
-        navigation.navigate('dua')
+        navigation.navigate('tasbi')
 
     }
 
@@ -171,7 +171,17 @@ function duaDetail({ navigation }) {
 
                                                 <View style={{ alignSelf: "center", flexShrink: 1 }}>
 
-                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> regard this as a profound act of worship. </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>سُبْحَٰنَكَ ٱللَّٰهُمَّ </Text>
+
+                                                </View>
+                                            </View>
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Amount :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>100</Text>
 
                                                 </View>
                                             </View>
@@ -220,7 +230,7 @@ function duaDetail({ navigation }) {
         </SafeAreaView >
     )
 }
-export default duaDetail;
+export default tasbiDetail;
 
 
 
@@ -229,10 +239,6 @@ const styles = StyleSheet.create({
     containerr: {
         flex: 1,
         backgroundColor: "#0178B9",
-
-
-
-
     },
 
     addNotes: {

@@ -203,90 +203,95 @@ function nextToKinDetail({ navigation }) {
 
                     }}
                     renderItem={({ item, index }) => (
+                        <View>
+                            <TouchableWithoutFeedback onPress={() => { }}>
+                                <View style={styles.container}  >
+                                    <View style={styles.linearGradient}>
 
-                        <TouchableWithoutFeedback onPress={() => { }}>
-                            <View style={styles.container}  >
-                                <View style={styles.linearGradient}>
+                                        <View style={{ with: "100%", flexDirection: "row", justifyContent: "space-between", paddingVertical: 5 }}>
 
-                                    <View style={{ with: "100%", flexDirection: "row", justifyContent: "space-between", paddingVertical: 5 }}>
+                                            <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>{item.name}</Text>
+                                            <TouchableOpacity onPress={() => goToNKUpdate(item)}>
+                                                <Image source={edit} style={styles.backIcon}></Image>
+                                            </TouchableOpacity>
 
-                                        <Text style={{ fontSize: 15, color: "black", fontWeight: 'bold', }}>{item.name}</Text>
-                                        <TouchableOpacity onPress={() => goToNKUpdate(item)}>
-                                            <Image source={edit} style={styles.backIcon}></Image>
-                                        </TouchableOpacity>
+
+                                        </View>
+
+
+                                        <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, with: "100%", flexDirection: "column" }}>
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Address :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.value} </Text>
+
+                                                </View>
+                                            </View>
+
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Town :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.town} </Text>
+
+                                                </View>
+                                            </View>
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Postal Code :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.postal_code} </Text>
+
+                                                </View>
+                                            </View>
+
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Phone :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.phone} </Text>
+
+                                                </View>
+                                            </View>
+
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Email :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.email} </Text>
+
+                                                </View>
+                                            </View>
+
+
+
+
+                                        </View>
+                                        {/* {detail(item.detail)} */}
+
+
+
 
 
                                     </View>
-
-
-                                    <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, with: "100%", flexDirection: "column" }}>
-                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Address :</Text>
-
-                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.value} </Text>
-
-                                            </View>
-                                        </View>
-
-                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Town :</Text>
-
-                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.town} </Text>
-
-                                            </View>
-                                        </View>
-                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Postal Code :</Text>
-
-                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.postal_code} </Text>
-
-                                            </View>
-                                        </View>
-
-                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Phone :</Text>
-
-                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.phone} </Text>
-
-                                            </View>
-                                        </View>
-
-                                        <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
-
-                                            <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Email :</Text>
-
-                                            <View style={{ alignSelf: "center", flexShrink: 1 }}>
-
-                                                <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>{item.email} </Text>
-
-                                            </View>
-                                        </View>
-
-
-
-
-                                    </View>
-                                    {/* {detail(item.detail)} */}
-
-
-
-
-
                                 </View>
-                            </View>
-                        </TouchableWithoutFeedback>
+                            </TouchableWithoutFeedback>
+                            {index == nextToKin.length - 1 &&
+                                <View style={{ height: 100 }}></View>
+                            }
+
+                        </View>
 
                     )}
 

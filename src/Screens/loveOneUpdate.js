@@ -136,7 +136,7 @@ function loveOneUpdate({ route, navigation }) {
             data.append("address", state.address)
             data.append("town", state.town)
             data.append("phone", state.phoneNumber)
-            data.append("post_code", state.postalCode)
+            data.append("postal_code", state.postalCode)
             data.append("email", state.emailAdress)
             data.append("groupid", state.groupID)
 
@@ -157,6 +157,8 @@ function loveOneUpdate({ route, navigation }) {
                         setDisabled(false)
                         setAnimating(false)
                         navigation.goBack()
+                        const { item, loveOne } = route.params;
+                        loveOne()
 
 
                     }

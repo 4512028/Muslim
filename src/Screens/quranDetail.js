@@ -31,13 +31,13 @@ import manue from '../Assets/Icons/manue.png'
 import { Domain } from '../Api/Api';
 
 
-function duaDetail({ navigation }) {
+function quranDetail({ navigation }) {
 
     //...........selection of image
 
     const [isAnimating, setAnimating] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
-    let [duaDetail, setduaDetail] = useState([1, 2, 3, 4
+    let [quranDetail, setquranDetail] = useState([1, 2, 3, 4
     ]);
 
 
@@ -111,7 +111,7 @@ function duaDetail({ navigation }) {
 
 
     goToNext = () => {
-        navigation.navigate('dua')
+        navigation.navigate('quran')
 
     }
 
@@ -139,7 +139,7 @@ function duaDetail({ navigation }) {
                 <FlatList
                     horizontal={false}
                     showsVerticalScrollIndicator={false}
-                    data={duaDetail}
+                    data={quranDetail}
 
                     style={{
                         paddingLeft: "3%", paddingRight: "3%", paddingBottom: 30, paddingTop: 10
@@ -167,23 +167,60 @@ function duaDetail({ navigation }) {
 
                                             <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
 
-                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Dua :</Text>
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Para :</Text>
 
                                                 <View style={{ alignSelf: "center", flexShrink: 1 }}>
 
-                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> regard this as a profound act of worship. </Text>
+
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> para1 </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> Para2 </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> Para3 </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> Para4 </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> Para5 </Text>
+
+
 
                                                 </View>
+
                                             </View>
+
+
                                             <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
 
-                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Type :</Text>
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>Surah :</Text>
 
                                                 <View style={{ alignSelf: "center", flexShrink: 1 }}>
 
-                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>Public</Text>
+
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> سُبْحَانَ ٱللَّٰهِ لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> سُبْحَانَ ٱللَّٰهِ لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> سُبْحَانَ ٱللَّٰهِ لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> سُبْحَانَ ٱللَّٰهِ لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ </Text>
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}> سُبْحَانَ ٱللَّٰهِ لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَٰنَكَ </Text>
+
+
 
                                                 </View>
+
+                                            </View>
+
+
+                                            <View style={{ width: "100%", flexDirection: "row", paddingRight: 18, backgroundColor: "#F4F5F7", borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5, marginBottom: 10, }}>
+
+                                                <Text style={{ fontSize: 14, color: "black", fontWeight: "bold", marginRight: 10 }} numberOfLines={1}>type :</Text>
+
+                                                <View style={{ alignSelf: "center", flexShrink: 1 }}>
+
+
+
+                                                    <Text style={{ fontSize: 12, color: "#363636" }} numberOfLines={1}>Group</Text>
+
+
+
+                                                </View>
+
                                             </View>
 
 
@@ -193,8 +230,9 @@ function duaDetail({ navigation }) {
 
                                     </View>
                                 </View>
+
                             </TouchableWithoutFeedback>
-                            {index == duaDetail.length - 1 &&
+                            {index == quranDetail.length - 1 &&
                                 <View style={{ height: 50 }}></View>
                             }
                         </View>
@@ -217,10 +255,10 @@ function duaDetail({ navigation }) {
 
 
             </TouchableOpacity>
-        </SafeAreaView >
+        </SafeAreaView>
     )
 }
-export default duaDetail;
+export default quranDetail;
 
 
 

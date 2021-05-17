@@ -97,7 +97,7 @@ function ghusl({ navigation }) {
             data.append("phone", state.phoneNumber)
             data.append("email", state.emailAdress)
             data.append("relation", state.relation)
-            data.append("post_code", state.postalCode)
+            data.append("postal_code", state.postalCode)
 
             console.log(data)
             fetch(Domain + '/apis/core.php', {

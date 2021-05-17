@@ -101,7 +101,7 @@ function nextToKin({ navigation }) {
             data.append("address", address)
             data.append("town", town)
             data.append("phone", phoneNumber)
-            data.append("post_code", postalCode)
+            data.append("postal_code", postalCode)
             data.append("email", emailAdress)
             console.log(data)
             fetch(Domain + '/apis/core.php', {

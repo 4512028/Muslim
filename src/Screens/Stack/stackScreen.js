@@ -10,6 +10,8 @@ import communityGroupCreate from "../communityGroupCreate";
 import CommunityJoinGroup from "../CommunityJoinGroup";
 import communityPaynow from "../communityPaynow";
 import chatScreen from "../chatScreen";
+import tasbiDetail from "../tasbiDetail";
+
 
 
 
@@ -45,6 +47,8 @@ import nextOfKin from "../nextOfKin";
 import LovedOne from "../lovedOne";
 import loveOneDetail from "../loveOneDetail"
 import loveOneUpdate from "../loveOneUpdate"
+import quranDetail from "../quranDetail"
+
 
 
 
@@ -174,6 +178,10 @@ const otherStackNavigator = () => {
             <Stack.Screen name="sadqah" component={sadqah} />
             <Stack.Screen name="donationDetail" component={donationDetail} />
             <Stack.Screen name="duaDetail" component={duaDetail} />
+            <Stack.Screen name="quranDetail" component={quranDetail} />
+            <Stack.Screen name="tasbiDetail" component={tasbiDetail} />
+
+
 
 
 

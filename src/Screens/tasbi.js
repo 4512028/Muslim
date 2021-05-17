@@ -246,10 +246,10 @@ function tasbi({ navigation }) {
                         <TextInput
 
                             style={styles.textField}
-                            placeholder="Amount "
+                            placeholder="Dua "
                             placeholderTextColor='#d5c9de'
-                            // value={manuallyAddFund}
-                            keyboardType='numeric'
+                        // value={manuallyAddFund}
+
 
                         >
                         </TextInput>
@@ -331,9 +331,10 @@ function tasbi({ navigation }) {
 
 
 
-
+                    <View style={{ height: 100 }}></View>
 
                 </KeyboardAwareScrollView>
+
                 {isAnimating &&
                     <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
                 }

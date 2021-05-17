@@ -77,10 +77,13 @@ function quran({ navigation }) {
     let [PPrivate, setPPrivate] = useState(false);
     let [PPublic, setPPublic] = useState(false);
     let [modalVisible, setmodalVisible] = useState(false);
-
     let [list, SetModalList] = useState([]);
     let [modalHeading, setModalHeading] = useState("");
     let [selectedPrayer, setSelectedPrayer] = useState("");
+    let [valueUpdatePara, setValueUpdatePara] = useState(false);
+    let [valueUpdateSurah, setValueUpdateSurah] = useState(false);
+
+
 
 
 
@@ -88,43 +91,100 @@ function quran({ navigation }) {
     Back = () => {
         navigation.pop()
     }
-    displayModal2 = (arry, value) => {
-        SetModalList(arry);
-        if (value == "Quran") {
-            setModalHeading("Quran")
-        }
-        else if (value == "Surah") {
-            setModalHeading("Surah")
-        }
-        setmodalVisible(!modalVisible)
-    };
+    // displayModal2 = (arry, value) => {
+    //     SetModalList(arry);
+    //     if (value == "Quran") {
+    //         setModalHeading("Quran")
+    //     }
+    //     else if (value == "Surah") {
+    //         setModalHeading("Surah")
+    //     }
+    //     setmodalVisible(!modalVisible)
+    // };
 
-    onSelectList1 = async (item) => {
+    // onSelectList1 = async (item) => {
 
-        await list.find((itm, i) => {
+    //     await list.find((itm, i) => {
+    //         if (itm.value == item.value) {
+    //             if (itm.selected == false) {
+    //                 list[i].selected = true;
+    //                 if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
+    //                 else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
+    //                 SetModalList(list)
+    //             }
+    //             if (itm.selected == false) {
+    //                 list[i].selected = true;
+    //                 if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
+    //                 else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
+    //                 SetModalList(list)
+    //             }
+    //         }
+    //     });
+    //     console.log(list)
+    // }
+    // togglelefunction = () => {
+    //     setmodalVisible(!modalVisible)
+    // }
+
+
+    useEffect(() => {
+        setquranpara(quranpara)
+        setValueUpdatePara(false)
+
+    }, [valueUpdatePara]);
+
+    useEffect(() => {
+        occupyQuranSurah(quranpara)
+        setValueUpdateSurah(false)
+
+    }, [valueUpdateSurah]);
+
+
+    occupyQuranPara = (item) => {
+
+
+        quranpara.find((itm, i) => {
+
             if (itm.value == item.value) {
                 if (itm.selected == false) {
-                    list[i].selected = true;
-                    if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
-                    else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
-                    SetModalList(list)
+                    console.log(quranpara[i].selected)
+                    quranpara[i].selected = true;
+                    setValueUpdatePara(true)
                 }
-                if (itm.selected == false) {
-                    list[i].selected = true;
-                    if (modalHeading == "Quran") setSelectedPrayer((list[i].value));
-                    else if (modalHeading == "Surah") setSelectedPrayer(list[i].value)
-                    SetModalList(list)
+                else if (itm.selected == true) {
+                    console.log(quranpara[i].selected)
+                    quranpara[i].selected = false;
+                    setValueUpdatePara(true)
                 }
             }
+
+
+
         });
-        console.log(list)
     }
+    occupyQuranSurah = (item) => {
+
+        surah.find((itm, i) => {
+            if (itm.value == item.value) {
+                if (itm.selected == false) {
+                    surah[i].selected = true;
+                    setValueUpdateSurah(true)
 
 
-    togglelefunction = () => {
-        setmodalVisible(!modalVisible)
+                }
+                else if (itm.selected == true) {
+                    surah[i].selected = false;
+                    setValueUpdateSurah(true)
+
+
+                }
+            }
+
+
+
+        });
     }
-    selectedItem = () => { }
+
 
     setPrivateDua = () => {
         if (PPrivate == true) {
@@ -148,6 +208,8 @@ function quran({ navigation }) {
         }
 
     }
+
+
     tabeIndex = (value) => {
         // if (value.i == 0) setDonationType("one time")
         // else setDonationType("month time")
@@ -158,11 +220,7 @@ function quran({ navigation }) {
         <SafeAreaView style={styles.container}>
 
             <StatusBar barStyle="light-content" backgroundColor="#0178B9" />
-            {modalVisible &&
-                <Modal isVisible={modalVisible} style={{ justifyContent: "center", }} transparent={true}>
-                    <ModalComponent modalHeadding={modalHeading} togglelefunction={togglelefunction} list={list} onSelectList={onSelectList1} goToNextScreen={togglelefunction} />
-                </Modal>
-            }
+
             <View style={{ width: "100%", flexDirection: "row", height: 60, backgroundColor: "#0178B9" }}>
                 <View style={{ width: "15%", height: 60, justifyContent: "center", alignItems: "center" }}>
                     <TouchableOpacity style={styles.back} styles={{ width: "15%" }} onPress={() => { Back() }}>
@@ -186,6 +244,17 @@ function quran({ navigation }) {
                 </View> */}
                 <View style={{ flex: 7, }}>
 
+                    <View style={[styles.inputContainer,]}>
+
+                        <TextInput
+                            autoCapitalize="none"
+                            placeholder={"Your Name"}
+                            placeholderTextColor={'#9a9999'}
+                            // value={this.state.userName}
+                            // onChangeText={(val) => this.updateInputVal(val, 'userName')}
+                            style={styles.input}
+                            underlineColorAndroid='transparent' />
+                    </View>
 
                     <Tabs onChangeTab={(value) => tabeIndex(value)} style={{}}>
 
@@ -194,31 +263,62 @@ function quran({ navigation }) {
                         <Tab heading="PARA" tabStyle={{ backgroundColor: '#F8F8F8' }} textStyle={{ color: '#878787' }} activeTabStyle={{ backgroundColor: '#F8F8F8' }} activeTextStyle={{ color: '#0178B9', fontWeight: 'bold' }}  >
 
 
-                            <View style={{ flex: Platform.OS == "ios" ? 9 : 6 }}>
+                            <View style={{ flex: Platform.OS == "ios" ? 11 : 8 }}>
                                 <FlatList
                                     data={quranpara}
-                                    style={{ paddingHorizontal: 18, paddingVertical: 5, }}
+                                    style={{ paddingVertical: 30, }}
                                     showsVerticalScrollIndicator={true}
                                     showsHorizontalScrollIndicator={false}
-
                                     renderItem={({ item, index }) => (
-
-                                        <View style={[styles.flatView,]}   >
-
-
-                                            <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", textAlign: "left" }}>{item.title}</Text>
-                                            <Text numberOfLines={2} style={{ color: 'black', fontSize: 12, }}>{item.value}</Text>
-                                            <Text style={{ color: '#999999', textAlign: "right", fontSize: 11, marginTop: 10, }}>Click to Occupy</Text>
+                                        <View>
+                                            <View style={[styles.flatView,]}   >
 
 
+                                                <Text style={{ color: '#0178B9', fontSize: 16, fontWeight: "bold", textAlign: "left", marginBottom: 10 }}>{item.title}</Text>
+                                                <Text numberOfLines={2} style={{ color: 'black', fontSize: 12, }}>{item.value}</Text>
+                                                <View style={{ flexDirection: "row", paddingTop: 20 }}>
+                                                    <TouchableOpacity onPress={() => occupyQuranPara(item)} >
+                                                        <View style={{ flexDirection: "row", alignItems: "center" }}>
 
+                                                            <View style={{ padding: 3, backgroundColor: "#919191", flexDirection: "row", borderRadius: 10, marginRight: 10, }}>
+
+
+                                                                {item.selected == false &&
+                                                                    <View style={{ width: 14, backgroundColor: "white", height: 14, borderRadius: 15 }}>
+                                                                    </View>
+                                                                }
+                                                                {item.selected == true &&
+                                                                    <View style={{ width: 14, backgroundColor: "#0178B9", height: 14, borderRadius: 15 }}>
+                                                                    </View>
+                                                                }
+                                                            </View>
+                                                            <View >
+                                                                {item.selected == false ?
+
+                                                                    <Text style={{ color: 'black', fontSize: 12, }}>Click to Occupy</Text>
+                                                                    :
+                                                                    <Text style={{ color: 'black', fontSize: 12, }}>Occupied</Text>
+
+
+                                                                }
+                                                            </View>
+
+                                                        </View>
+                                                    </TouchableOpacity >
+
+                                                </View>
+
+                                            </View>
+                                            {index == quranpara.length - 1 &&
+                                                <View style={{ height: 50 }}></View>
+                                            }
                                         </View>
                                     )}
                                 />
                             </View>
                             <View style={{ flex: 3 }}>
 
-                                <View style={{ justifyContent: "space-around", alignItems: "center", width: '100%', flexDirection: "row", marginVertical: 20 }}>
+                                <View style={{ justifyContent: "space-around", alignItems: "center", width: '100%', flexDirection: "row", marginVertical: 5 }}>
 
                                     <TouchableWithoutFeedback onPress={() => setPrivateDua()} >
                                         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -279,31 +379,67 @@ function quran({ navigation }) {
 
                         <Tab heading="SURAH" tabStyle={{ backgroundColor: '#F8F8F8' }} textStyle={{ color: '#878787' }} activeTabStyle={{ backgroundColor: '#F8F8F8' }} activeTextStyle={{ color: '#0178B9', fontWeight: 'bold' }}  >
 
-                            <View style={{ flex: Platform.OS == "ios" ? 9 : 6 }}>
+                            <View style={{ flex: Platform.OS == "ios" ? 11 : 8 }}>
                                 <FlatList
                                     data={surah}
-                                    style={{ paddingHorizontal: 18, paddingVertical: 5, }}
+                                    style={{ paddingVertical: 30, }}
                                     showsVerticalScrollIndicator={true}
                                     showsHorizontalScrollIndicator={false}
 
                                     renderItem={({ item, index }) => (
-
-                                        <View style={[styles.flatView,]}   >
-
-
-                                            <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", textAlign: "left" }}>{item.title}</Text>
-                                            <Text numberOfLines={2} style={{ color: 'black', fontSize: 12, }}>{item.value}</Text>
-                                            <Text style={{ color: '#999999', textAlign: "right", fontSize: 11, marginTop: 10, }}>Click to Occupy</Text>
+                                        <View>
+                                            <View style={[styles.flatView,]}   >
 
 
+                                                <Text style={{ color: '#0178B9', fontSize: 17, fontWeight: "bold", textAlign: "left" }}>{item.title}</Text>
+                                                <Text numberOfLines={2} style={{ color: 'black', fontSize: 12, }}>{item.value}</Text>
+                                                <View style={{ flexDirection: "row", paddingTop: 20 }}>
+                                                    <TouchableWithoutFeedback onPress={() => occupyQuranSurah(item)} >
+                                                        <View style={{ flexDirection: "row", alignItems: "center" }}>
 
+                                                            <View style={{ padding: 3, backgroundColor: "#919191", flexDirection: "row", borderRadius: 10, marginRight: 10, }}>
+
+                                                                {item.selected == false &&
+                                                                    <View style={{ width: 14, backgroundColor: "white", height: 14, borderRadius: 15 }}>
+                                                                    </View>
+                                                                }
+                                                                {item.selected == true &&
+                                                                    <View style={{ width: 14, backgroundColor: "#0178B9", height: 14, borderRadius: 15 }}>
+                                                                    </View>
+                                                                }
+
+                                                            </View>
+
+
+                                                            <View >
+                                                                {item.selected == false ?
+
+                                                                    <Text style={{ color: 'black', fontSize: 12, }}>Click to Occupy</Text>
+                                                                    :
+                                                                    <Text style={{ color: 'black', fontSize: 12, }}>Occupied</Text>
+
+
+                                                                }
+                                                            </View>
+
+                                                        </View>
+                                                    </TouchableWithoutFeedback >
+                                                </View>
+                                                {/* <Text style={{ color: '#999999', textAlign: "right", fontSize: 11, marginTop: 10, }}>Click to Occupy</Text> */}
+
+
+
+                                            </View>
+                                            {index == surah.length - 1 &&
+                                                <View style={{ height: 50 }}></View>
+                                            }
                                         </View>
                                     )}
                                 />
                             </View>
                             <View style={{ flex: 3 }}>
 
-                                <View style={{ justifyContent: "space-around", alignItems: "center", width: '100%', flexDirection: "row", marginVertical: 20 }}>
+                                <View style={{ justifyContent: "space-around", alignItems: "center", width: '100%', flexDirection: "row", marginVertical: 5 }}>
 
                                     <TouchableWithoutFeedback onPress={() => setPrivateDua()} >
                                         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -437,7 +573,40 @@ const styles = StyleSheet.create({
 
 
     },
+    inputContainer: {
+        marginVertical: 10,
+        width: "90%",
+        alignSelf: "center",
+        backgroundColor: '#FFF',
+        borderRadius: 25,
+        borderColor: "red",
+        borderWidth: 0,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
 
+        elevation: 2,
+    },
+    input: {
+        fontSize: 15,
+        //   borderWidth:1,
+        //   borderColor:"#EEF1EE" ,
+        width: "100%",
+        paddingLeft: 20,
+        paddingBottom: 5,
+        paddingTop: 5,
+        height: 40,
+        color: '#9a9999',
+        alignItems: 'flex-start',
+
+
+        //   borderRadius:4,
+        //   marginTop:5
+    },
     flatView: {
         width: '90%',
         marginBottom: "3%",
@@ -480,7 +649,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     button: {
-        marginTop: 10,
+        marginTop: 5,
         alignSelf: 'center',
         height: 50,
         width: "70%",

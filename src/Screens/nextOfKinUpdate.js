@@ -110,7 +110,7 @@ function nextOfKinUpdate({ route, navigation }) {
             data.append("address", state.address)
             data.append("town", state.town)
             data.append("phone", state.phoneNumber)
-            data.append("post_code", state.postalCode)
+            data.append("postal_code", state.postalCode)
             data.append("email", state.emailAdress)
             console.log(data)
             fetch(Domain + '/apis/core.php', {

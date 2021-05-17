@@ -19,7 +19,7 @@ const App = () => {
 
   AsyncStorage.setItem("initialRoute", "groupDashBoard");
 
-  let isLogin = true;
+  let isLogin = false;
   let initialRoute;
   if (isLogin) {
     initialRoute = "Home"

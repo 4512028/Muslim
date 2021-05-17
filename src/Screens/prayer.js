@@ -41,12 +41,12 @@ function Prayer({ navigation }) {
 
     }
     goToQuran = () => {
-        navigation.push('quran')
+        navigation.push('quranDetail')
 
 
     }
     goToTasbi = () => {
-        navigation.push('tasbi')
+        navigation.push('tasbiDetail')
 
 
     }

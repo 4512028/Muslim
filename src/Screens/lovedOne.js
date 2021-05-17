@@ -38,7 +38,7 @@ import { Domain } from '../Api/Api';
 
 
 
-function loveOne({ navigation }) {
+function loveOne({ route, navigation }) {
 
     //...........selection of image
 
@@ -120,7 +120,7 @@ function loveOne({ navigation }) {
             data.append("town", state.town)
             data.append("relation", state.relation)
             data.append("phone", state.phoneNumber)
-            data.append("post_code", state.postalCode)
+            data.append("postal_code", state.postalCode)
             data.append("email", state.emailAdress)
             data.append("groupid", state.groupID)
 
@@ -140,7 +140,10 @@ function loveOne({ navigation }) {
                     if (responseData.status === true) {
                         setDisabled(false)
                         setAnimating(false)
+
                         navigation.goBack()
+                        const { item, loveOne } = route.params;
+                        loveOne()
                     }
                     else {
 
