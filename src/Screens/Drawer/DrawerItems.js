@@ -157,7 +157,11 @@ function drawerItem({ navigation }) {
 
                 </ScrollView>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('feedback')
+
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'signIn' }],
+                    })
                 }}>
                     <View style={styles.item}>
                         <Image source={logOut} style={{ height: 30, width: 30, marginRight: 10 }} />
