@@ -108,7 +108,7 @@ export default function login({ navigation }) {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'Content-Type': "multipart/form-data",
                 },
                 body: data
 
@@ -176,7 +176,8 @@ export default function login({ navigation }) {
                         onChangeText={(value) => { setEmail(value) }}
                         keyboardType={'email-address'}
                         autoCapitalize={'none'}
-                        textContentType={"name"}>
+                    // textContentType={"name"}
+                    >
                     </TextInput>
 
                     <Image source={user} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>

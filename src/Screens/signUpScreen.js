@@ -155,7 +155,7 @@ export default function signUP({ navigation }) {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'Content-Type': "multipart/form-data",
                 },
                 body: data
 
@@ -366,7 +366,7 @@ export default function signUP({ navigation }) {
                             onChangeText={(val) => setEmail(val)}
                             keyboardType={'email-address'}
                             autoCapitalize={'none'}
-                            textContentType={"name"}>
+                        >
                         </TextInput>
 
                         <Image source={email} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
@@ -382,7 +382,7 @@ export default function signUP({ navigation }) {
                             placeholder='********'
                             placeholderTextColor='#d5c9de'
                             autoCapitalize={'none'}
-                            textContentType={"password"}
+                            // textContentType={"password"}
                             onChangeText={(val) => setPassword(val)}
                             secureTextEntry={true}>
                         </TextInput>
@@ -399,7 +399,7 @@ export default function signUP({ navigation }) {
                             placeholder='********'
                             placeholderTextColor='#d5c9de'
                             autoCapitalize={'none'}
-                            textContentType={"Confirm password"}
+                            // placeholder={"Confirm password"}
                             value={confirmPassword}
                             onChangeText={(val) => setConfirmPassword(val)}
                             secureTextEntry={true}>

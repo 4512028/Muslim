@@ -104,7 +104,7 @@ function ghusl({ navigation }) {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'Content-Type': "multipart/form-data",
                 },
                 body: data
 

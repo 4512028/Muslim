@@ -82,7 +82,8 @@ function joinGroup({ navigation, route }) {
                                 placeholderTextColor='#d5c9de'
                                 value={name}
                                 onChangeText={(val) => setName(val)}
-                                textContentType={"name"}>
+                            // textContentType={"name"}
+                            >
                             </TextInput>
 
                         </Animatable.View>
@@ -99,7 +100,8 @@ function joinGroup({ navigation, route }) {
                                 placeholderTextColor='#d5c9de'
                                 value={id}
                                 onChangeText={(val) => setId(val)}
-                                textContentType={"name"}>
+                            // textContentType={"name"}
+                            >
                             </TextInput>
 
                         </Animatable.View>

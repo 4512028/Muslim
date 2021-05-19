@@ -143,7 +143,8 @@ function profileEdit({ navigation }) {
                                     placeholderTextColor='#d5c9de'
                                     value={title}
                                     onChangeText={(val) => setTitle(val)}
-                                    textContentType={"name"}>
+                                // textContentType={"name"}
+                                >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                     <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
@@ -161,7 +162,8 @@ function profileEdit({ navigation }) {
                                     placeholderTextColor='#d5c9de'
                                     placeholderTextColor='#d5c9de'
                                     onChangeText={(val) => setFirstName(val)}
-                                    textContentType={"name"}>
+                                // textContentType={"name"}
+                                >
                                 </TextInput>
                                 <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
                                     <Image source={Profile} style={{ height: 15, width: 15 }}></Image>

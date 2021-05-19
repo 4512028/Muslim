@@ -143,7 +143,8 @@ export default function forgetPassword({ navigation }) {
                         value={email}
                         value={email}
                         onChangeText={(val) => setEmail(val)}
-                        textContentType={"name"}>
+                    // textContentType={"name"}
+                    >
                     </TextInput>
                 </Animatable.View>
 
