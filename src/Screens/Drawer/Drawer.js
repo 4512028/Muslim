@@ -26,7 +26,8 @@ const DrawerNavigator = () => {
             <Drawer.Screen name="other" component={BottomTabNavigator}
                 initialParams={{ initialRoute: "Reading" }} />
 
-
+            <Drawer.Screen name="groupDashBoard" component={BottomTabNavigator}
+                initialParams={{ initialRoute: "groupDashBoard" }} />
 
 
             <Drawer.Screen name="feedback" component={feedbackStackNavigator} />

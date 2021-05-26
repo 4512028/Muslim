@@ -18,6 +18,7 @@ import pass from '../Assets/Icons/password.png'
 import logo from '../Assets/Icons/Logo.jpg'
 import back from '../Assets/Icons/back_icon.png'
 import { domain, token } from "../Api/Api";
+import { CommonActions } from '@react-navigation/native';
 
 
 import * as Animatable from 'react-native-animatable';
@@ -36,9 +37,6 @@ export default function forgetPassword({ navigation }) {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isAnimating, setAnimating] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
-
-
-
 
 
 
@@ -176,7 +174,18 @@ export default function forgetPassword({ navigation }) {
 
                 <Animatable.View animation="fadeInUp" >
 
-                    <TouchableOpacity style={styles.button} >
+                    <TouchableOpacity style={styles.button} onPress={() => {
+
+                        navigation.dispatch({
+                            ...CommonActions.reset({
+                                index: 0,
+                                routes: [{ name: "signIn" }],
+                            }),
+                        })
+
+
+
+                    }}>
                         <Text style={styles.buttonText}>Set Password </Text>
                     </TouchableOpacity>
                 </Animatable.View>
@@ -184,10 +193,11 @@ export default function forgetPassword({ navigation }) {
 
 
             </ScrollView>
-            {isAnimating &&
+            {
+                isAnimating &&
                 <ActivityIndicator size="large" color="#58278c" animating={isAnimating} style={styles.loading} />
             }
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 

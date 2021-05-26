@@ -47,17 +47,15 @@ function groupDashBoard({ navigation }) {
 
     }
 
-
-    useEffect(async () => {
-        async function fetchGroup() {
+    useEffect(() => {
+        (async () => {
             let haveGroup = await AsyncStorage.getItem('haveGroup')
             console.log(haveGroup)
             if (haveGroup == true) setUserHaveGroup(true)
             else setUserHaveGroup(false)
-        }
-        await fetchGroup()
-
+        })();
     }, []);
+
 
 
     openManue = () => {
@@ -138,6 +136,9 @@ function groupDashBoard({ navigation }) {
             message: `${message} ${Group_ID}`,
         },
     });
+
+
+
     gotoShairing = async () => {
 
         let Group_ID = ""
