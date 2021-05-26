@@ -16,6 +16,8 @@ import {
     Button
 } from "react-native";
 import logo from '../Assets/Icons/Logo.jpg'
+import musjid from '../Assets/Icons/musjid.png'
+
 
 import back from '../Assets/Icons/Arrr.png';
 import Profile from '../Assets/Icons/profile.png';
@@ -170,7 +172,14 @@ export default function signUP({ navigation }) {
                     if (responseData.status === true) {
                         setDisabled(false)
                         setAnimating(false)
-                        navigation.goBack()
+                        Alert.alert(
+                            "NOTE:",
+                            "Please Verify your email and then continue to login.",
+                            [
+                                { text: "OK", onPress: () => navigation.goBack() }
+                            ]
+                        );
+
 
 
                     }
@@ -288,29 +297,14 @@ export default function signUP({ navigation }) {
                         <Image source={home} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
                     <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-
-
-                    <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
-                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
-
-                        <TextInput
-                            style={styles.textField}
-                            placeholder='Phone'
-                            placeholderTextColor='#d5c9de'
-                            value={phoneNumber}
-                            onChangeText={(val) => setPhone(val)}
-                        >
-                        </TextInput>
-
-                        <Image source={phone} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
-                    </Animatable.View>
-                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
                     <Animatable.Text animation="fadeInUp" style={styles.label}>Post Code</Animatable.Text>
                     <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
 
                         <TextInput
                             style={styles.textField}
                             placeholder='Postal Code'
+                            keyboardType='numeric'
+
                             placeholderTextColor='#d5c9de'
                             value={postalCode}
                             onChangeText={(val) => setPostalCode(val)}
@@ -320,12 +314,31 @@ export default function signUP({ navigation }) {
                         <Image source={email} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
                     <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
-                    <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+
+
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Phone</Animatable.Text>
                     <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
 
                         <TextInput
                             style={styles.textField}
                             placeholder='Phone'
+                            placeholderTextColor='#d5c9de'
+                            keyboardType='numeric'
+                            value={phoneNumber}
+                            onChangeText={(val) => setPhone(val)}
+                        >
+                        </TextInput>
+
+                        <Image source={phone} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                    </Animatable.View>
+
+                    <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                    <Animatable.Text animation="fadeInUp" style={styles.label}>Town</Animatable.Text>
+                    <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+
+                        <TextInput
+                            style={styles.textField}
+                            placeholder='Town'
                             placeholderTextColor='#d5c9de'
                             value={town}
                             onChangeText={(val) => setTown(val)}
@@ -344,12 +357,12 @@ export default function signUP({ navigation }) {
                             style={styles.textField}
                             placeholder='Mosque'
                             placeholderTextColor='#d5c9de'
-                            value={mosque}
+                            value={musjid}
                             onChangeText={(val) => setMosque(val)}
                         >
                         </TextInput>
 
-                        <Image source={home} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
+                        <Image source={musjid} style={{ height: 15, width: '4%', marginTop: 17, marginRight: 35 }}></Image>
                     </Animatable.View>
                     <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
 

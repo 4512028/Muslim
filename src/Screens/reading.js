@@ -57,8 +57,6 @@ function reading({ navigation }) {
     }
 
 
-
-
     return (
         <SafeAreaView style={styles.container}>
 

@@ -4,6 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { DrawerNavigator } from "./src/Screens/Drawer/Drawer";
 import signIn from "./src//Screens/signIn";
 import signUpScreen from "./src/Screens/signUpScreen";
+import VerificationCodeScree from "./src/Screens/VerificationCodeScree";
+import ResetPassword from "./src/Screens/ResetPassword";
+
+
 import forgetPassword from "./src/Screens/forgetPassword";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -36,6 +40,10 @@ const App = () => {
         <Stack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={DrawerNavigator} />
           <Stack.Screen name="forgetPassword" component={forgetPassword} />
+          <Stack.Screen name="VerificationCodeScree" component={VerificationCodeScree} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
+
+
           <Stack.Screen name="signUpScreen" component={signUpScreen} />
           <Stack.Screen name="signIn" component={signIn} />
         </Stack.Navigator>

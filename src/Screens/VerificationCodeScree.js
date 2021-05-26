@@ -18,6 +18,7 @@ import logo from '../Assets/Icons/Logo.jpg'
 import back from '../Assets/Icons/back_icon.png'
 import { domain, token } from "../Api/Api";
 
+import OTPInputView from '@twotalltotems/react-native-otp-input'
 
 import * as Animatable from 'react-native-animatable';
 
@@ -130,33 +131,37 @@ export default function forgetPassword({ navigation }) {
                     </TouchableOpacity>
                 </Animatable.View>
                 <Animatable.Image animation="fadeInUp" source={logo} style={styles.logo}></Animatable.Image>
-                <Animatable.Text animation="fadeInUp" style={styles.heading}>Forgot Password?</Animatable.Text>
+                <Animatable.Text animation="fadeInUp" style={styles.heading}>OTP CODE</Animatable.Text>
 
-                <Animatable.Text animation="fadeInUp" style={styles.label}>Email</Animatable.Text>
                 <Animatable.View animation="fadeInUp" >
 
-                    <TextInput
-                        animation="fadeInUp"
-                        style={styles.textField}
-                        placeholder='jhondoe@gmail.com'
-                        placeholderTextColor='#d5c9de'
-                        value={email}
-                        value={email}
-                        onChangeText={(val) => setEmail(val)}
-                    // textContentType={"name"}
-                    >
-                    </TextInput>
+                    <View style={{ width: "90%", alignSelf: "center", }}>
+                        <OTPInputView
+                            style={{ width: '100%', height: 60, }}
+                            pinCount={4}
+                            placeholderCharacter="x"
+                            placeholderTextColor="#8DAFB2"
+                            selectionColor={"0178B9"}
+                            autoFocusOnLoad={false}
+                            // codeInputFieldStyle={[styles.shadow, { height: 60, width: 60, borderRadius: 5, backgroundColor: textInputBg, color: textColor, fontSize: 22, fontWeight: '700' }]}
+                            codeInputFieldStyle={{ height: 65, width: 65, borderRadius: 5, borderWidth: 1, color: "#0178B9", borderColor: "#0178B9", fontSize: 25, fontWeight: '700' }}
+                            // codeInputHighlightStyle={styles.underlineStyleHighLighted}
+                            onCodeFilled={(code => {
+
+                                console.log(`Code is ${code}, you are good to go!`)
+                            })}
+                        />
+                    </View>
                 </Animatable.View>
 
-                <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
                 <Animatable.View animation="fadeInUp" >
-                    <Text style={styles.label1}>You will receive your new password on your registered email address. </Text>
+                    <Text style={[styles.label1, { marginTop: 20 }]}>You will receive your new OTP on your registered email address. </Text>
                 </Animatable.View>
 
                 <Animatable.View animation="fadeInUp" >
 
-                    <TouchableOpacity style={styles.button} >
-                        <Text style={styles.buttonText}>Reset Password </Text>
+                    <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('ResetPassword') }}>
+                        <Text style={styles.buttonText}>CONFIRM</Text>
                     </TouchableOpacity>
                 </Animatable.View>
 
@@ -169,7 +174,6 @@ export default function forgetPassword({ navigation }) {
         </SafeAreaView>
     )
 }
-
 const styles = StyleSheet.create({
 
     container: {
@@ -199,7 +203,7 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     heading: {
-        marginLeft: 30,
+        marginLeft: 20,
         marginTop: 25,
         fontSize: 18,
         fontWeight: 'bold',

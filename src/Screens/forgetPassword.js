@@ -155,7 +155,7 @@ export default function forgetPassword({ navigation }) {
 
                 <Animatable.View animation="fadeInUp" >
 
-                    <TouchableOpacity style={styles.button} >
+                    <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('VerificationCodeScree') }}>
                         <Text style={styles.buttonText}>Reset Password </Text>
                     </TouchableOpacity>
                 </Animatable.View>
