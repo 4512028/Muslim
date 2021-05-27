@@ -89,6 +89,53 @@ function profileVerification({ navigation }) {
     }
 
 
+    VerificationProfile = () => {
+
+        setDisabled(true)
+        setAnimating(true)
+        var data = new FormData();
+        data.append("userid", "1")
+        data.append("action", "veify")
+        data.append("screen", "users")
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "multipart/form-data",
+            },
+            body: data
+
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+                console.log(responseData)
+                if (responseData.status === true) {
+                    setDisabled(false)
+                    setAnimating(false)
+                    alert(responseData.msg)
+
+                }
+                else {
+
+                    alert(responseData.msg)
+                    setDisabled(false)
+                    setAnimating(false)
+                }
+
+            })
+            .catch((error) => {
+                console.log("error from addKin  API", error);
+                setDisabled(false)
+                setAnimating(false)
+            });
+
+
+
+    }
+
+
     return (
         <SafeAreaView style={styles.container}>
 
@@ -136,7 +183,7 @@ function profileVerification({ navigation }) {
                     </View>
                     <View style={{ width: "90%", marginHorizontal: "5%", flexDirection: "row", marginTop: 20 }}>
                         <View style={{ width: "50%", alignItems: "center", justifyContent: "center" }}>
-                            <Text animation="fadeInUp" style={{ fontSize: 16, marginVertical: 10, }}>Upload photo ID  </Text>
+                            <Text animation="fadeInUp" style={{ fontSize: 16, marginVertical: 10, }}>Proof of address  </Text>
                             <TouchableOpacity onPress={() => { selectImagee(2) }} >
                                 <View style={styles.button} >
                                     <Text style={{ color: 'black', fontSize: 17, }}>Select </Text>

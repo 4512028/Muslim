@@ -3,6 +3,10 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, StyleSheet, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
 import Logo from '../Assets/Icons/Logo.jpg'
+import book from '../Assets/Icons/book.png'
+import time from '../Assets/Icons/time.png'
+import prayer from '../Assets/Icons/prayer.png'
+
 import manue from '../Assets/Icons/manue.png'
 import { Domain } from '../Api/Api';
 
@@ -24,6 +28,58 @@ function Home({ navigation }) {
 
     openManue = () => {
         navigation.openDrawer();
+
+    }
+
+    useEffect(() => {
+
+        home()
+
+
+    }, []);
+
+    home = () => {
+
+        setDisabled(true)
+        setAnimating(true)
+        var data = new FormData();
+        data.append("action", "home")
+        data.append("page", "1")
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "multipart/form-data",
+            },
+            body: data
+
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+                console.log(responseData)
+                if (responseData.status === true) {
+                    setDisabled(false)
+                    setAnimating(false)
+                    setPosts(responseData.data)
+
+                }
+                else {
+
+                    alert(responseData.msg)
+                    setDisabled(false)
+                    setAnimating(false)
+                }
+
+            })
+            .catch((error) => {
+                console.log("error from home  API", error);
+                setDisabled(false)
+                setAnimating(false)
+            });
+
+
 
     }
 
@@ -78,15 +134,37 @@ function Home({ navigation }) {
 
 
                                 <View style={{ height: 190, width: "100%", alignItems: 'center', borderTopLeftRadius: 10, borderTopRightRadius: 10, justifyContent: 'center' }}>
-                                    <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
-                                        source={item.post_Image}
-                                    ></Image >
+                                    {item.type == "Admin" &&
+                                        <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
+                                            source={item.image == "" ? Logo : { uri: item.image }}
+                                        ></Image >
+                                    }
+                                    {item.type == "Tasbih" &&
+                                        <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
+                                            source={time}
+                                        ></Image >
+                                    }
+                                    {item.type == "DUA" &&
+                                        <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
+                                            source={prayer}
+                                        ></Image >
+                                    }
+                                    {item.type == "Surah" &&
+                                        <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
+                                            source={book}
+                                        ></Image >
+                                    }
+                                    {item.type == "Para" &&
+                                        <Image resizeMode="cover" style={{ height: 190, width: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10, }}
+                                            source={book}
+                                        ></Image >
+                                    }
                                 </View>
                                 <View style={{ width: "100%", alignItems: "flex-start", marginTop: 5 }}>
 
-                                    <Text style={{ marginLeft: 10, fontSize: 12, color: "#999999", }}>{item.post_title} </Text>
-                                    <Text style={{ marginLeft: 10, fontSize: 10, color: "#999999", }}>{item.post_description} </Text>
-                                    <Text style={{ marginLeft: 10, fontSize: 10, color: "#999999", }}>{item.post_date} </Text>
+                                    <Text style={{ marginLeft: 10, fontSize: 16, color: "black", fontWeight: "bold", }}>{item.title} </Text>
+                                    <Text style={{ marginLeft: 10, fontSize: 14, color: "black", }}>{item.type} : <Text style={{ fontSize: 12, color: "black", }}>{item.description} </Text></Text>
+                                    <Text style={{ marginLeft: 10, fontSize: 10, color: "#999999", alignSelf: "flex-end", marginRight: 10 }}>{item.created} </Text>
 
 
                                 </View>
@@ -111,7 +189,9 @@ function Home({ navigation }) {
 
             </View>
 
-
+            {isAnimating &&
+                <ActivityIndicator size="large" color="#58278c" animating={isAnimating} style={styles.loading} />
+            }
         </SafeAreaView>
 
     );
@@ -125,5 +205,14 @@ const styles = StyleSheet.create({
         backgroundColor: "#0178B9",
         alignContent: 'center',
     },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 export default Home;

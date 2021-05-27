@@ -86,8 +86,9 @@ function Prayer({ navigation }) {
                 <View style={styles.ImageView}>
 
 
-                    <Image source={prayer} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
-
+                    <Image source={prayer} style={{
+                        height: 120, width: 120, borderRadius: 60, alignSelf: 'center', resizeMode: "contain"
+                    }} />
                 </View>
                 {/* < Text style={{ fontSize: 18, textAlign: "center", marginVertical: 30, color: "#0178B9", fontWeight: "bold" }}>Request For Dua</ Text> */}
 
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
         height: 120,
         width: 120,
         borderRadius: 60,
-        backgroundColor: "#0178B9",
+
         marginVertical: "10%",
         alignItems: "center",
         justifyContent: "center",

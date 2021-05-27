@@ -1,6 +1,6 @@
 // ./screens/Home.js
 
-import React from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, StyleSheet, Button, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import profilee from '../Assets/Icons/profile.png'
@@ -21,7 +21,24 @@ import { Domain } from '../Api/Api';
 
 function profile({ navigation }) {
 
+    const [state, setState] = useState({
+        title: "",
+        firstName: "",
+        LastName: "",
+        emailAdress: "",
+        password: "",
+        address: "",
+        phoneNumber: "",
+        postalCode: "",
+        town: "",
+        image: "",
+        mosque: "",
 
+
+    });
+
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
 
 
 
@@ -44,6 +61,71 @@ function profile({ navigation }) {
 
     }
 
+
+    useEffect(() => {
+
+        getProfile()
+
+
+    }, []);
+
+    getProfile = () => {
+
+
+        setDisabled(true)
+        setAnimating(true)
+        var data = new FormData();
+        data.append("userid", "1")
+        data.append("action", "get")
+        data.append("screen", "users")
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "multipart/form-data",
+            },
+            body: data
+
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+                console.log(responseData)
+                if (responseData.status === true) {
+                    setDisabled(false)
+                    setAnimating(false)
+                    console.log(responseData.data.first_name)
+                    setState({
+                        ...state,
+                        firstName: responseData.data[0].first_name,
+                        LastName: responseData.data[0].last_name,
+                        emailAdress: responseData.data[0].email,
+                        address: responseData.data[0].address,
+                        phoneNumber: responseData.data[0].phone,
+                        postalCode: responseData.data[0].post_code,
+                        town: responseData.data[0].town,
+                        mosque: responseData.data[0].mosque,
+                        image: responseData.data[0].image
+                    })
+                }
+                else {
+
+                    alert(responseData.msg)
+                    setDisabled(false)
+                    setAnimating(false)
+                }
+
+            })
+            .catch((error) => {
+                console.log("error from addKin  API", error);
+                setDisabled(false)
+                setAnimating(false)
+            });
+
+
+
+    }
 
 
 
@@ -86,7 +168,7 @@ function profile({ navigation }) {
                         <View style={styles.ImageView}>
 
 
-                            <Image source={userP} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+                            <Image source={state.image == "" ? userP : { uri: Domain + state.image }} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
 
                         </View>
 
@@ -117,7 +199,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >umer</Text>
+                                >{state.firstName}</Text>
                             </View>
 
 
@@ -142,15 +224,11 @@ function profile({ navigation }) {
                                 <Text
                                     style={{
                                         color: "black",
-
                                         fontSize: 14,
                                         fontWeight: "600",
-
                                         alignSelf: 'flex-start',
-
-
                                     }}
-                                >mumersaleem79@gmail.com</Text>
+                                >{state.emailAdress}</Text>
                             </View>
 
 
@@ -183,7 +261,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >umer</Text>
+                                >{state.address}</Text>
                             </View>
 
 
@@ -215,7 +293,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >0304455665655</Text>
+                                >{state.phoneNumber}</Text>
                             </View>
 
 
@@ -248,7 +326,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >32323</Text>
+                                >{state.postalCode}</Text>
                             </View>
 
 
@@ -282,7 +360,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >umer</Text>
+                                >{state.mosque}</Text>
                             </View>
 
 
@@ -298,6 +376,9 @@ function profile({ navigation }) {
 
 
             </ScrollView>
+            {isAnimating &&
+                <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
+            }
         </SafeAreaView >
     );
 };
@@ -327,6 +408,16 @@ const styles = StyleSheet.create({
         width: 50,
         marginLeft: 15,
         justifyContent: 'center'
+    },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
     },
 
 });

@@ -131,6 +131,12 @@ function tasbi({ navigation }) {
     }
 
 
+    goToTasbhiCounter = () => {
+
+
+    }
+
+
     return (
         <SafeAreaView style={styles.container}>
 

@@ -28,7 +28,7 @@ import add_2 from '../Assets/Icons/add_2.png'
 import sadaqah from '../Assets/Icons/sadaqah.png';
 import tree from '../Assets/Icons/tree.png';
 import water from '../Assets/Icons/water.png';
-import masjid from '../Assets/Icons/musjid.png';
+import masjid from '../Assets/Icons/musjid1.png';
 import food from '../Assets/Icons/food.png';
 import { Domain } from '../Api/Api';
 
@@ -93,7 +93,9 @@ function sadqah({ navigation }) {
                     <View style={{ flexDirection: "column", justifyContent: "space-between", paddingLeft: '6%', paddingRight: '6%' }}>
 
                         <View style={styles.ImageView}>
-                            <Image source={whiteDonation} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+                            <Image source={whiteDonation} style={{
+                                height: 120, width: 120, borderRadius: 60, alignSelf: 'center', resizeMode: "contain"
+                            }} />
 
                         </View>
                         < Text style={{ fontSize: 18, textAlign: "center", color: "#0178B9", fontWeight: "bold" }}>Request For Sadaqah</ Text>
@@ -214,10 +216,10 @@ const styles = StyleSheet.create({
     },
 
     ImageView: {
-        height: 120,
-        width: 120,
+        height: 150,
+        width: "100%",
         borderRadius: 60,
-        backgroundColor: "#0178B9",
+
         marginVertical: "10%",
         alignItems: "center",
         justifyContent: "center",
