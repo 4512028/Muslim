@@ -37,12 +37,12 @@ function profileVerification({ navigation }) {
 
     //...........selection of image
 
-    const [response, setResponse] = React.useState(null);
-    const [response2, setResponse2] = React.useState(null);
+    const [response, setResponse] = useState(null);
+    const [response2, setResponse2] = useState(null);
     const [isSelected1, setSelected1] = useState(false);
     const [isSelected2, serSelected2] = useState(false);
-    let [isAnimating, setAnimating] = useState(false);
-    let [isDisabled, setisDisabled] = useState(false);
+    const [isAnimating, setAnimating] = useState(false);
+    const [isDisabled, setDisabled] = useState(false);
 
 
 
@@ -63,7 +63,6 @@ function profileVerification({ navigation }) {
                 maxWidth: 200,
             },
             (response) => {
-                console.log(response);
                 if (value == 1) {
                     setResponse(response)
                     setSelected1(true)
@@ -91,12 +90,32 @@ function profileVerification({ navigation }) {
 
     VerificationProfile = () => {
 
+        if (response == null) {
+            alert("Please Select photo id")
+            return
+        }
+        if (response2 == null) {
+            alert("Please Select proof of address")
+            return
+        }
+
         setDisabled(true)
         setAnimating(true)
         var data = new FormData();
         data.append("userid", "1")
-        data.append("action", "veify")
-        data.append("screen", "users")
+        data.append("action", "verify")
+        data.append("photo_id", {
+            uri: response.uri,
+            name: 'photo_id.jpg',
+            type: 'photo_id/jpg'
+        })
+        data.append("address_image", {
+            uri: response2.uri,
+            name: 'address_image.jpg',
+            type: 'address_image/jpg'
+        })
+
+
 
         fetch(Domain + '/apis/core.php', {
             method: 'POST',
@@ -115,7 +134,6 @@ function profileVerification({ navigation }) {
                     setDisabled(false)
                     setAnimating(false)
                     alert(responseData.msg)
-
                 }
                 else {
 
@@ -123,16 +141,12 @@ function profileVerification({ navigation }) {
                     setDisabled(false)
                     setAnimating(false)
                 }
-
             })
             .catch((error) => {
                 console.log("error from addKin  API", error);
                 setDisabled(false)
                 setAnimating(false)
             });
-
-
-
     }
 
 
@@ -155,10 +169,7 @@ function profileVerification({ navigation }) {
                 </View>
             </View>
             <View style={{ backgroundColor: "#FFF", flex: 1 }}>
-
                 <ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} >
-
-
                     <Animatable.Text animation="fadeInUp" style={{ fontSize: 18, alignSelf: "center", textAlign: "center", marginVertical: 30, marginHorizontal: "20%", color: "#0178B9", fontWeight: "bold" }}>Upload one photo ID and one proof of Address</Animatable.Text>
 
                     <View style={{ width: "90%", marginHorizontal: "5%", flexDirection: "row" }}>
@@ -201,7 +212,7 @@ function profileVerification({ navigation }) {
                     </View>
 
 
-                    <TouchableOpacity style={styles.button1} >
+                    <TouchableOpacity style={styles.button1} onPress={() => VerificationProfile()} >
                         <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update </Text>
                     </TouchableOpacity>
 

@@ -35,19 +35,18 @@ import { Domain } from '../Api/Api';
 
 
 
-function profileEdit({ navigation }) {
-
-
+function profileEdit({ route, navigation }) {
+    const { item } = route.params;
 
     const [title, setTitle] = useState("");
-    const [firstName, setFirstName] = useState("");
+    const [firstName, setFirstName] = useState(item.firstName);
+    const [lastNAme, setlastNAme] = useState(item.LastName);
     const [emailAdress, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [address, setAddres] = useState("");
-    const [phoneNumber, setPhone] = useState("");
-    const [postalCode, setPostalCode] = useState("");
-    const [town, setTown] = useState("");
-    const [mosque, setMosque] = useState("");
+    const [address, setAddres] = useState(item.phoneNumber);
+    const [phoneNumber, setPhone] = useState(item.firstName);
+    const [postalCode, setPostalCode] = useState(item.postalCode);
+    const [town, setTown] = useState(item.firstName);
+    const [mosque, setMosque] = useState(item.mosque);
     const [isAnimating, setAnimating] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
     const [response1, setResponse1] = React.useState(null);
@@ -55,6 +54,7 @@ function profileEdit({ navigation }) {
 
 
     Back = () => {
+        route.params.getProfile
         navigation.goBack()
     }
 
@@ -83,6 +83,122 @@ function profileEdit({ navigation }) {
             },
         )
     }
+
+    const editProfile = async () => {
+        if (title.trim() === "") {
+            alert("Title is required!");
+            return
+        } else if (firstName.trim() === "") {
+            alert("First Name is required!");
+            return
+        }
+        else if (lastNAme.trim() === "") {
+            alert("Last Name is required!");
+            return
+        }
+        else if (address.trim() === "") {
+            alert("Address is required!");
+            return
+        } else if (phoneNumber.trim() === "") {
+            alert("phone Number is required!");
+            return
+        }
+        else if (postalCode.trim() === "") {
+            alert("postal Code is required!");
+            return
+        }
+        else if (town.trim() === "") {
+            alert("Town is required!");
+            return
+        }
+        else if (mosque.trim() === "") {
+            alert("Mosque is required!");
+            return
+        }
+        // else if (emailAdress.trim() === "") {
+        //     alert("Email is required");
+        //     return
+        // }
+        // else if (validator.validate(emailAdress.trim()) === false) {
+        //     alert("Email format is not correct.");
+        //     return
+        // }
+        // else if (password.trim() === "") {
+        //     alert("Password is required!");
+        //     return
+        // }
+        // else if (password.length < 5) {
+        //     alert("Password type more than 5 words");
+        //     return
+        // }
+        // else if (password !== confirmPassword) {
+        //     alert("Password not match! Try again");
+        //     return
+        // }
+
+        else {
+            setDisabled(true)
+            setAnimating(true)
+            var data = new FormData();
+            data.append("id", "1")
+            data.append("action", "profile_update")
+            data.append("first_name", firstName)
+            data.append("last_name", lastNAme)
+            data.append("mosque", mosque)
+            data.append("address", address)
+            data.append("town", town)
+            data.append("phone", phoneNumber)
+            data.append("post_code", postalCode)
+            data.append("post_code", postalCode)
+            data.append("uploadedFile", {
+                uri: response1.uri,
+                name: 'uploadedFile.jpg',
+                type: 'uploadedFile/jpg'
+            })
+
+            fetch(Domain + '/apis/core.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': "multipart/form-data",
+                },
+                body: data
+
+            }).then((response) => response.text())
+                .then(async (responseText) => {
+
+                    let responseData = JSON.parse(responseText);
+                    console.log(responseData, "jnkkn")
+
+                    console.log(responseData, "responseData of api")
+
+                    if (responseData.status === true) {
+                        setDisabled(false)
+                        setAnimating(false)
+                        alert(responseData.msg)
+                    }
+                    else {
+                        alert(responseData.msg)
+                        setDisabled(false)
+                        setAnimating(false)
+                    }
+
+                })
+                .catch((error) => {
+
+                    console.log("error from home API", error);
+
+                    setDisabled(false)
+                    setAnimating(false)
+                });
+
+
+        }
+    }
+
+
+
+
 
 
     return (
@@ -161,7 +277,26 @@ function profileEdit({ navigation }) {
                                     placeholder='First Name'
                                     placeholderTextColor='#d5c9de'
                                     placeholderTextColor='#d5c9de'
+                                    value={firstName}
                                     onChangeText={(val) => setFirstName(val)}
+                                // textContentType={"name"}
+                                >
+                                </TextInput>
+                                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                                    <Image source={Profile} style={{ height: 15, width: 15 }}></Image>
+                                </View>
+                            </Animatable.View>
+                            <Animatable.View animation="fadeInUp" style={styles.seperater}></Animatable.View>
+                            <Animatable.Text animation="fadeInUp" style={styles.label}>Last Name</Animatable.Text>
+                            <Animatable.View animation="fadeInUp" style={{ flexDirection: 'row', }} >
+                                <TextInput
+                                    animation="fadeInUp"
+                                    style={styles.textField}
+                                    placeholder='First Name'
+                                    placeholderTextColor='#d5c9de'
+                                    placeholderTextColor='#d5c9de'
+                                    value={lastNAme}
+                                    onChangeText={(val) => setlastNAme(val)}
                                 // textContentType={"name"}
                                 >
                                 </TextInput>
@@ -266,7 +401,7 @@ function profileEdit({ navigation }) {
 
                             <Animatable.View animation="fadeInUp" >
 
-                                <TouchableOpacity style={styles.button} >
+                                <TouchableOpacity style={styles.button} onPress={() => editProfile()} >
                                     <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Update </Text>
                                 </TouchableOpacity>
                             </Animatable.View>

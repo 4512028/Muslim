@@ -140,9 +140,6 @@ function sadqah({ navigation }) {
                             <Text style={{ color: '#FFFFFF', fontSize: 17, }}>Donate </Text>
                         </TouchableOpacity>
 
-
-
-
                     </View>
 
 

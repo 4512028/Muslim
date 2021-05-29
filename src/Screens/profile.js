@@ -45,7 +45,10 @@ function profile({ navigation }) {
 
     gotoEditProofile = () => {
 
-        navigation.navigate('profileEdit')
+        navigation.navigate('profileEdit', {
+            item: state,
+            getProfile: getProfile()
+        });
 
     }
 
@@ -69,6 +72,10 @@ function profile({ navigation }) {
 
     }, []);
 
+    useEffect(() => {
+
+
+    }, [state.image]);
     getProfile = () => {
 
 
@@ -168,7 +175,7 @@ function profile({ navigation }) {
                         <View style={styles.ImageView}>
 
 
-                            <Image source={state.image == "" ? userP : { uri: Domain + state.image }} style={{ height: 70, width: 70, borderRadius: 35, alignSelf: 'center', resizeMode: "contain" }} />
+                            <Image source={state.image == "" ? userP : { uri: Domain + "/apis/" + state.image }} style={{ height: 120, width: 120, borderRadius: 60, alignSelf: 'center', }} />
 
                         </View>
 
@@ -199,7 +206,7 @@ function profile({ navigation }) {
 
 
                                     }}
-                                >{state.firstName}</Text>
+                                >{state.firstName} {state.LastName}</Text>
                             </View>
 
 
