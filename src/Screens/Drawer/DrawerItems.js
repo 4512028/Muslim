@@ -1,8 +1,8 @@
 // ./screens/Home.js
 
-import React from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, StyleSheet, Button, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
-import Logo from '../../Assets/Icons/profile.png'
+import Logo from '../../Assets/Icons/pro.png'
 import whiteHome from '../../Assets/Icons/whiteHome.png'
 import whiteProfile from '../../Assets/Icons/whiteProfile.png'
 import whiteDOnat from '../../Assets/Icons/whiteDOnate.png'
@@ -12,6 +12,7 @@ import feedBack from '../../Assets/Icons/whiteProfile.png'
 import logOut from '../../Assets/Icons/whiteLogout.png'
 import ghusl from '../../Assets/Icons/whiteS.png';
 import whiteManue from '../../Assets/Icons/whiteManue.png';
+import { Domain } from '../../Api/Api';
 
 import { CommonActions } from '@react-navigation/native';
 
@@ -24,7 +25,15 @@ import {
 } from '@react-navigation/drawer';
 function drawerItem({ navigation }) {
 
+    const [state, setState] = useState({
 
+        firstName: "",
+        LastName: "",
+        image: "",
+
+
+
+    });
 
     GoToNextScreen = (initialRoute) => {
 
@@ -35,13 +44,57 @@ function drawerItem({ navigation }) {
                 routes: [{ name: initialRoute }],
             }),
         })
+    }
+
+    useEffect(() => {
+
+        getdata()
+
+
+    }, []);
+
+
+    getdata = async () => {
+        const id = await AsyncStorage.getItem('userID');
+
+        var data = new FormData();
+        data.append("userid", id)
+        data.append("action", "get")
+        data.append("screen", "users")
+
+        fetch(Domain + '/apis/core.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "multipart/form-data",
+            },
+            body: data
+        }).then((response) => response.text())
+            .then(async (responseText) => {
+
+                let responseData = JSON.parse(responseText);
+                console.log(responseData)
+                if (responseData.status === true) {
+                    setState({
+                        ...state,
+                        firstName: responseData.data[0].first_name,
+                        LastName: responseData.data[0].last_name,
+                        image: responseData.data[0].image
+                    })
+                }
+                else {
+                    alert(responseData.msg)
+                }
+
+            })
+            .catch((error) => {
+                console.log("error from getProfile  API", error);
+
+            });
 
 
 
     }
-
-
-
 
 
 
@@ -55,11 +108,11 @@ function drawerItem({ navigation }) {
                             navigation.navigate('profile')
                         }}>
                             <View style={styles.ImageView}>
+                                <Image source={state.image == "" ? Logo : { uri: Domain + "/apis/" + state.image }} style={{ height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
 
-                                <Image source={Logo} style={{ height: 80, width: 80, alignSelf: 'center', resizeMode: "contain" }} />
 
                             </View>
-                            <Text style={{ fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, color: "white" }}> umer Saleem</Text>
+                            <Text style={{ fontSize: 22, fontWeight: "bold", marginTop: 10, marginBottom: 20, color: "white" }}>{state.firstName} {state.LastName}</Text>
 
                         </TouchableOpacity>
 
@@ -67,7 +120,7 @@ function drawerItem({ navigation }) {
                     <TouchableOpacity onPress={() => {
                         GoToNextScreen("Home")
                     }}>
-                        <View style={styles.item}>
+                        <View style={styles.item} >
                             <Image source={whiteHome} style={{ height: 30, width: 30, marginRight: 10 }} />
                             <Text style={{ fontSize: 16, color: "white" }}>Home </Text>
 
@@ -93,6 +146,7 @@ function drawerItem({ navigation }) {
                             <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Reading </Text>
 
                         </View>
+
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
                         GoToNextScreen("nextOfKinDetail")
@@ -113,7 +167,7 @@ function drawerItem({ navigation }) {
                         <View style={styles.item}>
                             <Image source={whiteLove} style={{ height: 30, width: 30, marginRight: 10 }} />
 
-                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Love One </Text>
+                            <Text style={{ textAlign: "center", fontSize: 16, color: "white" }}> Loved One </Text>
 
                         </View>
                     </TouchableOpacity>
@@ -159,7 +213,7 @@ function drawerItem({ navigation }) {
 
                 </ScrollView>
                 <TouchableOpacity onPress={() => {
-
+                    AsyncStorage.setItem("isLogin", "false");
                     navigation.reset({
                         index: 0,
                         routes: [{ name: 'signIn' }],
@@ -184,13 +238,14 @@ function drawerItem({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#0178B9",
+        backgroundColor: "#275F8E",
         alignContent: 'center',
     },
     ImageView: {
         height: 100,
         width: 100,
         borderRadius: 50,
+        alignSelf: "center",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white", marginHorizontal: "5%"

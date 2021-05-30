@@ -46,7 +46,6 @@ export default function login({ navigation }) {
 
 
     const buSignUp = () => {
-        console.log("hjbjhb")
         navigation.push('signUpScreen')
     }
 
@@ -124,6 +123,8 @@ export default function login({ navigation }) {
                         setDisabled(false)
                         setAnimating(false)
 
+                        await AsyncStorage.setItem("isLogin", "true");
+                        await AsyncStorage.setItem("userID", responseData.user[0].id);
                         navigation.reset({
                             index: 0,
                             routes: [{ name: 'Home' }],

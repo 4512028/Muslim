@@ -103,7 +103,9 @@ function nextOfKinUpdate({ route, navigation }) {
             setDisabled(true)
             setAnimating(true)
             var data = new FormData();
-            data.append("userid", "1")
+            const id = await AsyncStorage.getItem('userID');
+
+            data.append("userid", id)
             data.append("action", "update")
             data.append("screen", "kin")
             data.append("name", state.firstName)

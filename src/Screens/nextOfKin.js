@@ -93,8 +93,10 @@ function nextToKin({ navigation }) {
         else {
             setDisabled(true)
             setAnimating(true)
+            const id = await AsyncStorage.getItem('userID');
+
             var data = new FormData();
-            data.append("userid", "1")
+            data.append("userid", id)
             data.append("action", "insert")
             data.append("screen", "kin")
             data.append("name", firstName)

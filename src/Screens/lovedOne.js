@@ -112,7 +112,9 @@ function loveOne({ route, navigation }) {
             setDisabled(true)
             setAnimating(true)
             var data = new FormData();
-            data.append("userid", "1")
+            const id = await AsyncStorage.getItem('userID');
+
+            data.append("userid", id)
             data.append("action", "insert")
             data.append("screen", "love_one")
             data.append("name", state.name)
@@ -180,7 +182,7 @@ function loveOne({ route, navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Love One </Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Loved One </Text>
 
                 </View>
             </View>
@@ -200,7 +202,7 @@ function loveOne({ route, navigation }) {
                             <CardItem>
                                 <Body>
                                     <Text style={{ textAlign: "center" }}>
-                                        Want to join a group on behalf of loved one,just simple fill in your loved ones detail and choose between the public group and the community group to secure your love ones feuture.
+                                        Want to join a group on behalf of loved one,just simple fill in your loved ones detail and choose between the public group and the community group to secure your loved ones feuture.
                                    </Text>
                                     <Text style={{ textAlign: "center" }}>
                                         Abu Huraira narrated that the Prophet said: The best charity is that which is practiced by a wealthy person and start giving first to your dependents.

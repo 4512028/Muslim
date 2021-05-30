@@ -66,10 +66,12 @@ function loveOneDetail({ navigation }) {
 
     }, []);
 
-    getLove = () => {
+    getLove = async () => {
         setAnimating(true)
+        const id = await AsyncStorage.getItem('userID');
+
         var data = new FormData();
-        data.append("userid", "1")
+        data.append("userid", id)
         data.append("action", "get")
         data.append("screen", "love_one")
         console.log(data)
@@ -143,7 +145,7 @@ function loveOneDetail({ navigation }) {
                 </View>
                 <View style={{ width: "70%", height: 60, justifyContent: "center", alignItems: "center" }}>
 
-                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Love One </Text>
+                    <Text style={{ fontSize: 20, color: "white", fontWeight: "bold" }}>Loved One </Text>
 
                 </View>
             </View>

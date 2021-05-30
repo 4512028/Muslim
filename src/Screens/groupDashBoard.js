@@ -452,7 +452,7 @@ function groupDashBoard({ navigation }) {
                                     <Text style={{ fontSize: 20, color: "#0178B9", fontWeight: "bold", marginBottom: 10, marginTop: 10 }}>Umer Saleem</Text>
                                     <Text style={{ fontSize: 18, color: "black", fontWeight: "bold", marginBottom: 10 }}>£3</Text>
                                     <Text style={{ fontSize: 16, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>2 Members</Text>
-                                    <Text style={{ fontSize: 16, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>2 Love one</Text>
+                                    <Text style={{ fontSize: 16, color: "#8A8A8A", fontWeight: "bold", marginBottom: 10 }}>2 Loved one</Text>
                                 </View>
 
                             </TouchableWithoutFeedback>

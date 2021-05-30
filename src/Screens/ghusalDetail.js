@@ -66,10 +66,12 @@ function ghusalDetail({ navigation }) {
 
     }, []);
 
-    getGusal = () => {
+    getGusal = async () => {
         setAnimating(true)
         var data = new FormData();
-        data.append("userid", "1")
+        const id = await AsyncStorage.getItem('userID');
+
+        data.append("userid", id)
         data.append("action", "get")
         data.append("screen", "ghusal")
         console.log(data)

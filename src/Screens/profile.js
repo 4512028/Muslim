@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { View, StyleSheet, Button, ActivityIndicator, Text, StatusBar, TouchableWithoutFeedback, TouchableOpacity, Image, ScrollView, SafeAreaView, AsyncStorage, FlatList, Platform } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
-import profilee from '../Assets/Icons/profile.png'
+import profilee from '../Assets/Icons/pro.png'
 import edit from '../Assets/Icons/edit.png'
 import email from '../Assets/Icons/email.png'
 import home from '../Assets/Icons/home.png'
@@ -44,7 +44,6 @@ function profile({ navigation }) {
 
 
     gotoEditProofile = () => {
-
         navigation.navigate('profileEdit', {
             item: state,
             getProfile: getProfile()
@@ -52,6 +51,8 @@ function profile({ navigation }) {
 
     }
 
+    useEffect(() => {
+    }, []);
 
     gotoVerifyProofile = () => {
 
@@ -76,13 +77,14 @@ function profile({ navigation }) {
 
 
     }, [state.image]);
-    getProfile = () => {
-
+    getProfile = async () => {
 
         setDisabled(true)
         setAnimating(true)
+        const id = await AsyncStorage.getItem('userID');
+
         var data = new FormData();
-        data.append("userid", "1")
+        data.append("userid", id)
         data.append("action", "get")
         data.append("screen", "users")
 

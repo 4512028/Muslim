@@ -46,6 +46,7 @@ function profileEdit({ route, navigation }) {
     const [phoneNumber, setPhone] = useState(item.firstName);
     const [postalCode, setPostalCode] = useState(item.postalCode);
     const [town, setTown] = useState(item.firstName);
+    const [image, setImage] = useState(Domain + "/apis/" + item.image);
     const [mosque, setMosque] = useState(item.mosque);
     const [isAnimating, setAnimating] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
@@ -54,7 +55,8 @@ function profileEdit({ route, navigation }) {
 
 
     Back = () => {
-        route.params.getProfile
+
+        getProfile()
         navigation.goBack()
     }
 
@@ -74,7 +76,7 @@ function profileEdit({ route, navigation }) {
             },
             (response) => {
 
-
+                setImage(response.uri)
                 setResponse1(response)
                 setSelected1(true)
 
@@ -137,10 +139,12 @@ function profileEdit({ route, navigation }) {
         // }
 
         else {
+            const id = await AsyncStorage.getItem('userID');
+
             setDisabled(true)
             setAnimating(true)
             var data = new FormData();
-            data.append("id", "1")
+            data.append("id", id)
             data.append("action", "profile_update")
             data.append("first_name", firstName)
             data.append("last_name", lastNAme)
@@ -170,7 +174,6 @@ function profileEdit({ route, navigation }) {
                     let responseData = JSON.parse(responseText);
                     console.log(responseData, "jnkkn")
 
-                    console.log(responseData, "responseData of api")
 
                     if (responseData.status === true) {
                         setDisabled(false)
@@ -235,14 +238,15 @@ function profileEdit({ route, navigation }) {
                         <View style={{ alignSelf: "center", paddingTop: "10%" }}>
                             <View style={styles.ImageView}>
 
+                                <Image source={image == "" ? userP : { uri: image }} style={{ height: 120, width: 120, borderRadius: 60, alignSelf: 'center', }} />
 
-                                <Image source={isSelected1 == true ? response1 : userP} style={isSelected1 == true ? { height: 150, width: 150, borderRadius: 75, alignSelf: 'center', } : { height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} />
+                                {/* <Image source={isSelected1 == true ? response1 : userP} style={isSelected1 == true ? { height: 150, width: 150, borderRadius: 75, alignSelf: 'center', } : { height: 100, width: 100, borderRadius: 50, alignSelf: 'center', }} /> */}
 
                             </View>
 
-                            <View style={{ height: 50, width: 50, position: 'absolute', bottom: -20, right: 20, borderRadius: 25, padding: 5, backgroundColor: "#0178B9" }}>
+                            <View style={{ height: 30, width: 30, position: 'absolute', bottom: -10, right: 20, borderRadius: 15, backgroundColor: "green", alignContent: "center", justifyContent: "center" }}>
                                 <TouchableOpacity onPress={() => { selectImagee() }} >
-                                    <Image source={Camera} style={{ alignSelf: 'center', width: 40, height: 40, borderRadius: 25 }} />
+                                    <Image source={Camera} style={{ alignSelf: 'center', width: 25, height: 25, borderRadius: 12.5 }} />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -475,8 +479,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#d5c9de'
     },
     ImageView: {
-        height: 150,
-        width: 150,
+        height: 120,
+        width: 120,
         borderRadius: 75,
         alignItems: "center", justifyContent: "center",
         backgroundColor: "#0178B9"

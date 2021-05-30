@@ -52,10 +52,12 @@ function nextToKinDetail({ navigation }) {
 
     }, []);
 
-    getNextTOKin = () => {
+    getNextTOKin = async () => {
         setAnimating(true)
         var data = new FormData();
-        data.append("userid", "1")
+        const id = await AsyncStorage.getItem('userID');
+
+        data.append("userid", id)
         data.append("action", "get")
         data.append("screen", "kin")
         console.log(data)

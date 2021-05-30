@@ -190,7 +190,7 @@ function Home({ navigation }) {
             </View>
 
             {isAnimating &&
-                <ActivityIndicator size="large" color="#58278c" animating={isAnimating} style={styles.loading} />
+                <ActivityIndicator size="large" color="#0178B9" animating={isAnimating} style={styles.loading} />
             }
         </SafeAreaView>
 

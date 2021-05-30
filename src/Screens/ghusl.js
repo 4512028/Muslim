@@ -90,7 +90,9 @@ function ghusl({ navigation }) {
             setDisabled(true)
             setAnimating(true)
             var data = new FormData();
-            data.append("userid", "1")
+            const id = await AsyncStorage.getItem('userID');
+
+            data.append("userid", id)
             data.append("action", "insert")
             data.append("screen", "ghusal")
             data.append("name", state.name)
